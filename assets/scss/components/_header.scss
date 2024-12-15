@@ -1,0 +1,249 @@
+* {
+  font-family: "Assistant", sans-serif;
+}
+
+.logoCont {
+  width: 200px;
+}
+
+header {
+  background: #fff;
+  padding: 10px 20px;
+}
+
+.container {
+  max-width: 70%;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.arrow {
+  margin-left: 10px;
+}
+
+.navBar {
+  background: #fff;
+  padding: 10px 20px;
+
+  .userList {
+    display: flex;
+
+    .userItem {
+      position: relative;
+      margin-right: 20px;
+      margin-bottom: 10px; // Küçük ekranlarda alt margin ekleyerek öğelerin üst üste binmesini engelliyoruz
+
+      a {
+        color: #333;
+        font-size: 14px;
+        padding: 5px;
+        display: flex;
+        position: relative;
+        border-bottom: 1px solid transparent;
+        gap: 14px;
+        &:hover {
+          border-bottom: 1px solid black;
+        }
+      }
+
+      &.dropdown {
+        position: relative;
+
+        .dropdownMenu {
+          position: absolute;
+          top: 37px;
+          z-index: 1;
+          width: 200px;
+          display: none;  // Başlangıçta gizli
+          left: 0;
+          background: linear-gradient(
+            133deg,
+            rgba(246, 221, 220, 1) 11%,
+            rgba(245, 202, 221, 0.89) 49%,
+            rgba(247, 240, 246, 1) 85%
+          );
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          opacity: 0;
+          visibility: hidden;
+          transition: all 0.3s ease-in-out;
+        }
+
+        &.active {
+          .dropdownMenu {
+            display: block;  // Menüyü görünür kıl
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+          }
+        }
+
+        .dropdownMenu li {
+          padding: 8px 20px;
+
+          a {
+            color: #555;
+            font-size: 14px;
+            display: inline-block;
+            &:hover {
+              border-bottom: 1px solid black;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+.customValyuta, .customLang {
+  position: relative;
+  font-family: "Arial", sans-serif;
+}
+
+
+
+
+.customValyuta, .customLang {
+  position: relative;
+  font-family: "Arial", sans-serif;
+
+  .dropdown {
+    position: relative;
+
+    .dropdown-toggle {
+      width: 100%;
+      font-size: 16px;
+      display: flex;
+      gap: 14px;
+      color: #333;
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+      transition: all 0.3s ease;
+
+      #selectedCurrency {
+        display: inline-block;
+        &:hover {
+          border-bottom: 1px solid black;
+        }
+      }
+      .arrow {
+        font-size: 14px;
+        color: #777;
+      }
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 130px;
+      display: none;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+      .dropdown-item {
+        padding: 12px 16px;
+        font-size: 16px;
+      
+        color: #333;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+        span {
+          display: inline-block;
+          &:hover {
+            color: black;
+            border-bottom: 1px solid black;
+          }
+        }
+
+        &.active {
+          background-color: #492020;
+        }
+      }
+    }
+  }
+
+  .active .dropdown-menu {
+    display: block;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Hamburger Menü */
+.burger-menu {
+  display: none; /* Varsayılan olarak gizli */
+  position: relative;
+  width: 35px;
+  height: 30px;
+  cursor: pointer;
+
+  .open, .close {
+    display: block;
+  }
+
+  .close {
+    display: none; /* İlk başta close gizli */
+  }
+
+  &.active {
+    .open {
+      display: none;
+    }
+    .close {
+      display: block; /* Menü açıldığında close görünür */
+    }
+  }
+}
+
+/* Menü Responsive */
+@media screen and (max-width: 966px) {
+  .burger-menu {
+    display: block; /* Küçük ekranlarda burger menü görünür */
+  }
+
+  .navBar {
+    .userList {
+      display: none; /* Menü varsayılan olarak gizli */
+      flex-direction: column;
+      align-items: flex-start;
+      background: linear-gradient(
+            133deg,
+            rgba(246, 221, 220, 1) 11%,
+            rgba(245, 202, 221, 0.89) 49%,
+            rgba(247, 240, 246, 1) 85%
+          );
+      position: absolute;
+      top: 50px;
+      left: 0;
+      width: 100%;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+      &.active {
+        display: flex; /* Aktif olduğunda görünür */
+      }
+    }
+  }
+  .customLang, .customValyuta{
+    display: none;
+  }
+}

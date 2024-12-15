@@ -1,0 +1,205 @@
+@charset "UTF-8";
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+* {
+  font-family: "Assistant", sans-serif;
+}
+
+.logoCont {
+  width: 200px;
+}
+
+header {
+  background: #fff;
+  padding: 10px 20px;
+}
+
+.container {
+  max-width: 70%;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.arrow {
+  margin-left: 10px;
+}
+
+.navBar {
+  background: #fff;
+  padding: 10px 20px;
+}
+.navBar .userList {
+  display: flex;
+}
+.navBar .userList .userItem {
+  position: relative;
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+.navBar .userList .userItem a {
+  color: #333;
+  font-size: 14px;
+  padding: 5px;
+  display: flex;
+  position: relative;
+  border-bottom: 1px solid transparent;
+  gap: 14px;
+}
+.navBar .userList .userItem a:hover {
+  border-bottom: 1px solid black;
+}
+.navBar .userList .userItem.dropdown {
+  position: relative;
+}
+.navBar .userList .userItem.dropdown .dropdownMenu {
+  position: absolute;
+  top: 37px;
+  z-index: 1;
+  width: 200px;
+  display: none;
+  left: 0;
+  background: linear-gradient(133deg, rgb(246, 221, 220) 11%, rgba(245, 202, 221, 0.89) 49%, rgb(247, 240, 246) 85%);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+}
+.navBar .userList .userItem.dropdown.active .dropdownMenu {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.navBar .userList .userItem.dropdown .dropdownMenu li {
+  padding: 8px 20px;
+}
+.navBar .userList .userItem.dropdown .dropdownMenu li a {
+  color: #555;
+  font-size: 14px;
+  display: inline-block;
+}
+.navBar .userList .userItem.dropdown .dropdownMenu li a:hover {
+  border-bottom: 1px solid black;
+}
+
+.customValyuta, .customLang {
+  position: relative;
+  font-family: "Arial", sans-serif;
+}
+
+.customValyuta, .customLang {
+  position: relative;
+  font-family: "Arial", sans-serif;
+}
+.customValyuta .dropdown, .customLang .dropdown {
+  position: relative;
+}
+.customValyuta .dropdown .dropdown-toggle, .customLang .dropdown .dropdown-toggle {
+  width: 100%;
+  font-size: 16px;
+  display: flex;
+  gap: 14px;
+  color: #333;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  transition: all 0.3s ease;
+}
+.customValyuta .dropdown .dropdown-toggle #selectedCurrency, .customLang .dropdown .dropdown-toggle #selectedCurrency {
+  display: inline-block;
+}
+.customValyuta .dropdown .dropdown-toggle #selectedCurrency:hover, .customLang .dropdown .dropdown-toggle #selectedCurrency:hover {
+  border-bottom: 1px solid black;
+}
+.customValyuta .dropdown .dropdown-toggle .arrow, .customLang .dropdown .dropdown-toggle .arrow {
+  font-size: 14px;
+  color: #777;
+}
+.customValyuta .dropdown .dropdown-menu, .customLang .dropdown .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 130px;
+  display: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.customValyuta .dropdown .dropdown-menu .dropdown-item, .customLang .dropdown .dropdown-menu .dropdown-item {
+  padding: 12px 16px;
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.customValyuta .dropdown .dropdown-menu .dropdown-item span, .customLang .dropdown .dropdown-menu .dropdown-item span {
+  display: inline-block;
+}
+.customValyuta .dropdown .dropdown-menu .dropdown-item span:hover, .customLang .dropdown .dropdown-menu .dropdown-item span:hover {
+  color: black;
+  border-bottom: 1px solid black;
+}
+.customValyuta .dropdown .dropdown-menu .dropdown-item.active, .customLang .dropdown .dropdown-menu .dropdown-item.active {
+  background-color: #492020;
+}
+.customValyuta .active .dropdown-menu, .customLang .active .dropdown-menu {
+  display: block;
+}
+
+/* Hamburger Menü */
+.burger-menu {
+  display: none; /* Varsayılan olarak gizli */
+  position: relative;
+  width: 35px;
+  height: 30px;
+  cursor: pointer;
+}
+.burger-menu .open, .burger-menu .close {
+  display: block;
+}
+.burger-menu .close {
+  display: none; /* İlk başta close gizli */
+}
+.burger-menu.active .open {
+  display: none;
+}
+.burger-menu.active .close {
+  display: block; /* Menü açıldığında close görünür */
+}
+
+/* Menü Responsive */
+@media screen and (max-width: 966px) {
+  .burger-menu {
+    display: block; /* Küçük ekranlarda burger menü görünür */
+  }
+  .navBar .userList {
+    display: none; /* Menü varsayılan olarak gizli */
+    flex-direction: column;
+    align-items: flex-start;
+    background: linear-gradient(133deg, rgb(246, 221, 220) 11%, rgba(245, 202, 221, 0.89) 49%, rgb(247, 240, 246) 85%);
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  .navBar .userList.active {
+    display: flex; /* Aktif olduğunda görünür */
+  }
+  .customLang, .customValyuta {
+    display: none;
+  }
+}/*# sourceMappingURL=index.css.map */
