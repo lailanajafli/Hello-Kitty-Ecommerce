@@ -1,40 +1,28 @@
-// Burger menü tıklama olayını yönetmek için
-const dropdowns = document.querySelectorAll('.userItem.dropdown'); // tüm dropdownları seç
 
+const dropdowns = document.querySelectorAll('.userItem.dropdown');
 dropdowns.forEach(dropdown => {
   dropdown.addEventListener('click', function() {
-    // Bu tıklama ile sadece aktif dropdown menüsünü açıyoruz
-    dropdown.classList.toggle('active'); // "active" sınıfını ekle/kaldır
+    dropdown.classList.toggle('active');
   });
 });
 
-
-
 document.addEventListener('DOMContentLoaded', function() {
-  // Dropdown menülerini seçiyoruz
   const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
 
   dropdownToggles.forEach(toggle => {
     toggle.addEventListener('click', function(event) {
-      const dropdown = this.closest('.dropdown'); // Bu tıklamanın ait olduğu dropdown menüsünü seçiyoruz
-
-      // Menüyü açıp kapatıyoruz
+      const dropdown = this.closest('.dropdown');
       dropdown.classList.toggle('active');
-
-      // Menü açıldığında tüm diğer dropdown menülerini kapatmak isterseniz:
       const allDropdowns = document.querySelectorAll('.dropdown');
       allDropdowns.forEach(item => {
         if (item !== dropdown) {
           item.classList.remove('active');
         }
       });
-
-      // Sayfa kaymasını engellemek için
       event.preventDefault();
     });
   });
 
-  // Menü dışına tıklanırsa kapanmasını sağlamak için
   document.addEventListener('click', function(event) {
     const dropdowns = document.querySelectorAll('.dropdown');
     dropdowns.forEach(dropdown => {
@@ -44,48 +32,89 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Currency Dropdown item'larına tıklanırsa, ilgili currency'yi seçip güncelleme
   const currencyItems = document.querySelectorAll('.customValyuta .dropdown-item');
   currencyItems.forEach(item => {
     item.addEventListener('click', function() {
-      const selectedCurrency = this.getAttribute('data-currency'); // Seçilen currency
-      document.getElementById('selectedCurrency').textContent = selectedCurrency; // Currency öğesini güncelle
-      this.closest('.dropdown').classList.remove('active'); // Menü kapanacak
+      const selectedCurrency = this.getAttribute('data-currency');
+      document.getElementById('selectedCurrency').textContent = selectedCurrency;
+      this.closest('.dropdown').classList.remove('active'); 
     });
   });
 
-  // Language Dropdown item'larına tıklanırsa, ilgili dil seçip güncelleme
   const languageItems = document.querySelectorAll('.customLang .dropdown-item');
   languageItems.forEach(item => {
     item.addEventListener('click', function() {
-      const selectedLanguage = this.querySelector('span').textContent; // Seçilen dili alıyoruz
-      document.getElementById('selectedLanguage').textContent = selectedLanguage; // Language öğesini güncelle
-      this.closest('.dropdown').classList.remove('active'); // Menü kapanacak
+      const selectedLanguage = this.querySelector('span').textContent; 
+      document.getElementById('selectedLanguage').textContent = selectedLanguage; 
+      this.closest('.dropdown').classList.remove('active'); 
     });
   });
 });
-
-
-
-
-
-
-
 
 
 document.addEventListener('DOMContentLoaded', function() {
   const burgerMenu = document.getElementById('burger-menu');
   const navLinks = document.getElementById('nav-links');
   
-  // Menü açma ve kapama işlevselliği
   if (burgerMenu) {
       burgerMenu.addEventListener('click', function() {
-          // Burger menüsünü tıkladığında navbar'ı aç/kapat
           navLinks.classList.toggle('active');
-          
-          // Burger menüsünü open/close geçişini sağla
           burgerMenu.classList.toggle('active');
       });
   }
 });
 
+
+// slider start
+document.addEventListener("DOMContentLoaded", () => {
+  const prevButton = document.querySelector(".prev");
+  const nextButton = document.querySelector(".next");
+  const sliderContent = document.querySelector(".slider-content");
+  const testimonials = document.querySelectorAll(".testimonial");
+  const dotsContainer = document.querySelector(".dots");
+
+  let currentIndex = 0;
+
+  testimonials.forEach((_, index) => {
+    const dot = document.createElement("span");
+    dot.classList.add("dot");
+    if (index === 0) dot.classList.add("active");
+    dotsContainer.appendChild(dot);
+
+    dot.addEventListener("click", () => {
+      currentIndex = index;
+      updateSlider();
+    });
+  });
+
+  function updateSlider() {
+    const offset = -currentIndex * 100;
+    sliderContent.style.transform = `translateX(${offset}%)`;
+
+    document.querySelectorAll(".dot").forEach((dot, index) => {
+      dot.classList.toggle("active", index === currentIndex);
+    });
+  }
+
+  if (nextButton) {
+    nextButton.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % testimonials.length;
+      updateSlider();
+    });
+  } else {
+    console.error("Next düyməsi tapılmadı!");
+  }
+
+  if (prevButton) {
+    prevButton.addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
+      updateSlider();
+    });
+  } else {
+    console.error("Prev düyməsi tapılmadı!");
+  }
+
+  updateSlider();
+});
+
+// slider end

@@ -1,0 +1,85 @@
+@mixin dropdownMenu {
+    .selectOption {
+        display: flex;
+        gap: 20px;
+        .customValyuta,
+        .customLang {
+          position: relative;
+          font-family: "Arial", sans-serif;
+      
+          .dropdown {
+            position: relative;
+      
+            .dropdown-toggle {
+              width: 100%;
+              font-size: 16px;
+              display: flex;
+              gap: 14px;
+              color: #333;
+              cursor: pointer;
+              background-color: transparent;
+              border: none;
+              transition: all 0.3s ease;
+      
+              #selectedCurrency,
+              #selectedLanguage {
+                border-bottom: 1px solid transparent;
+                display: inline-block;
+                &:hover {
+                  border-bottom: 1px solid black;
+                }
+              }
+      
+              .arrow {
+                transition: transform 0.3s ease;
+                font-size: 15px;
+                color: #333;
+              }
+            }
+      
+            .dropdown-menu {
+              position: absolute;
+              top: 100%;
+              left: 0;
+              width: 130px;
+              display: none;
+              list-style: none;
+              padding: 0;
+              background-color: white;
+              margin: 0;
+              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      
+              .dropdown-item {
+                padding: 12px 16px;
+                font-size: 16px;
+                color: #333;
+                cursor: pointer;
+                transition: background-color 0.2s ease;
+                span {
+                  display: inline-block;
+                  &:hover {
+                    color: black;
+                    border-bottom: 1px solid black;
+                  }
+                }
+      
+                &.active {
+                  background-color: #492020;
+                }
+              }
+            }
+          }
+      
+          .active .dropdown-menu {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+          }
+      
+          .active .dropdown-toggle .arrow {
+            transform: rotate(180deg);
+          }
+        }
+      }
+  }

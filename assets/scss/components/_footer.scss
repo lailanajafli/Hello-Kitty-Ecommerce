@@ -1,0 +1,168 @@
+// Əsas dəyişənlər
+$primary-color: #fce4ec;
+$text-color: #333;
+$border-color: #e0e0e0;
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: $primary-color;
+}
+
+.footer {
+  background: linear-gradient(
+    133deg,
+    rgba(246, 221, 220, 1) 11%,
+    rgba(245, 202, 221, 0.89) 49%,
+    rgba(247, 240, 246, 1) 85%
+  );
+  color: $text-color;
+  padding: 20px;
+  text-align: center;
+
+  .container {
+    width: 90%;
+    margin: 0 auto;
+
+    // Newsletter
+    .newsletter {
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      border-bottom: 1px solid rgba(195, 195, 195, 0.534);
+
+      p {
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+
+      .newsletter-input {
+        input {
+          width: 100%;
+          max-width: 350px;
+          position: relative;
+          background-color: #FFEDF4;
+          padding: 12px;
+        }
+
+        .newsletter-button{
+          background-color: transparent;
+          border: none;
+          position: absolute;
+          right: 15px;
+        }
+      }
+
+      .social-icons {
+        margin-top: 15px;
+        font-size: 20px;
+        display: flex;
+        gap: 15px;
+      }
+    }
+
+    // Footer Settings
+    .footer-settings {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+
+      label {
+        font-size: 14px;
+      }
+
+      .customValyuta,
+      .customLang {
+        border: 1px solid black;
+        background-color: #FFEDF4;
+        padding: 8px 14px;
+        margin-bottom: 10px;
+
+        .dropdown-menu {
+          top: 42px;
+        }
+      }
+
+      .payment-icons {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 15px;
+
+        img {
+          width: 30px;
+          margin: 5px;
+        }
+      }
+    }
+
+    // Footer Bottom
+    .footer-bottom {
+      font-size: 12px;
+      text-align: center;
+      padding: 15px;
+
+      a {
+        text-decoration: none;
+        color: $text-color;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+// RESPONSIVE DESIGN
+@media (min-width: 768px) {
+  .footer {
+    .container {
+      .newsletter {
+        flex-direction: row;
+        justify-content: space-between;
+
+        .newsletter-input {
+          input {
+            width: 270px;
+         
+          }
+        }
+        .social-icons {
+          margin-top: 0;
+        }
+      }
+
+      .footer-settings {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        .payment-icons {
+          justify-content: flex-start;
+        }
+      }
+
+      .footer-bottom {
+        text-align: left;
+      }
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer .container {
+    width: 80%;
+
+    .newsletter p {
+      font-size: 18px;
+    }
+
+    .footer-settings .payment-icons img {
+      width: 40px;
+    }
+  }
+}

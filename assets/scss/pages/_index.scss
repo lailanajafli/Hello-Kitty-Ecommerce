@@ -1,0 +1,317 @@
+.threeHelloKitty {
+  width: 100%;
+
+  img {
+    max-height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+.sliderComment {
+  font-family: "Arial", sans-serif;
+  background-color: rgb(246, 205, 220);
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+
+  .slider-container {
+    width: 90%;
+    max-width: 70%;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+
+    .slider {
+      display: flex;
+      position: relative;
+      overflow: hidden;
+
+      .prev,
+      .next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        font-size: 3rem;
+        color: #000;
+        cursor: pointer;
+        padding: 10px;
+        border-radius: 50%;
+        transition: background-color 0.3s ease;
+      }
+
+      .prev {
+        z-index: 10;
+        position: absolute;
+        top: 50%;
+        left: 0px;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        font-size: 3rem;
+        color: #000;
+        cursor: pointer;
+        padding: 10px;
+        border-radius: 50%;
+        transition: background-color 0.3s ease;
+      }
+
+      .next {
+        right: 0px;
+      }
+
+      .slider-content {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+        width: 100%;
+
+        .testimonial {
+          flex: 1 0 100%;
+          padding: 20px;
+          text-align: center;
+          font-size: 2.5rem;
+          font-style: italic;
+          color: #555;
+          margin: 0;
+          line-height: 1.6;
+          p {
+            color: black;
+            font-weight: 500;
+          }
+
+          footer {
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            align-items: center;
+            flex-direction: column;
+            .dots {
+              display: flex;
+              gap: 5px;
+
+              span {
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background-color: #ccc;
+                transition: background-color 0.3s ease, opacity 0.3s ease;
+                opacity: 0.5;
+
+                &.active {
+                  background-color: #ff6f91;
+                  opacity: 1;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .slider-container {
+      .slider {
+        .testimonial {
+          font-size: 1.5rem;
+
+          footer {
+            font-size: 0.9rem;
+
+            .dots span {
+              width: 8px;
+              height: 8px;
+            }
+          }
+        }
+
+        .prev,
+        .next {
+          font-size: 1.5rem;
+          padding: 8px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .slider-container {
+      max-width: 100%;
+      width: 100%;
+      padding: 10px;
+      .slider {
+        .testimonial {
+          p {
+            font-size: 14px;
+          }
+
+          footer {
+            span {
+              font-size: 14px;
+            }
+
+            .dots span {
+              width: 6px;
+              height: 6px;
+            }
+          }
+        }
+
+        .prev,
+        .next {
+          font-size: 1.2rem;
+          padding: 6px;
+        }
+      }
+    }
+  }
+}
+
+// why Hello start
+
+.whyHelloSection {
+  background-color: #f6cddc;
+  padding: 42px 10px;
+  .container {
+    max-width: 47%;
+    margin: 0 auto;
+    .row {
+      display: flex;
+      flex-direction: column;
+      .whyHello {
+        font-size: 40px;
+        margin-bottom: 1.5rem;
+        font-weight: 400;
+        color: #212121;
+      }
+      p{
+        font-size: 16px;
+        line-height: 1.6;
+        color: rgb(59, 59, 59);
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+      .discoverBtn{
+        background-color: transparent;
+        color: black;
+        border: 1px solid black;
+        padding: 12px 30px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+    }
+  }
+}
+@media (max-width: 768px) {
+  .whyHelloSection{
+    .container{
+      .row{
+        .whyHello {
+          font-size: 30px;
+        }
+      }
+    }
+
+  }
+}
+@media (max-width: 450px) {
+  .whyHelloSection{
+    .container{
+      .row{
+        .whyHello {
+          font-size: 20px;
+        }
+      }
+    }
+
+  }
+}
+
+// why Hello end
+
+// three Cart start
+.threeCart {
+  text-align: center;
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+  background-color: #f3f3f3;
+  color: #333;
+  line-height: 1.5;
+  .container {
+    max-width: 80%;
+    margin: 0 auto;
+    h2 {
+      font-size: 40px;
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+      color: #212121;
+      text-align: left;
+    }
+
+    .collection-items {
+      display: flex;
+      gap: 13px;
+      .collection-card {
+        text-align: left;
+        cursor: pointer;
+        h3 {
+          font-family: "Cursive", sans-serif;
+          font-size: 1.5rem;
+          color: #f4b6c2;
+          margin-bottom: 1rem;
+        }
+
+        .collection-image {
+          text-align: center;
+
+          img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease-in-out;
+            &:hover {
+              transform: translateY(-6px); // Şəkil üzərinə hover zamanı böyüdür
+            }
+          }
+        }
+
+        .collection-link {
+          display: inline-block;
+          text-decoration: none;
+          color: #1f1f1f;
+          font-size: 19px;
+          text-align: left;
+
+          &:hover {
+            color: #f4b6c2;
+          }
+        }
+      }
+    }
+  }
+}
+// three Cart end
+
+// Responsive Design
+@media (max-width: 768px) {
+  .collection-items {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .collection-items {
+    flex-wrap: wrap;
+  }
+}
+
+// threeCart end
