@@ -3,19 +3,8 @@ $primary-color: #fce4ec;
 $text-color: #333;
 $border-color: #e0e0e0;
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: $primary-color;
-}
-
 .footer {
-  background: linear-gradient(
-    133deg,
-    rgba(246, 221, 220, 1) 11%,
-    rgba(245, 202, 221, 0.89) 49%,
-    rgba(247, 240, 246, 1) 85%
-  );
+  background: linear-gradient(133deg, rgba(246, 221, 220, 1) 11%, rgba(245, 202, 221, 0.89) 49%, rgba(247, 240, 246, 1) 85%);
   color: $text-color;
   padding: 20px;
   text-align: center;
@@ -39,6 +28,7 @@ body {
       }
 
       .newsletter-input {
+        padding-bottom: 20px;
         input {
           width: 100%;
           max-width: 350px;
@@ -128,7 +118,7 @@ body {
         .newsletter-input {
           input {
             width: 270px;
-         
+           
           }
         }
         .social-icons {

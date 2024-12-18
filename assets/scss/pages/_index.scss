@@ -1,6 +1,6 @@
 .threeHelloKitty {
   width: 100%;
-
+  margin-bottom: 30px;
   img {
     max-height: 100%;
     width: 100%;
@@ -8,6 +8,244 @@
   }
 }
 
+// products start
+.productsSection {
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    h2 {
+      font-size: 40px;
+      font-weight: 400;
+      color: #212121;
+      margin-bottom: 20px;
+      text-align: left;
+      margin-left: 15px;
+    }
+    .row {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+
+      .productsCont {
+        padding: 20px;
+        text-align: left;
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: translateY(-5px);
+        }
+
+        .imgCont {
+          margin-bottom: 15px;
+
+          img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+          }
+        }
+
+        .productName {
+          font-size: 1.2rem;
+          color: #333;
+          margin: 10px 0;
+          font-weight: bold;
+        }
+
+        .productPrice {
+          font-size: 1rem;
+          color: #555;
+          margin-bottom: 15px;
+        }
+
+        .chooseOption {
+          @include buttonTransparent;
+          width: 100%;
+          padding: 12px 0px;
+          text-align: center;
+          display: inline-block;
+        }
+      }
+    }
+    .viewAll{
+      display: flex;
+          margin: 0 auto;
+          margin-top: 20px;
+          padding: 14px 35px;
+          margin-bottom: 10px;
+          border: none;
+          background-color: black;
+          color: white;
+    }
+  }
+
+  // Media queries
+  @media (max-width: 1024px) {
+    .row {
+      flex-wrap: wrap;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .row {
+      flex-wrap: wrap;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .productsCont {
+      width: 100%;
+      text-align: center;
+      flex-wrap: wrap;
+      .chooseOption {
+        padding: 10px 0;
+      }
+
+      .productName,
+      .productPrice {
+        text-align: center;
+      }
+    }
+  }
+}
+// products end
+
+// why Hello start
+.whyHelloSection {
+  background-color: #f6cddc;
+  padding: 42px 10px;
+  margin-top: 30px;
+  .container {
+    max-width: 47%;
+    margin: 0 auto;
+    .row {
+      display: flex;
+      flex-direction: column;
+      .whyHello {
+        font-size: 40px;
+        margin-bottom: 1.5rem;
+        font-weight: 400;
+        color: #212121;
+      }
+      p {
+        font-size: 16px;
+        line-height: 1.6;
+        color: rgb(59, 59, 59);
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+      .discoverBtn {
+        background-color: transparent;
+        color: black;
+        border: 1px solid black;
+        padding: 12px 30px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+    }
+  }
+}
+@media (max-width: 768px) {
+  .whyHelloSection {
+    .container {
+      .row {
+        .whyHello {
+          font-size: 30px;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 450px) {
+  .whyHelloSection {
+    .container {
+      .row {
+        .whyHello {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
+// why Hello end
+
+// three Cart start
+.threeCart {
+  text-align: center;
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+  background-color: #f3f3f3;
+  color: #333;
+  line-height: 1.5;
+  .container {
+    max-width: 80%;
+    margin: 0 auto;
+    h2 {
+      font-size: 40px;
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+      color: #212121;
+      text-align: left;
+    }
+
+    .collection-items {
+      display: flex;
+      gap: 13px;
+      .collection-card {
+        text-align: left;
+        cursor: pointer;
+        h3 {
+          font-family: "Cursive", sans-serif;
+          font-size: 1.5rem;
+          color: #f4b6c2;
+          margin-bottom: 1rem;
+        }
+
+        .collection-image {
+          text-align: center;
+
+          img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease-in-out;
+            &:hover {
+              transform: translateY(-6px); // Şəkil üzərinə hover zamanı böyüdür
+            }
+          }
+        }
+
+        .collection-link {
+          display: inline-block;
+          text-decoration: none;
+          color: #1f1f1f;
+          font-size: 19px;
+          text-align: left;
+
+          &:hover {
+            color: #f4b6c2;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .collection-items {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .collection-items {
+    flex-wrap: wrap;
+  }
+}
+// three Cart end
+
+// slider start
 .sliderComment {
   font-family: "Arial", sans-serif;
   background-color: rgb(246, 205, 220);
@@ -175,143 +413,4 @@
     }
   }
 }
-
-// why Hello start
-
-.whyHelloSection {
-  background-color: #f6cddc;
-  padding: 42px 10px;
-  .container {
-    max-width: 47%;
-    margin: 0 auto;
-    .row {
-      display: flex;
-      flex-direction: column;
-      .whyHello {
-        font-size: 40px;
-        margin-bottom: 1.5rem;
-        font-weight: 400;
-        color: #212121;
-      }
-      p{
-        font-size: 16px;
-        line-height: 1.6;
-        color: rgb(59, 59, 59);
-        margin-bottom: 1rem;
-        text-align: center;
-      }
-      .discoverBtn{
-        background-color: transparent;
-        color: black;
-        border: 1px solid black;
-        padding: 12px 30px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-      }
-    }
-  }
-}
-@media (max-width: 768px) {
-  .whyHelloSection{
-    .container{
-      .row{
-        .whyHello {
-          font-size: 30px;
-        }
-      }
-    }
-
-  }
-}
-@media (max-width: 450px) {
-  .whyHelloSection{
-    .container{
-      .row{
-        .whyHello {
-          font-size: 20px;
-        }
-      }
-    }
-
-  }
-}
-
-// why Hello end
-
-// three Cart start
-.threeCart {
-  text-align: center;
-  padding: 2rem;
-  font-family: Arial, sans-serif;
-  background-color: #f3f3f3;
-  color: #333;
-  line-height: 1.5;
-  .container {
-    max-width: 80%;
-    margin: 0 auto;
-    h2 {
-      font-size: 40px;
-      margin-bottom: 1.5rem;
-      font-weight: 400;
-      color: #212121;
-      text-align: left;
-    }
-
-    .collection-items {
-      display: flex;
-      gap: 13px;
-      .collection-card {
-        text-align: left;
-        cursor: pointer;
-        h3 {
-          font-family: "Cursive", sans-serif;
-          font-size: 1.5rem;
-          color: #f4b6c2;
-          margin-bottom: 1rem;
-        }
-
-        .collection-image {
-          text-align: center;
-
-          img {
-            width: 100%;
-            height: auto;
-            object-fit: contain;
-            transition: transform 0.3s ease-in-out;
-            &:hover {
-              transform: translateY(-6px); // Şəkil üzərinə hover zamanı böyüdür
-            }
-          }
-        }
-
-        .collection-link {
-          display: inline-block;
-          text-decoration: none;
-          color: #1f1f1f;
-          font-size: 19px;
-          text-align: left;
-
-          &:hover {
-            color: #f4b6c2;
-          }
-        }
-      }
-    }
-  }
-}
-// three Cart end
-
-// Responsive Design
-@media (max-width: 768px) {
-  .collection-items {
-    flex-wrap: wrap;
-  }
-}
-
-@media (max-width: 480px) {
-  .collection-items {
-    flex-wrap: wrap;
-  }
-}
-
-// threeCart end
+// slider end

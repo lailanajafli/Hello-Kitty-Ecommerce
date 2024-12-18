@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: #f3f3f3;
+}
+
 * {
   font-family: "Assistant", sans-serif;
 }
@@ -273,6 +277,7 @@ header {
 }
 .threeHelloKitty {
   width: 100%;
+  margin-bottom: 30px;
 }
 .threeHelloKitty img {
   max-height: 100%;
@@ -281,6 +286,210 @@ header {
      object-fit: cover;
 }
 
+.productsSection .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+.productsSection .container h2 {
+  font-size: 40px;
+  font-weight: 400;
+  color: #212121;
+  margin-bottom: 20px;
+  text-align: left;
+  margin-left: 15px;
+}
+.productsSection .container .row {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+.productsSection .container .row .productsCont {
+  padding: 20px;
+  text-align: left;
+  transition: transform 0.3s ease;
+}
+.productsSection .container .row .productsCont:hover {
+  transform: translateY(-5px);
+}
+.productsSection .container .row .productsCont .imgCont {
+  margin-bottom: 15px;
+}
+.productsSection .container .row .productsCont .imgCont img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+.productsSection .container .row .productsCont .productName {
+  font-size: 1.2rem;
+  color: #333;
+  margin: 10px 0;
+  font-weight: bold;
+}
+.productsSection .container .row .productsCont .productPrice {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 15px;
+}
+.productsSection .container .row .productsCont .chooseOption {
+  background-color: transparent;
+  color: black;
+  border: 1px solid black;
+  padding: 12px 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  padding: 12px 0px;
+  text-align: center;
+  display: inline-block;
+}
+.productsSection .container .viewAll {
+  display: flex;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding: 14px 35px;
+  margin-bottom: 10px;
+  border: none;
+  background-color: black;
+  color: white;
+}
+@media (max-width: 1024px) {
+  .productsSection .row {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 768px) {
+  .productsSection .row {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 480px) {
+  .productsSection .productsCont {
+    width: 100%;
+    text-align: center;
+    flex-wrap: wrap;
+  }
+  .productsSection .productsCont .chooseOption {
+    padding: 10px 0;
+  }
+  .productsSection .productsCont .productName,
+  .productsSection .productsCont .productPrice {
+    text-align: center;
+  }
+}
+
+.whyHelloSection {
+  background-color: #f6cddc;
+  padding: 42px 10px;
+  margin-top: 30px;
+}
+.whyHelloSection .container {
+  max-width: 47%;
+  margin: 0 auto;
+}
+.whyHelloSection .container .row {
+  display: flex;
+  flex-direction: column;
+}
+.whyHelloSection .container .row .whyHello {
+  font-size: 40px;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+  color: #212121;
+}
+.whyHelloSection .container .row p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgb(59, 59, 59);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.whyHelloSection .container .row .discoverBtn {
+  background-color: transparent;
+  color: black;
+  border: 1px solid black;
+  padding: 12px 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .whyHelloSection .container .row .whyHello {
+    font-size: 30px;
+  }
+}
+@media (max-width: 450px) {
+  .whyHelloSection .container .row .whyHello {
+    font-size: 20px;
+  }
+}
+.threeCart {
+  text-align: center;
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+  background-color: #f3f3f3;
+  color: #333;
+  line-height: 1.5;
+}
+.threeCart .container {
+  max-width: 80%;
+  margin: 0 auto;
+}
+.threeCart .container h2 {
+  font-size: 40px;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+  color: #212121;
+  text-align: left;
+}
+.threeCart .container .collection-items {
+  display: flex;
+  gap: 13px;
+}
+.threeCart .container .collection-items .collection-card {
+  text-align: left;
+  cursor: pointer;
+}
+.threeCart .container .collection-items .collection-card h3 {
+  font-family: "Cursive", sans-serif;
+  font-size: 1.5rem;
+  color: #f4b6c2;
+  margin-bottom: 1rem;
+}
+.threeCart .container .collection-items .collection-card .collection-image {
+  text-align: center;
+}
+.threeCart .container .collection-items .collection-card .collection-image img {
+  width: 100%;
+  height: auto;
+  -o-object-fit: contain;
+     object-fit: contain;
+  transition: transform 0.3s ease-in-out;
+}
+.threeCart .container .collection-items .collection-card .collection-image img:hover {
+  transform: translateY(-6px);
+}
+.threeCart .container .collection-items .collection-card .collection-link {
+  display: inline-block;
+  text-decoration: none;
+  color: #1f1f1f;
+  font-size: 19px;
+  text-align: left;
+}
+.threeCart .container .collection-items .collection-card .collection-link:hover {
+  color: #f4b6c2;
+}
+
+@media (max-width: 768px) {
+  .collection-items {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 480px) {
+  .collection-items {
+    flex-wrap: wrap;
+  }
+}
 .sliderComment {
   font-family: "Arial", sans-serif;
   background-color: rgb(246, 205, 220);
@@ -421,123 +630,6 @@ header {
   }
 }
 
-.whyHelloSection {
-  background-color: #f6cddc;
-  padding: 42px 10px;
-}
-.whyHelloSection .container {
-  max-width: 47%;
-  margin: 0 auto;
-}
-.whyHelloSection .container .row {
-  display: flex;
-  flex-direction: column;
-}
-.whyHelloSection .container .row .whyHello {
-  font-size: 40px;
-  margin-bottom: 1.5rem;
-  font-weight: 400;
-  color: #212121;
-}
-.whyHelloSection .container .row p {
-  font-size: 16px;
-  line-height: 1.6;
-  color: rgb(59, 59, 59);
-  margin-bottom: 1rem;
-  text-align: center;
-}
-.whyHelloSection .container .row .discoverBtn {
-  background-color: transparent;
-  color: black;
-  border: 1px solid black;
-  padding: 12px 30px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-@media (max-width: 768px) {
-  .whyHelloSection .container .row .whyHello {
-    font-size: 30px;
-  }
-}
-@media (max-width: 450px) {
-  .whyHelloSection .container .row .whyHello {
-    font-size: 20px;
-  }
-}
-.threeCart {
-  text-align: center;
-  padding: 2rem;
-  font-family: Arial, sans-serif;
-  background-color: #f3f3f3;
-  color: #333;
-  line-height: 1.5;
-}
-.threeCart .container {
-  max-width: 80%;
-  margin: 0 auto;
-}
-.threeCart .container h2 {
-  font-size: 40px;
-  margin-bottom: 1.5rem;
-  font-weight: 400;
-  color: #212121;
-  text-align: left;
-}
-.threeCart .container .collection-items {
-  display: flex;
-  gap: 13px;
-}
-.threeCart .container .collection-items .collection-card {
-  text-align: left;
-  cursor: pointer;
-}
-.threeCart .container .collection-items .collection-card h3 {
-  font-family: "Cursive", sans-serif;
-  font-size: 1.5rem;
-  color: #f4b6c2;
-  margin-bottom: 1rem;
-}
-.threeCart .container .collection-items .collection-card .collection-image {
-  text-align: center;
-}
-.threeCart .container .collection-items .collection-card .collection-image img {
-  width: 100%;
-  height: auto;
-  -o-object-fit: contain;
-     object-fit: contain;
-  transition: transform 0.3s ease-in-out;
-}
-.threeCart .container .collection-items .collection-card .collection-image img:hover {
-  transform: translateY(-6px);
-}
-.threeCart .container .collection-items .collection-card .collection-link {
-  display: inline-block;
-  text-decoration: none;
-  color: #1f1f1f;
-  font-size: 19px;
-  text-align: left;
-}
-.threeCart .container .collection-items .collection-card .collection-link:hover {
-  color: #f4b6c2;
-}
-
-@media (max-width: 768px) {
-  .collection-items {
-    flex-wrap: wrap;
-  }
-}
-@media (max-width: 480px) {
-  .collection-items {
-    flex-wrap: wrap;
-  }
-}
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #fce4ec;
-}
-
 .footer {
   background: linear-gradient(133deg, rgb(246, 221, 220) 11%, rgba(245, 202, 221, 0.89) 49%, rgb(247, 240, 246) 85%);
   color: #333;
@@ -559,6 +651,9 @@ body {
 .footer .container .newsletter p {
   font-size: 16px;
   margin-bottom: 10px;
+}
+.footer .container .newsletter .newsletter-input {
+  padding-bottom: 20px;
 }
 .footer .container .newsletter .newsletter-input input {
   width: 100%;
