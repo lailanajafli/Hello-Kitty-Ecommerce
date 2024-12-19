@@ -1,4 +1,4 @@
-
+// dropdown start
 const dropdowns = document.querySelectorAll('.userItem.dropdown');
 dropdowns.forEach(dropdown => {
   dropdown.addEventListener('click', function() {
@@ -63,6 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
       });
   }
 });
+// dropdown end
 
 
 // slider start
@@ -118,3 +119,84 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // slider end
+
+
+
+
+// seach clicked start
+document.addEventListener("DOMContentLoaded", function () {
+  const searchBtn = document.querySelector(".search i");
+  const searchContainer = document.createElement("div");
+  searchContainer.classList.add("search-container");
+  searchContainer.innerHTML = `
+    <input type="text" placeholder="Axtarın...">
+    <div class="close-btn">&times;</div>
+  `;
+
+  document.body.appendChild(searchContainer);
+
+  const closeBtn = searchContainer.querySelector(".close-btn");
+  searchBtn.addEventListener("click", () => {
+    searchContainer.classList.add("active");
+  });
+
+  closeBtn.addEventListener("click", () => {
+    searchContainer.classList.remove("active");
+  });
+});
+// seach clicked end
+
+
+
+
+// search start
+document.querySelector('.search').addEventListener('click', () => {
+  document.body.classList.add('blur');
+  document.querySelector('.search-container').classList.add('active');
+});
+
+document.querySelector('.search-container .close-btn').addEventListener('click', () => {
+  document.body.classList.remove('blur');
+  document.querySelector('.search-container').classList.remove('active');
+});
+// search end
+
+
+
+
+//home prduct start 
+fetch('product.json')
+  .then(response => response.json())
+  .then(products => {
+    const productsContainer = document.getElementById('productsContainer');
+
+    products.forEach(product => {
+      const productHTML = `
+        <div class="productsCont">
+          <div class="imgCont">
+            <img 
+              src="${product.image}" 
+              alt="${product.name}" 
+              data-hover="${product.imageHover}" 
+              data-default="${product.image}"
+            >
+            <img 
+              src="${product.imageHover}" 
+              alt="${product.name} Hover" 
+              class="hover-img"
+              data-hover="${product.imageHover}" 
+              data-default="${product.image}" 
+            >
+          </div>
+          <p class="productName">${product.name}</p>
+          <p class="productPrice">${product.price}</p>
+          <div>
+            <a href="#" class="chooseOption">Choose Options</a>
+          </div>
+        </div>
+      `;
+      productsContainer.innerHTML += productHTML;
+    });
+  })
+  .catch(error => console.error('Error loading products:', error));
+//home product end

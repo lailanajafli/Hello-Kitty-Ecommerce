@@ -1,0 +1,51 @@
+[
+    {
+      "name": "Pyjamas",
+      "price": "€19,90 EUR",
+      "image": "https://hellokitty-store.com/cdn/shop/files/332.png?v=1711809733&width=360",
+      "imageHover": "https://hellokitty-store.com/cdn/shop/files/333.png?v=1711809733&width=360"
+    },
+    {
+      "name": "T-Shirt",
+      "price": "€15,50 EUR",
+      "image": "https://hellokitty-store.com/cdn/shop/files/2_8ac98468-d624-48b9-b642-93bb1cc71c52.png?v=1722445261&width=360",
+      "imageHover": "https://hellokitty-store.com/cdn/shop/files/3_8fe5886b-c36f-49f7-9f79-d97977ce1d03.png?v=1722445261&width=360"
+    },
+    {
+        "name": "Beaded chain handbag",
+        "price": "€18,77 EUR",
+        "image": "https://hellokitty-store.com/cdn/shop/files/33_138f479e-0401-4ffd-9059-27ecd2797528.png?v=1712061426&width=360",
+        "imageHover": "https://hellokitty-store.com/cdn/shop/files/48_5d0703bd-ef23-4039-b8b1-18287184417f.png?v=1712063367&width=360"
+      },
+      {
+        "name": "Uno",
+        "price": "€11,34 EUR",
+        "image": "https://hellokitty-store.com/cdn/shop/files/4_e73e6baa-2cc8-4aec-a2de-32359ad52ac5.png?v=1728651921&width=360",
+        "imageHover": "https://hellokitty-store.com/cdn/shop/files/6_f45cb11f-e81a-4bd0-9a22-e8d70ef6c64d.png?v=1728651921&width=360"
+      },
+      {
+        "name": "White SweatShirt",
+        "price": "€59,50 EUR",
+        "image": "https://hellokitty-store.com/cdn/shop/files/3_76c40b2b-67f1-4f42-aac2-dec78b77f99a.png?v=1725229084&width=360",
+        "imageHover": "https://hellokitty-store.com/cdn/shop/files/2_3eae9f9b-fc56-40a4-825a-feaa92d93db4.png?v=1725229085&width=360"
+      },
+      {
+        "name": "Tote bag",
+        "price": "€9,90 EUR",
+        "image": "https://hellokitty-store.com/cdn/shop/files/Designsanstitre-8.png?v=1710445203&width=360",
+        "imageHover": "https://hellokitty-store.com/cdn/shop/files/241_54a6ac55-524c-4834-9630-50c437b64455.png?v=1711258310&width=360"
+      },
+      {
+        "name": "Kitty necklace",
+        "price": "€6,90 EUR",
+        "image": "https://hellokitty-store.com/cdn/shop/files/76.png?v=1711174845&width=360",
+        "imageHover": "https://hellokitty-store.com/cdn/shop/files/67.png?v=1711236304&width=360"
+      },
+      {
+        "name": "Notebook",
+        "price": "€12,90 EUR",
+        "image": "https://hellokitty-store.com/cdn/shop/files/3_c981c6af-02ba-454f-84c2-1fdd7dea8747.png?v=1710387899&width=360",
+        "imageHover": "https://hellokitty-store.com/cdn/shop/files/231.png?v=1711252694&width=360"
+      }
+  ]
+  

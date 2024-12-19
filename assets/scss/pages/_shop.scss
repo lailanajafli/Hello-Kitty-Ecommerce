@@ -1,0 +1,68 @@
+// why Hello start
+.bestSeller {
+  background-color: #f6cddc;
+  padding: 25px 5px;
+  text-align: left;
+  margin-top: 30px;
+  display: flex;
+  .container {
+    max-width: 47%;
+    margin: 0 auto;
+    .row {
+      display: flex;
+      flex-direction: column;
+      .whyHello {
+        font-size: 40px;
+        font-weight: 400;
+        color: #212121;
+      }
+    }
+  }
+}
+@media (max-width: 768px) {
+  .bestSeller {
+    .container {
+      .row {
+        .whyHello {
+          font-size: 30px;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 450px) {
+  .bestSeller {
+    .container {
+      .row {
+        .whyHello {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
+// why Hello end
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+
+  .pageBtn {
+    padding: 2px 7px;
+    border: none;
+    color: black;
+    background-color: transparent;
+    margin: 0 0.5rem;
+    font-size: 16px;
+    cursor: pointer;
+    border-bottom: 1px solid transparent;
+    transition: background 0.3s ease;
+
+    &.active,
+    &:hover {
+      border-bottom: 1px solid black;
+    }
+  }
+}

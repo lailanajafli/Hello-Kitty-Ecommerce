@@ -10,10 +10,12 @@
 
 // products start
 .productsSection {
+  text-align: center;
   .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 15px;
+
     h2 {
       font-size: 40px;
       font-weight: 400;
@@ -22,13 +24,13 @@
       text-align: left;
       margin-left: 15px;
     }
+
     .row {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       gap: 20px;
-      justify-content: center;
 
       .productsCont {
-        padding: 20px;
         text-align: left;
         transition: transform 0.3s ease;
 
@@ -37,12 +39,31 @@
         }
 
         .imgCont {
+          position: relative;
           margin-bottom: 15px;
 
           img {
-            display: block;
-            max-width: 100%;
+            width: 100%;
             height: auto;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+          }
+
+          img:first-child {
+            opacity: 1;
+          }
+          img:last-child {
+            position: absolute;
+            top: 0;
+            left: 0;
+          }
+
+          &:hover img:first-child {
+            opacity: 0;
+          }
+
+          &:hover img:last-child {
+            opacity: 1;
           }
         }
 
@@ -68,43 +89,46 @@
         }
       }
     }
-    .viewAll{
-      display: flex;
-          margin: 0 auto;
-          margin-top: 20px;
-          padding: 14px 35px;
-          margin-bottom: 10px;
-          border: none;
-          background-color: black;
-          color: white;
+    
+    .viewAll {
+      display: inline-block;
+      margin: 0 auto;
+      margin-top: 30px;
+      cursor: pointer;
+      padding: 14px 35px;
+      margin-bottom: 10px;
+      border: none;
+      background-color: black;
+      color: white;
     }
   }
+}
 
-  // Media queries
-  @media (max-width: 1024px) {
-    .row {
-      flex-wrap: wrap;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .row {
-      flex-wrap: wrap;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .productsCont {
-      width: 100%;
-      text-align: center;
-      flex-wrap: wrap;
-      .chooseOption {
-        padding: 10px 0;
+@media (max-width: 1024px) {
+  .productsSection {
+    .container {
+      .row {
+        grid-template-columns: repeat(3, 1fr);
       }
+    }
+  }
+}
 
-      .productName,
-      .productPrice {
-        text-align: center;
+@media (max-width: 768px) {
+  .productsSection {
+    .container {
+      .row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .productsSection {
+    .container {
+      .row {
+        grid-template-columns: 1fr;
       }
     }
   }
