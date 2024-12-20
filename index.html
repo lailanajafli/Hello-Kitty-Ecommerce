@@ -10,10 +10,12 @@
       crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon"
+      href="https://hellokitty-store.com/cdn/shop/files/kisspng-hello-kitty-clip-art-portable-network-graphics-des-5ce599a0155ae9.1294888715585509440875.png?crop=center&height=32&v=1710091983&width=32">
     <link
       href="https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap"
       rel="stylesheet">
-    <title>Hello Kitty</title>
+    <title>Hello Kitty Store</title>
   </head>
   <body>
     <header>
@@ -114,7 +116,8 @@
       </div>
     </header>
     <div class="search-container" id="searchContainer">
-      <input type="text" placeholder="Axtarın..." class="search-input" id="searchInput">
+      <input type="text" placeholder="Axtarın..." class="search-input"
+        id="searchInput">
       <button class="close-btn" id="closeBtn">✖</button>
     </div>
     <main>
@@ -130,7 +133,6 @@
         <div class="container">
           <h2>Our Products</h2>
           <div class="row" id="productsContainer">
-
 
           </div>
           <a href="./shop.html" class="viewAll">View All</a>
@@ -203,8 +205,9 @@
             <div class="slider-content">
               <div class="testimonial">
                 <blockquote>
-                  <i class="fa-solid fa-quote-right fa-2xl"
-                    style="color: #ffffff; font-size: 40px;"></i>
+                  <div class="quoteCont">
+                    <img src="./assets/scss/svg/quote.svg" alt="quote">
+                  </div>
                   <p>Merci encore ! J'avais un souci avec mon adresse et
                     l'équipe de Hellokitty-store m'a répondu...</p>
                   <footer>
@@ -215,8 +218,9 @@
               </div>
               <div class="testimonial">
                 <blockquote>
-                  <i class="fa-solid fa-quote-right fa-2xl"
-                    style="color: #ffffff;"></i>
+                  <div class="quoteCont">
+                    <img src="./assets/scss/svg/quote.svg" alt="quote">
+                  </div>
                   <p>Service incroyable ! Je recommande vivement.</p>
                   <footer>
                     <span>Pierre D.</span>
@@ -226,8 +230,9 @@
               </div>
               <div class="testimonial">
                 <blockquote>
-                  <i class="fa-solid fa-quote-right fa-2xl"
-                    style="color: #ffffff;"></i>
+                  <div class="quoteCont">
+                    <img src="./assets/scss/svg/quote.svg" alt="quote">
+                  </div>
                   <p>J'ai adoré ma dernière commande, tout était parfait !</p>
                   <footer>
                     <span>Marie L.</span>
@@ -337,5 +342,6 @@
       <!-- footer end -->
     </main>
     <script src="./script.js" defer></script>
+    <script src="./slider.js" defer></script>
   </body>
 </html>

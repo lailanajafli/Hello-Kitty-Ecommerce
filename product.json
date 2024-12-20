@@ -1,13 +1,13 @@
 [
     {
-      "name": "Pyjamas",
-      "price": "€19,90 EUR",
+      "name": "Kitty cat plush",
+      "price": "€17,47 EUR",
       "image": "https://hellokitty-store.com/cdn/shop/files/332.png?v=1711809733&width=360",
       "imageHover": "https://hellokitty-store.com/cdn/shop/files/333.png?v=1711809733&width=360"
     },
     {
-      "name": "T-Shirt",
-      "price": "€15,50 EUR",
+      "name": "Iphone Case",
+      "price": "€5 EUR",
       "image": "https://hellokitty-store.com/cdn/shop/files/2_8ac98468-d624-48b9-b642-93bb1cc71c52.png?v=1722445261&width=360",
       "imageHover": "https://hellokitty-store.com/cdn/shop/files/3_8fe5886b-c36f-49f7-9f79-d97977ce1d03.png?v=1722445261&width=360"
     },
@@ -46,6 +46,42 @@
         "price": "€12,90 EUR",
         "image": "https://hellokitty-store.com/cdn/shop/files/3_c981c6af-02ba-454f-84c2-1fdd7dea8747.png?v=1710387899&width=360",
         "imageHover": "https://hellokitty-store.com/cdn/shop/files/231.png?v=1711252694&width=360"
+      },
+      {
+        "name": "Plush floral dress",
+        "price": "€19,21 EUR",
+        "image": "https://hellokitty-store.com/cdn/shop/files/Chaud_-4.png?v=1711067734&width=360",
+        "imageHover": "https://hellokitty-store.com/cdn/shop/files/Saa4a872ee01a4e94ab5aebcbb2c46fdey.webp?v=1711067733&width=360"
+      },
+      {
+        "name": "Ring",
+        "price": "€6,99 EUR",
+        "image": "https://hellokitty-store.com/cdn/shop/files/Chaud_-12.png?v=1711142693&width=360",
+        "imageHover": "https://hellokitty-store.com/cdn/shop/files/75.png?v=1711158642&width=360"
+      },
+      {
+        "name": "Autocollants Charmmy Kitty",
+        "price": "11,80 EUR",
+        "image": "https://hellokitty-store.com/cdn/shop/files/8_19da61ea-9ac2-4085-842a-ab0318a37e29.png?v=1728653097&width=360",
+        "imageHover": "https://hellokitty-store.com/cdn/shop/files/9_cfd09487-17dc-48bb-ad61-310ae58622d3.png?v=1728653097&width=360"
+      },
+      {
+        "name": "Cart Holder",
+        "price": "4,73 EUR",
+        "image": "https://hellokitty-store.com/cdn/shop/files/Designsanstitre-9.png?v=1710445746&width=360",
+        "imageHover": "https://hellokitty-store.com/cdn/shop/files/Sea5533deb4f642dda9012986df7f5b33j.webp?v=1710445746&width=360"
+      },
+      {
+        "name": "Night Light",
+        "price": "34,45 EUR",
+        "image": "https://hellokitty-store.com/cdn/shop/files/175.png?v=1711170718&width=360",
+        "imageHover": "https://hellokitty-store.com/cdn/shop/files/176.png?v=1711170719&width=360"
+      },
+      {
+        "name": "Glasses box",
+        "price": "13,60 EUR",
+        "image": "https://hellokitty-store.com/cdn/shop/files/2_cf9f2cff-3dc8-4e15-9972-b76f88108f72.png?v=1710387935&width=360",
+        "imageHover": "https://hellokitty-store.com/cdn/shop/files/25_e831d76e-d98f-4255-9694-dcf89595f768.png?v=1712055848&width=360"
       }
   ]
   

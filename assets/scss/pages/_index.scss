@@ -89,7 +89,7 @@
         }
       }
     }
-    
+
     .viewAll {
       display: inline-block;
       margin: 0 auto;
@@ -341,6 +341,13 @@
           color: #555;
           margin: 0;
           line-height: 1.6;
+          .quoteCont {
+            width: 130px;
+            margin: 0 auto;
+            img {
+              width: 100%;
+            }
+          }
           p {
             color: black;
             font-weight: 500;

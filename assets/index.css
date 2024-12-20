@@ -638,6 +638,13 @@ body.no-blur {
   margin: 0;
   line-height: 1.6;
 }
+.sliderComment .slider-container .slider .slider-content .testimonial .quoteCont {
+  width: 130px;
+  margin: 0 auto;
+}
+.sliderComment .slider-container .slider .slider-content .testimonial .quoteCont img {
+  width: 100%;
+}
 .sliderComment .slider-container .slider .slider-content .testimonial p {
   color: black;
   font-weight: 500;
@@ -759,6 +766,11 @@ body.no-blur {
 }
 .pagination .pageBtn.active, .pagination .pageBtn:hover {
   border-bottom: 1px solid black;
+}
+
+.prev-btn, .next-btn {
+  cursor: pointer;
+  border: none;
 }
 
 .footer {
