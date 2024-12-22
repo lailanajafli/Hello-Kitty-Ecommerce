@@ -1,13 +1,13 @@
+@import "../pages/mixins";
+
 // why Hello start
 .bestSeller {
   background-color: #f6cddc;
   padding: 25px 5px;
-  text-align: left;
-  margin-top: 30px;
-  display: flex;
   .container {
-    max-width: 47%;
+    max-width: 1200px;
     margin: 0 auto;
+    display: flex;
     .row {
       display: flex;
       flex-direction: column;
@@ -19,6 +19,7 @@
     }
   }
 }
+
 @media (max-width: 768px) {
   .bestSeller {
     .container {
@@ -30,6 +31,7 @@
     }
   }
 }
+
 @media (max-width: 450px) {
   .bestSeller {
     .container {
@@ -67,7 +69,315 @@
   }
 }
 
-.prev-btn, .next-btn{
+.prev-btn,
+.next-btn {
   cursor: pointer;
   border: none;
 }
+
+// filter start
+
+.filter-container {
+  margin: 22px 0px;
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    .filterOption {
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .filterCont {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        p {
+          color: #333;
+        }
+        .availability {
+          position: relative;
+          font-family: "Arial", sans-serif;
+          .dropdownAvaila {
+            position: relative;
+            .dropdownToggleAvaila {
+              width: 100%;
+              font-size: 16px;
+              display: flex;
+              gap: 14px;
+              color: #333;
+              cursor: pointer;
+              background-color: transparent;
+              border: none;
+              transition: all 0.3s ease;
+              .selectedAvaila {
+                border-bottom: 1px solid transparent;
+                display: inline-block;
+                &:hover {
+                  border-bottom: 1px solid black;
+                }
+              }
+              .arrow {
+                color: rgb(51, 51, 51);
+              }
+            }
+            .dropdownMenuAvaila {
+              z-index: 20;
+              width: 350px;
+              background-color: #f3f3f3;
+              border: 1px solid #ccccccba;
+              position: absolute;
+              top: 100%;
+              left: 0;
+              display: none;
+              list-style: none;
+              padding: 0;
+              margin: 0;
+              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+              .dropdownItem {
+                padding: 0;
+                .highestPrice {
+                  justify-content: space-between;
+                  display: flex;
+                  padding: 20px;
+                  .resetLink {
+                    border-bottom: 1px solid #333;
+                    margin-left: 5px;
+                    cursor: pointer;
+                    color: #333;
+                    &:hover {
+                      border-bottom: 2px solid #333;
+                    }
+                  }
+                }
+                .line {
+                  width: 100%;
+                  background-color: #b5b5b5d4;
+                  height: 0.8px;
+                }
+                .price-inputs {
+                  padding: 18px;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 15px;
+                  .input-box {
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    input[type="checkbox"]:before {
+                      content: "";
+                      display: block;
+                      position: absolute;
+                      width: 16px;
+                      height: 16px;
+                      top: 0;
+                      left: 0;
+                      border: 1px solid #696969;
+                      background-color: #f3f3f3;
+                    }
+                    p {
+                      margin-left: 25px;
+                      font-size: 16px;
+                      color: #414141;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        .priceSelect {
+          position: relative;
+          font-family: "Arial", sans-serif;
+          .dropdownPrice {
+            position: relative;
+            .dropdownTogglePrice {
+              width: 100%;
+              font-size: 16px;
+              display: flex;
+              gap: 14px;
+              color: #333;
+              cursor: pointer;
+              background-color: transparent;
+              border: none;
+              transition: all 0.3s ease;
+              .selectedPrice {
+                border-bottom: 1px solid transparent;
+                display: inline-block;
+                &:hover {
+                  border-bottom: 1px solid black;
+                }
+              }
+            }
+            .dropdownMenuPrice {
+              z-index: 20;
+              width: 350px;
+              background-color: #f3f3f3;
+              border: 1px solid #ccccccba;
+              position: absolute;
+              top: 100%;
+              left: 0;
+              display: none;
+              list-style: none;
+              padding: 0;
+              margin: 0;
+              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+              .dropdownItem {
+                padding: 0;
+                .highestPrice {
+                  justify-content: space-between;
+                  display: flex;
+                  color: #414141;
+                  padding: 20px;
+                  .resetLink {
+                    border-bottom: 1px solid #333;
+                    margin-left: 5px;
+                    cursor: pointer;
+                    color: #333;
+                    &:hover {
+                      border-bottom: 2px solid #333;
+                    }
+                  }
+                }
+                .line {
+                  width: 100%;
+                  background-color: #b5b5b5d4;
+                  height: 0.8px;
+                }
+                .price-inputs {
+                  display: flex;
+                  padding: 15px;
+                  justify-content: space-between;
+                  .input-box {
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    span {
+                      margin-right: 10px;
+                      font-size: 16px;
+                      color: #333;
+                    }
+                    input {
+                      padding: 15px 10px 15px 25px;
+                      border: 1px solid #b3b3b3;
+                      font-size: 14px;
+                      width: 130px;
+                      background-color: transparent;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      .featured{
+        position: relative;
+        .dropdownFeatur{
+           position: relative;
+           display: flex;
+           gap: 20px;
+          .dropdownToggleFeatur{
+            font-size: 16px;
+            display: flex;
+            gap: 14px;
+            color: #333;
+            cursor: pointer;
+            background-color: transparent;
+            border: none;
+            transition: all 0.3s ease;
+             .selectedFeatur{
+                border-bottom: 1px solid transparent;
+                display: inline-block;
+                &:hover{
+                  border-bottom: 1px solid black;
+                }
+              }
+            }
+            .dropdownMenuFeatur{
+              z-index: 20;
+              width: 170px;
+              background-color: #f3f3f3;
+              border: 1px solid #ccccccba;
+              position: absolute;
+              top: 100%;
+              left: 0;
+              display: none;
+              list-style: none;
+              padding: 4px;
+              margin: 0;
+              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+              .dropdownItem{
+                padding: 4px; 
+                cursor: pointer;
+                span{
+                  margin-right: 10px;
+                  font-size: 16px;
+                  color: #333;
+                }
+              }
+            }
+        }
+      }
+    }
+  }
+}
+
+// filter end
+
+@media (max-width: 768px) {
+  .filter-container {
+    .container {
+      .filterOption {
+        flex-direction: column;
+        gap: 15px;
+
+        .filterCont {
+          flex-direction: row;
+          align-items: flex-start;
+          gap: 10px;
+
+          .availability,
+          .priceSelect,
+          .featured {
+            .dropdownToggleAvaila,
+            .dropdownTogglePrice,
+            .dropdownToggleFeatur {
+              font-size: 14px;
+              gap: 10px;
+            }
+
+            .dropdownMenuAvaila,
+            .dropdownMenuPrice,
+            .dropdownMenuFeatur {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .filter-container {
+    .container {
+      .filterOption {
+        .filterCont {
+          gap: 8px;
+
+          .availability,
+          .priceSelect,
+          .featured {
+            .dropdownToggleAvaila,
+            .dropdownTogglePrice,
+            .dropdownToggleFeatur {
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

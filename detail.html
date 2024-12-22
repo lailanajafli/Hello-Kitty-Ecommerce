@@ -15,7 +15,7 @@
         <link rel="icon"
             href="https://hellokitty-store.com/cdn/shop/files/kisspng-hello-kitty-clip-art-portable-network-graphics-des-5ce599a0155ae9.1294888715585509440875.png?crop=center&height=32&v=1710091983&width=32">
         <link rel="stylesheet" href="./assets/index.css">
-        <title>Hello Kitty Shop</title>
+        <title>Detail Page</title>
     </head>
     <body>
         <header>
@@ -126,152 +126,85 @@
                 </div>
             </div>
         </header>
-        <div class="search-container" id="searchContainer">
-            <input type="text" placeholder="Axtarın..." class="search-input"
-                id="searchInput">
-            <button class="close-btn" id="closeBtn">✖</button>
-        </div>
-        <main>
+  
 
-            <section class="bestSeller">
-                <div class="container">
-                    <div class="row">
-                        <p class="whyHello">Best Seller</p>
+
+
+
+
+        <div class="mainContainer">
+            <div class="productContainer">
+                <div class="imageSection">
+                    <img src="https://hellokitty-store.com/cdn/shop/files/Designsanstitre-9.png?v=1710445746&width=360" alt="Hello Kitty Dinosaur Plush" class="mainImage">
+                    <div class="thumbnailContainer">
+                        <img src="https://hellokitty-store.com/cdn/shop/files/Designsanstitre-9.png?v=1710445746&width=360" alt="Thumbnail 1" class="thumbnail">
+                        <img src="https://hellokitty-store.com/cdn/shop/files/Designsanstitre-9.png?v=1710445746&width=360" alt="Thumbnail 2" class="thumbnail">
+                        <img src="https://hellokitty-store.com/cdn/shop/files/Designsanstitre-9.png?v=1710445746&width=360" alt="Thumbnail 3" class="thumbnail">
                     </div>
                 </div>
-            </section>
-
-            <!-- filter start -->
-
-            <div class="filter-container">
-                <div class="container">
-                    <div class="filterOption">
-                        <div class="filterCont">
-                            <p>Filter :</p>
-                            <div class="availability">
-                                <div class="dropdownAvaila">
-                                    <button class="dropdownToggleAvaila">
-                                        <span
-                                            id="selectedAvaila">Availability</span>
-                                        <span class="arrow"><i
-                                                class="fa-solid fa-angle-down"
-                                                style="color: #515151;"></i></span>
-                                    </button>
-                                    <ul style="margin-top: 10px;"
-                                        class="dropdownMenuAvaila">
-                                        <li class="dropdownItem">
-                                            <div class="highestPrice">
-                                                <p>0 selected</p>
-                                                <a href="#"
-                                                    class="resetLink">Reset</a>
-                                            </div>
-                                            <div class="line"></div>
-                                            <div class="price-inputs">
-                                                <div class="input-box">
-                                                    <input type="checkbox" name
-                                                        id>
-                                                    <p>In stock (17)</p>
-                                                </div>
-                                                <div class="input-box">
-                                                    <input type="checkbox" name
-                                                        id>
-                                                    <p>Out of stock (1)</p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="priceSelect">
-                                <div class="dropdownPrice">
-                                    <button class="dropdownTogglePrice">
-                                        <span id="selectedPrice">Price</span>
-                                        <span class="arrow"><i
-                                                class="fa-solid fa-angle-down"
-                                                style="color: #515151;"></i></span>
-                                    </button>
-                                    <ul style="margin-top: 10px;"
-                                        class="dropdownMenuPrice">
-                                        <li class="dropdownItem">
-                                            <div class="highestPrice">
-                                                <p>The highest price is
-                                                    €59,90</p>
-                                                <a href="#" id="resetPriceBtn"
-                                                    class="resetLink">Reset</a>
-                                            </div>
-                                            <div class="line"></div>
-                                            <div class="price-inputs">
-                                                <div class="input-box">
-                                                    <span>€</span>
-                                                    <input type="text"
-                                                        id="minPrice"
-                                                        placeholder="From" />
-                                                </div>
-                                                <div class="input-box">
-                                                    <span>€</span>
-                                                    <input type="text"
-                                                        id="maxPrice"
-                                                        placeholder="To" />
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                <div class="infoSection">
+                    <h1 class="productTitle">Hello Kitty Dinosaur Plush</h1>
+                    <p class="productPrice">€31,90 EUR</p>
+                    <p class="taxInfo">Tax included.</p>
+                    <div class="sizeSection">
+                        <label for="size" class="sizeLabel">Taille</label>
+                        <select id="size" class="sizeDropdown">
+                            <option value="35cm">35cm</option>
+                        </select>
+                    </div>
+                    <div class="quantitySection">
+                        <label for="quantity" class="spanTwo">Quantity</label>
+                        <div style="display: flex;">
+                        <button class="quantityButton">-</button>
+                        <input type="number" id="quantity" value="1" min="1" class="quantityInput">
+                        <button class="quantityButton">+</button>
+                    </div>
+                    </div>
+                    <div class="buttonSection">
+                        <button class="addToCartButton">Add to cart</button>
+                        <button class="buyNowButton">Buy it now</button>
+                    </div>
+                    <div class="infoCards">
+                        <div class="card">
+                            <div style="width: 30px;">
+                            <img width="100%" src="https://rivmorkxomnwzdlytbgv.supabase.co/storage/v1/object/public/public/ecom-icons/delivery2.svg" alt="car">
                         </div>
-                        <div class="featured">
-                            <div class="dropdownFeatur">
-                                <p>Sort by:</p>
-                                <button class="dropdownToggleFeatur">
-                                    <span id="selectedFeatur">Featured</span>
-                                    <span class="arrow">
-                                        <i class="fa-solid fa-angle-down" style="color: #515151;"></i>
-                                    </span>
-                                </button>
-                                <ul style="margin-top: 10px;" class="dropdownMenuFeatur">
-                                    <li class="dropdownItem" data-sort="alphabeticalAZ">
-                                        <span>Alphabetically, A-Z</span>
-                                    </li>
-                                    <li class="dropdownItem" data-sort="alphabeticalZA">
-                                        <span>Alphabetically, Z-A</span>
-                                    </li>
-                                    <li class="dropdownItem" data-sort="priceLowToHigh">
-                                        <span>Price, low to high</span>
-                                    </li>
-                                    <li class="dropdownItem" data-sort="priceHighToLow">
-                                        <span>Price, high to low</span>
-                                    </li>
-                                    <li class="dropdownItem" data-sort="dateOldToNew">
-                                        <span>Date, old to new</span>
-                                    </li>
-                                    <li class="dropdownItem" data-sort="dateNewToOld">
-                                        <span>Date, new to old</span>
-                                    </li>
-                                </ul>
-                                <p><span id="productsCount" class="productsCount">0 </span> products</p>
-                            </div>
+                        <span class="spanOne">Expédié sous 48-72h</span>    
+                        <span class="spanTwo">Livraison de 5-10 jours ouvrés.</span>  
+                    </div>
+                    <div class="card">
+                            <div style="width: 30px;">
+                            <img width="100%" src="https://rivmorkxomnwzdlytbgv.supabase.co/storage/v1/object/public/public/ecom-icons/heart.svg" alt="heart">
+                          </div>
+                          <span class="spanOne">Support Client</span>    
+                          <span class="spanTwo">Une équipe disponible 24h/24h.</span>  
                         </div>
-                        
+                        <div class="card">
+                            <div style="width: 30px;">
+                            <img width="100%" src="https://rivmorkxomnwzdlytbgv.supabase.co/storage/v1/object/public/public/ecom-icons/shield.svg" alt="security">
+                          </div>
+                          <span class="spanOne">Paiement protégé</span>    
+                              <span class="spanTwo">Les paiements sont sécurisés à 100%.</span>    
+                        </div>
+                        <div class="card">
+                            <div style="width: 30px;">
+                            <img width="100%" src="https://rivmorkxomnwzdlytbgv.supabase.co/storage/v1/object/public/public/ecom-icons/bell.svg" alt="bell">
+                          </div>
+                          <span class="spanOne">J'ai une question ? </span>    
+                              <span class="spanTwo">Veuillez nous contacter via la page contact.</span>    
+                        </div>
                     </div>
                 </div>
             </div>
-            <!-- filter end -->
+        </div>
 
-            <!-- products start -->
-            <section class="productsSection">
-                <div class="container">
-                    <div class="row" id="productsContainer">
-                    </div>
-                    <div class="pagination">
-                        <button class="pageBtn active"
-                            onclick="showPage(1)">1</button>
-                        <button class="pageBtn"
-                            onclick="showPage(2)">2</button>
-                    </div>
-                </div>
-            </section>
-            <!-- products end -->
+
+
+
+
+
+
+
 
             <!-- footer start -->
 

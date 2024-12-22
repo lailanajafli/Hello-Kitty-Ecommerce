@@ -27,10 +27,14 @@ header {
   padding: 25px 10px;
 }
 
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 .row {
   display: flex;
-  justify-content: center;
-  gap: 10px;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -408,14 +412,13 @@ body.no-blur {
   opacity: 1;
 }
 .productsSection .container .row .productsCont .productName {
-  font-size: 1.2rem;
-  color: #333;
+  font-size: 15px;
+  color: #4b4b4b;
   margin: 10px 0;
-  font-weight: bold;
 }
 .productsSection .container .row .productsCont .productPrice {
-  font-size: 1rem;
-  color: #555;
+  font-size: 1.1rem;
+  color: #333;
   margin-bottom: 15px;
 }
 .productsSection .container .row .productsCont .chooseOption {
@@ -432,11 +435,8 @@ body.no-blur {
 }
 .productsSection .container .viewAll {
   display: inline-block;
-  margin: 0 auto;
-  margin-top: 30px;
   cursor: pointer;
   padding: 14px 35px;
-  margin-bottom: 10px;
   border: none;
   background-color: black;
   color: white;
@@ -719,13 +719,11 @@ body.no-blur {
 .bestSeller {
   background-color: #f6cddc;
   padding: 25px 5px;
-  text-align: left;
-  margin-top: 30px;
-  display: flex;
 }
 .bestSeller .container {
-  max-width: 47%;
+  max-width: 1200px;
   margin: 0 auto;
+  display: flex;
 }
 .bestSeller .container .row {
   display: flex;
@@ -768,9 +766,471 @@ body.no-blur {
   border-bottom: 1px solid black;
 }
 
-.prev-btn, .next-btn {
+.prev-btn,
+.next-btn {
   cursor: pointer;
   border: none;
+}
+
+.filter-container {
+  margin: 22px 0px;
+}
+.filter-container .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.filter-container .container .filterOption {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.filter-container .container .filterOption .filterCont {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.filter-container .container .filterOption .filterCont p {
+  color: #333;
+}
+.filter-container .container .filterOption .filterCont .availability {
+  position: relative;
+  font-family: "Arial", sans-serif;
+}
+.filter-container .container .filterOption .filterCont .availability .dropdownAvaila {
+  position: relative;
+}
+.filter-container .container .filterOption .filterCont .availability .dropdownAvaila .dropdownToggleAvaila {
+  width: 100%;
+  font-size: 16px;
+  display: flex;
+  gap: 14px;
+  color: #333;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  transition: all 0.3s ease;
+}
+.filter-container .container .filterOption .filterCont .availability .dropdownAvaila .dropdownToggleAvaila .selectedAvaila {
+  border-bottom: 1px solid transparent;
+  display: inline-block;
+}
+.filter-container .container .filterOption .filterCont .availability .dropdownAvaila .dropdownToggleAvaila .selectedAvaila:hover {
+  border-bottom: 1px solid black;
+}
+.filter-container .container .filterOption .filterCont .availability .dropdownAvaila .dropdownToggleAvaila .arrow {
+  color: rgb(51, 51, 51);
+}
+.filter-container .container .filterOption .filterCont .availability .dropdownAvaila .dropdownMenuAvaila {
+  z-index: 20;
+  width: 350px;
+  background-color: #f3f3f3;
+  border: 1px solid rgba(204, 204, 204, 0.7294117647);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.filter-container .container .filterOption .filterCont .availability .dropdownAvaila .dropdownMenuAvaila .dropdownItem {
+  padding: 0;
+}
+.filter-container .container .filterOption .filterCont .availability .dropdownAvaila .dropdownMenuAvaila .dropdownItem .highestPrice {
+  justify-content: space-between;
+  display: flex;
+  padding: 20px;
+}
+.filter-container .container .filterOption .filterCont .availability .dropdownAvaila .dropdownMenuAvaila .dropdownItem .highestPrice .resetLink {
+  border-bottom: 1px solid #333;
+  margin-left: 5px;
+  cursor: pointer;
+  color: #333;
+}
+.filter-container .container .filterOption .filterCont .availability .dropdownAvaila .dropdownMenuAvaila .dropdownItem .highestPrice .resetLink:hover {
+  border-bottom: 2px solid #333;
+}
+.filter-container .container .filterOption .filterCont .availability .dropdownAvaila .dropdownMenuAvaila .dropdownItem .line {
+  width: 100%;
+  background-color: rgba(181, 181, 181, 0.831372549);
+  height: 0.8px;
+}
+.filter-container .container .filterOption .filterCont .availability .dropdownAvaila .dropdownMenuAvaila .dropdownItem .price-inputs {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.filter-container .container .filterOption .filterCont .availability .dropdownAvaila .dropdownMenuAvaila .dropdownItem .price-inputs .input-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.filter-container .container .filterOption .filterCont .availability .dropdownAvaila .dropdownMenuAvaila .dropdownItem .price-inputs .input-box input[type=checkbox]:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 0;
+  left: 0;
+  border: 1px solid #696969;
+  background-color: #f3f3f3;
+}
+.filter-container .container .filterOption .filterCont .availability .dropdownAvaila .dropdownMenuAvaila .dropdownItem .price-inputs .input-box p {
+  margin-left: 25px;
+  font-size: 16px;
+  color: #414141;
+}
+.filter-container .container .filterOption .filterCont .priceSelect {
+  position: relative;
+  font-family: "Arial", sans-serif;
+}
+.filter-container .container .filterOption .filterCont .priceSelect .dropdownPrice {
+  position: relative;
+}
+.filter-container .container .filterOption .filterCont .priceSelect .dropdownPrice .dropdownTogglePrice {
+  width: 100%;
+  font-size: 16px;
+  display: flex;
+  gap: 14px;
+  color: #333;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  transition: all 0.3s ease;
+}
+.filter-container .container .filterOption .filterCont .priceSelect .dropdownPrice .dropdownTogglePrice .selectedPrice {
+  border-bottom: 1px solid transparent;
+  display: inline-block;
+}
+.filter-container .container .filterOption .filterCont .priceSelect .dropdownPrice .dropdownTogglePrice .selectedPrice:hover {
+  border-bottom: 1px solid black;
+}
+.filter-container .container .filterOption .filterCont .priceSelect .dropdownPrice .dropdownMenuPrice {
+  z-index: 20;
+  width: 350px;
+  background-color: #f3f3f3;
+  border: 1px solid rgba(204, 204, 204, 0.7294117647);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.filter-container .container .filterOption .filterCont .priceSelect .dropdownPrice .dropdownMenuPrice .dropdownItem {
+  padding: 0;
+}
+.filter-container .container .filterOption .filterCont .priceSelect .dropdownPrice .dropdownMenuPrice .dropdownItem .highestPrice {
+  justify-content: space-between;
+  display: flex;
+  color: #414141;
+  padding: 20px;
+}
+.filter-container .container .filterOption .filterCont .priceSelect .dropdownPrice .dropdownMenuPrice .dropdownItem .highestPrice .resetLink {
+  border-bottom: 1px solid #333;
+  margin-left: 5px;
+  cursor: pointer;
+  color: #333;
+}
+.filter-container .container .filterOption .filterCont .priceSelect .dropdownPrice .dropdownMenuPrice .dropdownItem .highestPrice .resetLink:hover {
+  border-bottom: 2px solid #333;
+}
+.filter-container .container .filterOption .filterCont .priceSelect .dropdownPrice .dropdownMenuPrice .dropdownItem .line {
+  width: 100%;
+  background-color: rgba(181, 181, 181, 0.831372549);
+  height: 0.8px;
+}
+.filter-container .container .filterOption .filterCont .priceSelect .dropdownPrice .dropdownMenuPrice .dropdownItem .price-inputs {
+  display: flex;
+  padding: 15px;
+  justify-content: space-between;
+}
+.filter-container .container .filterOption .filterCont .priceSelect .dropdownPrice .dropdownMenuPrice .dropdownItem .price-inputs .input-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.filter-container .container .filterOption .filterCont .priceSelect .dropdownPrice .dropdownMenuPrice .dropdownItem .price-inputs .input-box span {
+  margin-right: 10px;
+  font-size: 16px;
+  color: #333;
+}
+.filter-container .container .filterOption .filterCont .priceSelect .dropdownPrice .dropdownMenuPrice .dropdownItem .price-inputs .input-box input {
+  padding: 15px 10px 15px 25px;
+  border: 1px solid #b3b3b3;
+  font-size: 14px;
+  width: 130px;
+  background-color: transparent;
+}
+.filter-container .container .filterOption .featured {
+  position: relative;
+}
+.filter-container .container .filterOption .featured .dropdownFeatur {
+  position: relative;
+  display: flex;
+  gap: 20px;
+}
+.filter-container .container .filterOption .featured .dropdownFeatur .dropdownToggleFeatur {
+  font-size: 16px;
+  display: flex;
+  gap: 14px;
+  color: #333;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  transition: all 0.3s ease;
+}
+.filter-container .container .filterOption .featured .dropdownFeatur .dropdownToggleFeatur .selectedFeatur {
+  border-bottom: 1px solid transparent;
+  display: inline-block;
+}
+.filter-container .container .filterOption .featured .dropdownFeatur .dropdownToggleFeatur .selectedFeatur:hover {
+  border-bottom: 1px solid black;
+}
+.filter-container .container .filterOption .featured .dropdownFeatur .dropdownMenuFeatur {
+  z-index: 20;
+  width: 170px;
+  background-color: #f3f3f3;
+  border: 1px solid rgba(204, 204, 204, 0.7294117647);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  list-style: none;
+  padding: 4px;
+  margin: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.filter-container .container .filterOption .featured .dropdownFeatur .dropdownMenuFeatur .dropdownItem {
+  padding: 4px;
+  cursor: pointer;
+}
+.filter-container .container .filterOption .featured .dropdownFeatur .dropdownMenuFeatur .dropdownItem span {
+  margin-right: 10px;
+  font-size: 16px;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .filter-container .container .filterOption {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .filter-container .container .filterOption .filterCont {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .filter-container .container .filterOption .filterCont .availability .dropdownToggleAvaila,
+  .filter-container .container .filterOption .filterCont .availability .dropdownTogglePrice,
+  .filter-container .container .filterOption .filterCont .availability .dropdownToggleFeatur,
+  .filter-container .container .filterOption .filterCont .priceSelect .dropdownToggleAvaila,
+  .filter-container .container .filterOption .filterCont .priceSelect .dropdownTogglePrice,
+  .filter-container .container .filterOption .filterCont .priceSelect .dropdownToggleFeatur,
+  .filter-container .container .filterOption .filterCont .featured .dropdownToggleAvaila,
+  .filter-container .container .filterOption .filterCont .featured .dropdownTogglePrice,
+  .filter-container .container .filterOption .filterCont .featured .dropdownToggleFeatur {
+    font-size: 14px;
+    gap: 10px;
+  }
+  .filter-container .container .filterOption .filterCont .availability .dropdownMenuAvaila,
+  .filter-container .container .filterOption .filterCont .availability .dropdownMenuPrice,
+  .filter-container .container .filterOption .filterCont .availability .dropdownMenuFeatur,
+  .filter-container .container .filterOption .filterCont .priceSelect .dropdownMenuAvaila,
+  .filter-container .container .filterOption .filterCont .priceSelect .dropdownMenuPrice,
+  .filter-container .container .filterOption .filterCont .priceSelect .dropdownMenuFeatur,
+  .filter-container .container .filterOption .filterCont .featured .dropdownMenuAvaila,
+  .filter-container .container .filterOption .filterCont .featured .dropdownMenuPrice,
+  .filter-container .container .filterOption .filterCont .featured .dropdownMenuFeatur {
+    width: 100%;
+  }
+}
+@media (max-width: 450px) {
+  .filter-container .container .filterOption .filterCont {
+    gap: 8px;
+  }
+  .filter-container .container .filterOption .filterCont .availability .dropdownToggleAvaila,
+  .filter-container .container .filterOption .filterCont .availability .dropdownTogglePrice,
+  .filter-container .container .filterOption .filterCont .availability .dropdownToggleFeatur,
+  .filter-container .container .filterOption .filterCont .priceSelect .dropdownToggleAvaila,
+  .filter-container .container .filterOption .filterCont .priceSelect .dropdownTogglePrice,
+  .filter-container .container .filterOption .filterCont .priceSelect .dropdownToggleFeatur,
+  .filter-container .container .filterOption .filterCont .featured .dropdownToggleAvaila,
+  .filter-container .container .filterOption .filterCont .featured .dropdownTogglePrice,
+  .filter-container .container .filterOption .filterCont .featured .dropdownToggleFeatur {
+    font-size: 12px;
+  }
+}
+.mainContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.mainContainer .productContainer {
+  display: flex;
+  gap: 30px;
+  padding: 20px;
+}
+.mainContainer .productContainer .imageSection {
+  flex: 1;
+}
+.mainContainer .productContainer .imageSection .mainImage {
+  width: 100%;
+  border-radius: 10px;
+}
+.mainContainer .productContainer .imageSection .thumbnailContainer {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+.mainContainer .productContainer .imageSection .thumbnailContainer .thumbnail {
+  width: 60px;
+  height: 60px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.mainContainer .productContainer .infoSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.mainContainer .productContainer .infoSection .productTitle {
+  font-size: 24px;
+}
+.mainContainer .productContainer .infoSection .productPrice {
+  font-size: 20px;
+  color: #333;
+}
+.mainContainer .productContainer .infoSection .taxInfo {
+  font-size: 14px;
+  color: #777;
+}
+.mainContainer .productContainer .infoSection .quantitySection {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.mainContainer .productContainer .infoSection .quantitySection .quantityButton {
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+.mainContainer .productContainer .infoSection .quantitySection .quantityInput {
+  width: 60px;
+  height: 40px;
+  text-align: center;
+  font-size: 18px;
+  color: #333;
+  border-radius: 5px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  padding: 0;
+}
+.mainContainer .productContainer .infoSection .sizeLabel,
+.mainContainer .productContainer .infoSection .quantityLabel {
+  font-weight: bold;
+}
+.mainContainer .productContainer .infoSection input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.mainContainer .productContainer .infoSection .quantityInput {
+  font-size: 1.6rem;
+  font-weight: 500;
+  opacity: 0.85;
+  text-align: center;
+  background-color: transparent;
+  border: 0;
+  padding: 0 0.5rem;
+}
+.mainContainer .productContainer .infoSection .quantityButton {
+  width: calc(4.5rem / var(--font-body-scale));
+  flex-shrink: 0;
+  font-size: 1.8rem;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(var(--color-foreground));
+  padding: 0;
+}
+.mainContainer .productContainer .buttonSection {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: left;
+}
+.mainContainer .productContainer .buttonSection .addToCartButton {
+  display: inline-block;
+  border: 1px solid black;
+  cursor: pointer;
+  padding: 14px 35px;
+  background-color: transparent;
+  color: black;
+}
+.mainContainer .productContainer .buttonSection .buyNowButton {
+  display: inline-block;
+  cursor: pointer;
+  padding: 14px 35px;
+  border: none;
+  background-color: black;
+  color: white;
+}
+.mainContainer .productContainer .infoCards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  padding: 16px 16px;
+  border: 1px solid rgb(246, 205, 220);
+  border-radius: 8px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.mainContainer .productContainer .infoCards .card {
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.mainContainer .productContainer .infoCards .card .spanOne {
+  display: block;
+  font-weight: 600;
+  font-size: 16px;
+  color: #f6cddc;
+  margin: 0;
+  line-height: 1;
+  word-wrap: break-word;
+  max-width: 100%;
+}
+.mainContainer .productContainer .infoCards .card .spanTwo {
+  display: block;
+  font-size: 14px;
+  color: #404040;
+  font-weight: 400;
+  margin: 0;
+  line-height: 1;
+  word-wrap: break-word;
+  max-width: 100%;
 }
 
 .footer {
@@ -801,6 +1261,7 @@ body.no-blur {
 .footer .container .newsletter .newsletter-input input {
   width: 100%;
   max-width: 350px;
+  border: 1px solid #515151;
   position: relative;
   background-color: #FFEDF4;
   padding: 12px;
