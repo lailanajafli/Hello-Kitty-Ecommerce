@@ -237,64 +237,95 @@ header {
   }
 }
 
-/* Search Container */
-/* Arama kutusu dışındaki her şey bulanık olacak */
+
 body.blur {
   filter: blur(5px);
   transition: filter 0.3s ease;
 }
 
-/* Arama kutusunun kendisi bulanık olmamalı */
-.search-container {
+
+
+.modalOverlay {
+  display: none; // Başlangıçta gizli
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 200px;
-  background: rgba(255, 255, 255, 0.7); /* Şəffaf ağ fon */
-  backdrop-filter: blur(8px); /* Bulanıqlıq effekti */
-  display: flex;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.search-container {
+  position: fixed;
+  left: 0;
+  gap: 15px;
+  width: 100%;
+  height: 130px;
+  background: #f3f3f3;
+  backdrop-filter: blur(8px);
+  display: none;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   z-index: 1000;
   transform: translateY(-100%);
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+
+  .search-input {
+    width: 65%;
+    padding: 15px;
+    display: flex;
+    font-size: 18px;
+    border: 1px solid black;
+    outline: none;
+  }
+
+  .searchResults {
+    background: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    max-height: 300px;
+    width: 63%;
+    margin: 0 auto;
+    display: none;
+    overflow-y: auto;
+    padding: 10px;
+
+    .searchResultItem {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+      cursor: pointer;
+
+      .searchResultImage {
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+        
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .searchResultName {
+        font-size: 16px;
+        font-weight: bold;
+        color: #333;
+      }
+    }
+  }
+
+  .close-btn {
+
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
 }
-
-.search-container.active {
-  transform: translateY(0);
-}
-
-/* Arama kutusu dışında her şey bulanık olacak */
-body.blur .search-container {
-  filter: none; /* Bu sayede search-container bulanık olmadan net kalacak */
-}
-
-
-
-.search-container input {
-  width: 80%;
-  padding: 15px;
-  font-size: 18px;
-  border: 2px solid #ddd;
-  border-radius: 5px;
-  outline: none;
-}
-
-.search-container .close-btn {
-  margin-top: 20px;
-  font-size: 24px;
-  color: #333;
-  cursor: pointer;
-}
-
-.search i {
-  font-size: 20px;
-  cursor: pointer;
-}
-
-
 
 body.blur {
   filter: blur(5px);

@@ -115,53 +115,86 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-
-
-
-
-
-
-
-
-
-// seach clicked start
-document.addEventListener("DOMContentLoaded", function () {
-  const searchBtn = document.querySelector(".search i");
-  const searchContainer = document.createElement("div");
-  searchContainer.classList.add("search-container");
-  searchContainer.innerHTML = `
-    <input type="text" placeholder="Axtarın...">
-    <div class="close-btn">&times;</div>
-  `;
-
-  document.body.appendChild(searchContainer);
-
-  const closeBtn = searchContainer.querySelector(".close-btn");
-  searchBtn.addEventListener("click", () => {
-    searchContainer.classList.add("active");
-  });
-
-  closeBtn.addEventListener("click", () => {
-    searchContainer.classList.remove("active");
-  });
+// SEARCH START
+// Arama butonuna tıklanınca modal'ı göster
+document.querySelector(".search i").addEventListener("click", () => {
+  modalOverlay.style.display = "block";
+  searchContainer.style.display = "block";
 });
-// seach clicked end
 
-// search start
-// document.querySelector(".search").addEventListener("click", () => {
-//   document.body.classList.add("blur");
-//   document.querySelector(".search-container").classList.add("active");
-// });
+// Modal'ı kapat (Close button ve modalOverlay tıklamasıyla)
+const closeModal = () => {
+  modalOverlay.style.display = "none";
+  searchContainer.style.display = "none";
+  searchResults.style.display = "none"; // Kapatıldığında arama sonuçlarını da gizle
+  searchInput.value = ""; // Giriş alanını temizle
+};
 
-// document
-//   .querySelector(".search-container .close-btn")
-//   .addEventListener("click", () => {
-//     document.body.classList.remove("blur");
-//     document.querySelector(".search-container").classList.remove("active");
-//   });
-// search end
+// Close button'a tıklama
+closeBtn.addEventListener("click", closeModal);
 
-// products start
+// Kenara tıklama (modalOverlay)
+modalOverlay.addEventListener("click", (event) => {
+  // Eğer kullanıcı `modalOverlay`'e tıklarsa, modal kapatılsın
+  if (event.target === modalOverlay) {
+    closeModal();
+  }
+});
+
+// Arama yapılırken filtreleme
+searchInput.addEventListener("input", function () {
+  const query = searchInput.value.toLowerCase();
+
+  if (query.trim() === "") {
+    // Eğer giriş alanı boşsa arama sonuçlarını gizle
+    searchResults.style.display = "none";
+  } else {
+    // Giriş alanı doluysa arama sonuçlarını göster
+    searchResults.style.display = "block";
+
+    // Ürünleri filtrele
+    const filteredProducts = productsData.filter((product) => {
+      return product.name.toLowerCase().includes(query);
+    });
+
+    // Sonuçları görüntüle
+    displaySearchResults(filteredProducts);
+  }
+});
+
+// Arama sonuçlarını görüntüle
+function displaySearchResults(filteredProducts) {
+  searchResults.innerHTML = ""; // Önceki sonuçları temizle
+
+  const query = searchInput.value.toLowerCase(); // Mevcut arama sorgusunu al
+
+  if (filteredProducts.length === 0) {
+    // Eğer sonuç yoksa kullanıcıya arama sorgusunu göster
+    searchResults.innerHTML = `<p>No results found for "${query}"</p>`;
+  } else {
+    // Sonuçları döngüyle ekle
+    filteredProducts.forEach((product) => {
+      const resultCont = `
+        <div class="searchResultItem">
+          <div class="searchResultImage">
+            <img src="${product.image}" alt="${product.name}">
+          </div>
+          <p class="searchResultName">${product.name}</p>
+        </div>
+      `;
+      searchResults.innerHTML += resultCont;
+    });
+  }
+}
+// SEARCH END
+
+
+
+
+
+
+
+
 // products start
 let productsData = [];
 const productsPerPage = 8;
