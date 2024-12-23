@@ -224,7 +224,9 @@ header {
   }
 
   .selectOption {
-    display: none;
+    .customLang, .customValyuta{
+      display: none;
+    }
   }
 
   .logoCont {

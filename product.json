@@ -1,101 +1,105 @@
 [
-    {
-      "id": 1,
-      "name": "Kitty cat plush",
-      "price": 17.47,
-      "image": "https://hellokitty-store.com/cdn/shop/files/332.png?v=1711809733&width=360",
-      "imageHover": "https://hellokitty-store.com/cdn/shop/files/333.png?v=1711809733&width=360"
-    },
-    {
-      "id": 2,
-      "name": "Iphone Case",
-      "price": 5,
-      "image": "https://hellokitty-store.com/cdn/shop/files/2_8ac98468-d624-48b9-b642-93bb1cc71c52.png?v=1722445261&width=360",
-      "imageHover": "https://hellokitty-store.com/cdn/shop/files/3_8fe5886b-c36f-49f7-9f79-d97977ce1d03.png?v=1722445261&width=360"
-    },
-    {
-      "id": 3,
-        "name": "Beaded chain handbag",
-        "price": 18.77,
-        "image": "https://hellokitty-store.com/cdn/shop/files/33_138f479e-0401-4ffd-9059-27ecd2797528.png?v=1712061426&width=360",
-        "imageHover": "https://hellokitty-store.com/cdn/shop/files/48_5d0703bd-ef23-4039-b8b1-18287184417f.png?v=1712063367&width=360"
-      },
-      {
-        "id": 4,
-        "name": "Uno",
-        "price": 11.34,
-        "image": "https://hellokitty-store.com/cdn/shop/files/4_e73e6baa-2cc8-4aec-a2de-32359ad52ac5.png?v=1728651921&width=360",
-        "imageHover": "https://hellokitty-store.com/cdn/shop/files/6_f45cb11f-e81a-4bd0-9a22-e8d70ef6c64d.png?v=1728651921&width=360"
-      },
-      {
-        "id": 5,
-        "name": "White SweatShirt",
-        "price": 59.50,
-        "image": "https://hellokitty-store.com/cdn/shop/files/3_76c40b2b-67f1-4f42-aac2-dec78b77f99a.png?v=1725229084&width=360",
-        "imageHover": "https://hellokitty-store.com/cdn/shop/files/2_3eae9f9b-fc56-40a4-825a-feaa92d93db4.png?v=1725229085&width=360"
-      },
-      {
-        "id": 6,
-        "name": "Tote bag",
-        "price": 9.90,
-        "image": "https://hellokitty-store.com/cdn/shop/files/Designsanstitre-8.png?v=1710445203&width=360",
-        "imageHover": "https://hellokitty-store.com/cdn/shop/files/241_54a6ac55-524c-4834-9630-50c437b64455.png?v=1711258310&width=360"
-      },
-      {
-        "id": 7,
-        "name": "Kitty necklace",
-        "price": 6.90,
-        "image": "https://hellokitty-store.com/cdn/shop/files/76.png?v=1711174845&width=360",
-        "imageHover": "https://hellokitty-store.com/cdn/shop/files/67.png?v=1711236304&width=360"
-      },
-      {
-        "id": 8,
-        "name": "Notebook",
-        "price": 12.90,
-        "image": "https://hellokitty-store.com/cdn/shop/files/3_c981c6af-02ba-454f-84c2-1fdd7dea8747.png?v=1710387899&width=360",
-        "imageHover": "https://hellokitty-store.com/cdn/shop/files/231.png?v=1711252694&width=360"
-      },
-      {
-        "id": 9,
-        "name": "Plush floral dress",
-        "price": 19.21,
-        "image": "https://hellokitty-store.com/cdn/shop/files/Chaud_-4.png?v=1711067734&width=360",
-        "imageHover": "https://hellokitty-store.com/cdn/shop/files/Saa4a872ee01a4e94ab5aebcbb2c46fdey.webp?v=1711067733&width=360"
-      },
-      {
-        "id": 10,
-        "name": "Ring",
-        "price": 6.99,
-        "image": "https://hellokitty-store.com/cdn/shop/files/Chaud_-12.png?v=1711142693&width=360",
-        "imageHover": "https://hellokitty-store.com/cdn/shop/files/75.png?v=1711158642&width=360"
-      },
-      {
-        "id": 11,
-        "name": "Autocollants Charmmy Kitty",
-        "price": 11.80,
-        "image": "https://hellokitty-store.com/cdn/shop/files/8_19da61ea-9ac2-4085-842a-ab0318a37e29.png?v=1728653097&width=360",
-        "imageHover": "https://hellokitty-store.com/cdn/shop/files/9_cfd09487-17dc-48bb-ad61-310ae58622d3.png?v=1728653097&width=360"
-      },
-      {
-        "id": 12,
-        "name": "Cart Holder",
-        "price": 4.73,
-        "image": "https://hellokitty-store.com/cdn/shop/files/Designsanstitre-9.png?v=1710445746&width=360",
-        "imageHover": "https://hellokitty-store.com/cdn/shop/files/Sea5533deb4f642dda9012986df7f5b33j.webp?v=1710445746&width=360"
-      },
-      {
-        "id": 13,
-        "name": "Night Light",
-        "price": 34.45,
-        "image": "https://hellokitty-store.com/cdn/shop/files/175.png?v=1711170718&width=360",
-        "imageHover": "https://hellokitty-store.com/cdn/shop/files/176.png?v=1711170719&width=360"
-      },
-      {
-        "id": 14,
-        "name": "Glasses box",
-        "price": 13.60,
-        "image": "https://hellokitty-store.com/cdn/shop/files/2_cf9f2cff-3dc8-4e15-9972-b76f88108f72.png?v=1710387935&width=360",
-        "imageHover": "https://hellokitty-store.com/cdn/shop/files/25_e831d76e-d98f-4255-9694-dcf89595f768.png?v=1712055848&width=360"
-      }
-  ]
-  
+  {
+    "id": 1,
+    "name": "Kitty cat plush",
+    "price": 17.47,
+    "image": "https://hellokitty-store.com/cdn/shop/files/332.png?v=1711809733&width=360",
+    "imageHover": "https://hellokitty-store.com/cdn/shop/files/333.png?v=1711809733&width=360",
+    "images": [
+      "https://hellokitty-store.com/cdn/shop/files/334.png?v=1711809733&width=324",
+      "https://hellokitty-store.com/cdn/shop/files/331.png?v=1711809733&width=324",
+      "https://hellokitty-store.com/cdn/shop/files/333.png?v=1711809733&width=324"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Iphone Case",
+    "price": 5,
+    "image": "https://hellokitty-store.com/cdn/shop/files/2_8ac98468-d624-48b9-b642-93bb1cc71c52.png?v=1722445261&width=360",
+    "imageHover": "https://hellokitty-store.com/cdn/shop/files/3_8fe5886b-c36f-49f7-9f79-d97977ce1d03.png?v=1722445261&width=360"
+  },
+  {
+    "id": 3,
+    "name": "Beaded chain handbag",
+    "price": 18.77,
+    "image": "https://hellokitty-store.com/cdn/shop/files/33_138f479e-0401-4ffd-9059-27ecd2797528.png?v=1712061426&width=360",
+    "imageHover": "https://hellokitty-store.com/cdn/shop/files/48_5d0703bd-ef23-4039-b8b1-18287184417f.png?v=1712063367&width=360"
+  },
+  {
+    "id": 4,
+    "name": "Uno",
+    "price": 11.34,
+    "image": "https://hellokitty-store.com/cdn/shop/files/4_e73e6baa-2cc8-4aec-a2de-32359ad52ac5.png?v=1728651921&width=360",
+    "imageHover": "https://hellokitty-store.com/cdn/shop/files/6_f45cb11f-e81a-4bd0-9a22-e8d70ef6c64d.png?v=1728651921&width=360"
+  },
+  {
+    "id": 5,
+    "name": "White SweatShirt",
+    "price": 59.5,
+    "image": "https://hellokitty-store.com/cdn/shop/files/3_76c40b2b-67f1-4f42-aac2-dec78b77f99a.png?v=1725229084&width=360",
+    "imageHover": "https://hellokitty-store.com/cdn/shop/files/2_3eae9f9b-fc56-40a4-825a-feaa92d93db4.png?v=1725229085&width=360"
+  },
+  {
+    "id": 6,
+    "name": "Tote bag",
+    "price": 9.9,
+    "image": "https://hellokitty-store.com/cdn/shop/files/Designsanstitre-8.png?v=1710445203&width=360",
+    "imageHover": "https://hellokitty-store.com/cdn/shop/files/241_54a6ac55-524c-4834-9630-50c437b64455.png?v=1711258310&width=360"
+  },
+  {
+    "id": 7,
+    "name": "Kitty necklace",
+    "price": 6.9,
+    "image": "https://hellokitty-store.com/cdn/shop/files/76.png?v=1711174845&width=360",
+    "imageHover": "https://hellokitty-store.com/cdn/shop/files/67.png?v=1711236304&width=360"
+  },
+  {
+    "id": 8,
+    "name": "Notebook",
+    "price": 12.9,
+    "image": "https://hellokitty-store.com/cdn/shop/files/3_c981c6af-02ba-454f-84c2-1fdd7dea8747.png?v=1710387899&width=360",
+    "imageHover": "https://hellokitty-store.com/cdn/shop/files/231.png?v=1711252694&width=360"
+  },
+  {
+    "id": 9,
+    "name": "Plush floral dress",
+    "price": 19.21,
+    "image": "https://hellokitty-store.com/cdn/shop/files/Chaud_-4.png?v=1711067734&width=360",
+    "imageHover": "https://hellokitty-store.com/cdn/shop/files/Saa4a872ee01a4e94ab5aebcbb2c46fdey.webp?v=1711067733&width=360"
+  },
+  {
+    "id": 10,
+    "name": "Ring",
+    "price": 6.99,
+    "image": "https://hellokitty-store.com/cdn/shop/files/Chaud_-12.png?v=1711142693&width=360",
+    "imageHover": "https://hellokitty-store.com/cdn/shop/files/75.png?v=1711158642&width=360"
+  },
+  {
+    "id": 11,
+    "name": "Autocollants Charmmy Kitty",
+    "price": 11.8,
+    "image": "https://hellokitty-store.com/cdn/shop/files/8_19da61ea-9ac2-4085-842a-ab0318a37e29.png?v=1728653097&width=360",
+    "imageHover": "https://hellokitty-store.com/cdn/shop/files/9_cfd09487-17dc-48bb-ad61-310ae58622d3.png?v=1728653097&width=360"
+  },
+  {
+    "id": 12,
+    "name": "Cart Holder",
+    "price": 4.73,
+    "image": "https://hellokitty-store.com/cdn/shop/files/Designsanstitre-9.png?v=1710445746&width=360",
+    "imageHover": "https://hellokitty-store.com/cdn/shop/files/Sea5533deb4f642dda9012986df7f5b33j.webp?v=1710445746&width=360"
+  },
+  {
+    "id": 13,
+    "name": "Night Light",
+    "price": 34.45,
+    "image": "https://hellokitty-store.com/cdn/shop/files/175.png?v=1711170718&width=360",
+    "imageHover": "https://hellokitty-store.com/cdn/shop/files/176.png?v=1711170719&width=360"
+  },
+  {
+    "id": 14,
+    "name": "Glasses box",
+    "price": 13.6,
+    "image": "https://hellokitty-store.com/cdn/shop/files/2_cf9f2cff-3dc8-4e15-9972-b76f88108f72.png?v=1710387935&width=360",
+    "imageHover": "https://hellokitty-store.com/cdn/shop/files/25_e831d76e-d98f-4255-9694-dcf89595f768.png?v=1712055848&width=360"
+  }
+]

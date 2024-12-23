@@ -196,9 +196,9 @@ function displaySearchResults(filteredProducts) {
 
 
 // products start
-let productsData = [];
 const productsPerPage = 8;
 let currentPage = 1;
+let productsData = [];
 
 fetch("product.json")
   .then((response) => response.json())
@@ -244,22 +244,109 @@ function renderProducts(page, perPage, filteredProducts = null) {
   productsForPage.forEach((product) => {
     const productHTML = `
       <div class="productsCont">
-        <div class="imgCont">
-          <img src="${product.image}" alt="${product.name}">
-          <img src="${product.imageHover}" alt="${product.name} Hover" class="hover-img">
+          <div class="imgCont">
+            <a href="detail.html?id=${product.id}">
+              <img src="${product.image}" alt="${product.name}">
+              <img src="${product.imageHover}" alt="${product.name} Hover" class="hover-img">
+            </a>
+          </div>
+          <p class="productName">${product.name}</p>
+          <p class="productPrice">${formatPrice(product.price)}</p>
+          <div>
+            <a href="detail.html?id=${product.id}" class="chooseOption">Choose Options</a>
+          </div>
         </div>
-        <p class="productName">${product.name}</p>
-        <p class="productPrice">${formatPrice(product.price)}</p>
-        <div>
-          <a href="#" class="chooseOption">Choose Options</a>
-        </div>
-      </div>
     `;
     productsContainer.innerHTML += productHTML;
   });
-
+  function formatPrice(price) {
+    return `$${price.toFixed(2)}`;
+  }
   updateProductCount(productsToDisplay.length);
 }
+
+
+
+
+// balaca sekillere tiklanma start
+
+
+// Main image öğesini seç
+const mainImage = document.querySelector(".mainImage");
+
+// Thumbnail container içindeki tüm thumbCont öğelerini seç
+const thumbnails = document.querySelectorAll(".thumbCont");
+
+// Her bir thumbCont'e tıklama olayı ekle
+thumbnails.forEach((thumb) => {
+  thumb.addEventListener("click", () => {
+    
+    // thumb içindeki img öğesini al
+    const thumbnailImage = thumb.querySelector(".thumbnail");
+    // mainImage'in src'sini güncelle
+    mainImage.src = thumbnailImage.src;
+  });
+});
+
+
+
+
+
+// balaca sekillere tiklanma end
+
+
+
+// detail start
+
+let productId = new URLSearchParams(window.location.search).get("id");
+
+fetch("product.json")
+  .then((response) => response.json())
+  .then((products) => {
+    const product = products.find((item) => item.id == productId);
+
+    if (product) {
+      // Ana görüntüyü ayarla
+      document.querySelector(".mainImage").src = product.image;
+      // Ürün adını ve fiyatını ayarla
+      document.querySelector(".productTitle").textContent = product.name;
+      document.querySelector(".productPrice").textContent = `€${product.price} EUR`;
+
+      // Thumbnail container'ı seç
+      const thumbnailContainer = document.querySelector(".thumbnailContainer");
+
+      // Thumbnails eklemek için images dizisini döngüyle oluştur
+      product.images.forEach((imgSrc) => {
+        const thumbCont = document.createElement("div");
+        thumbCont.className = "thumbCont";
+
+        const img = document.createElement("img");
+        img.className = "thumbnail";
+        img.src = imgSrc;
+        img.alt = product.name;
+
+        thumbCont.appendChild(img);
+        thumbnailContainer.appendChild(thumbCont);
+
+        // Tıklanan küçük resmi ana görüntüye yansıt
+        thumbCont.addEventListener("click", () => {
+          document.querySelector(".mainImage").src = imgSrc;
+        });
+      });
+    } else {
+      document.querySelector(".mainContainer").innerHTML = "<p>Product not found</p>";
+    }
+  });
+
+
+
+
+// detail end
+
+
+
+
+
 
 // Ürün sayısını güncelleme fonksiyonu
 function updateProductCount(count) {
