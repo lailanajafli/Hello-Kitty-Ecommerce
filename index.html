@@ -31,16 +31,16 @@
           </div>
 
           <!-- Logo -->
-          <div class="logoCont">
+          <a href="./index.html" class="logoCont">
             <img
               src="https://hellokitty-store.com/cdn/shop/files/N-3.jpg?v=1710080220&width=200"
               alt="Logo">
-          </div>
+          </a>
 
           <!-- Navbar -->
           <nav class="navBar">
             <ul class="userList" id="nav-links">
-              <li class="userItem"><a href="#">Welcome</a></li>
+              <li class="userItem"><a href="./index.html">Welcome</a></li>
               <li class="userItem dropdown">
                 <a href="#" class="dropdownToggle">Clothes <span
                     class="arrow"><i class="fa-solid fa-angle-down"
@@ -66,7 +66,7 @@
                   <li><a href="#">Kitchen</a></li>
                 </ul>
               </li>
-              <li class="userItem"><a style="width: 149px;" href="#">Spiderman x
+              <li class="userItem"><a style="width: 170px;" href="#">Spiderman x
                   Hello Kitty</a></li>
               <li class="userItem"><a href="#">Contact</a></li>
             </ul>
@@ -107,8 +107,9 @@
 
             <div class="search"><i class="fa-solid fa-magnifying-glass"
                 style="color: #333;"></i></div>
-            <div class="addTooCart"><i class="fa-solid fa-cart-shopping"
-                style="color: #333;"></i></div>
+            <a href="./cart.html" class="addTooCart"><i
+                class="fa-solid fa-cart-shopping"
+                style="color: #333;"></i></a>
           </div>
         </div>
       </div>
@@ -147,6 +148,37 @@
             class="viewAll">View All</a>
         </div>
       </section>
+      <!-- Modal -->
+      <div id="modal" class="modal">
+        <div class="modalContent">
+          <span class="closeBtn">&times;</span>
+          <div class="mainContainer">
+            <div class="productContainer">
+              <div class="imageSection">
+                <img id="mainImageCart" class="productImage" src="" alt="Product Image">
+              </div>
+              <div class="infoSection">
+                <h2 class="productTitle"></h2>
+                <p class="productPrice"></p>
+                <p class="taxInfo">Tax included.</p>
+                <div class="quantitySection">
+                  <label for="quantity" class="taxInfo">Quantity</label>
+                  <div style="display: flex;">
+                    <button class="quantityIncrease">-</button>
+                    <input type="number" id="quantity" value="1" min="1"
+                      class="quantityInput">
+                    <button class="quantityDecrease">+</button>
+                  </div>
+                </div>
+                <div class="buttonSection">
+                  <button class="addToCartButton">Add to cart</button>
+                  <button class="buyNowButton">Buy it now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <!-- products end -->
 

@@ -62,82 +62,7 @@ body{
         color: #777;
       }
 
-      .quantitySection {
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-
-        .quantityDecrease {
-          width: 40px;
-          height: 40px;
-          font-size: 20px;
-          border-top: 1px solid black;
-          border-bottom: 1px solid black;
-          border-right: 1px solid black;
-          border-left: none;
-          color: black;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          transition: background-color 0.3s ease;
-        }
-
-        .quantityIncrease {
-          width: 40px;
-          height: 40px;
-          text-align: center;
-          font-size: 18px;
-          color: #333;
-          appearance: none;
-          border-top: 1px solid black;
-          border-bottom: 1px solid black;
-          border-left: 1px solid black;
-          border-right: none;
-          -webkit-appearance: none;
-          -moz-appearance: none;
-          outline: none;
-          padding: 0;
-        }
-      }
-
-      .sizeLabel,
-      .quantityLabel {
-        font-weight: bold;
-      }
-
-      input[type="number"]::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-      }
-
-      .quantityInput {
-        font-size: 1.2rem;
-        width: 38px;
-        opacity: 0.85;
-        border-top: 1px solid black;
-        border-bottom: 1px solid black;
-        border-left: none;
-        border-right: none;
-        text-align: center;
-        background-color: transparent;
-        padding: 0 0.5rem;
-      }
-
-      .quantityButton {
-        width: calc(4.5rem / var(--font-body-scale));
-        flex-shrink: 0;
-        font-size: 1.8rem;
-        border: 0;
-        border-top: 1px solid black;
-        border-bottom: 1px solid black;
-        background-color: transparent;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: rgb(var(--color-foreground));
-        padding: 0;
-      }
+    @include quantityButton;
     }
 
     .buttonSection {
@@ -215,7 +140,6 @@ body{
 
   @media (max-width: 768px) {
     .productContainer {
-      flex-direction: column;
 
       .infoCards {
         grid-template-columns: 1fr;

@@ -16,10 +16,9 @@ header {
   padding: 25px 10px;
 }
 
-.container{
+.container {
   max-width: 1200px;
   margin: 0 auto;
-
 }
 
 .row {
@@ -182,7 +181,9 @@ header {
   }
 
   .selectOption {
-    padding: 3px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
   }
 
   .customLang,
@@ -224,7 +225,8 @@ header {
   }
 
   .selectOption {
-    .customLang, .customValyuta{
+    .customLang,
+    .customValyuta {
       display: none;
     }
   }
@@ -239,13 +241,10 @@ header {
   }
 }
 
-
 body.blur {
   filter: blur(5px);
   transition: filter 0.3s ease;
 }
-
-
 
 .modalOverlay {
   display: none; // Başlangıçta gizli
@@ -304,7 +303,7 @@ body.blur {
         width: 50px;
         height: 50px;
         margin-right: 10px;
-        
+
         img {
           width: 100%;
           height: 100%;
@@ -321,7 +320,6 @@ body.blur {
   }
 
   .close-btn {
-
     background: none;
     border: none;
     font-size: 20px;

@@ -1,3 +1,4 @@
+const {pathname} = document.location
 // dropdown start
 const dropdowns = document.querySelectorAll(".userItem.dropdown");
 dropdowns.forEach((dropdown) => {
@@ -116,6 +117,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 // SEARCH START
+
+
+
+
 // Arama butonuna tıklanınca modal'ı göster
 document.querySelector(".search i").addEventListener("click", () => {
   modalOverlay.style.display = "block";
@@ -229,7 +234,6 @@ function formatPrice(price) {
 function renderProducts(page, perPage, filteredProducts = null) {
   const productsContainer = document.getElementById("productsContainer");
   if (!productsContainer) {
-    console.error("productsContainer not found");
     return;
   }
 
@@ -253,14 +257,14 @@ function renderProducts(page, perPage, filteredProducts = null) {
           <p class="productName">${product.name}</p>
           <p class="productPrice">${formatPrice(product.price)}</p>
           <div>
-            <a href="detail.html?id=${product.id}" class="chooseOption">Choose Options</a>
+            <a class="chooseOption" data-product-id="${product.id}">Choose Options</a>
           </div>
         </div>
     `;
     productsContainer.innerHTML += productHTML;
   });
   function formatPrice(price) {
-    return `$${price.toFixed(2)}`;
+    return `€${price.toFixed(2)} EUR`;
   }
   updateProductCount(productsToDisplay.length);
 }
@@ -268,35 +272,102 @@ function renderProducts(page, perPage, filteredProducts = null) {
 
 
 
-// balaca sekillere tiklanma start
 
 
-// Main image öğesini seç
-const mainImage = document.querySelector(".mainImage");
 
-// Thumbnail container içindeki tüm thumbCont öğelerini seç
-const thumbnails = document.querySelectorAll(".thumbCont");
 
-// Her bir thumbCont'e tıklama olayı ekle
-thumbnails.forEach((thumb) => {
-  thumb.addEventListener("click", () => {
-    
-    // thumb içindeki img öğesini al
-    const thumbnailImage = thumb.querySelector(".thumbnail");
-    // mainImage'in src'sini güncelle
-    mainImage.src = thumbnailImage.src;
-  });
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const modal = document.getElementById("modal");
+  const closeBtn = document.querySelector(".closeBtn");
+  const productTitle = document.querySelector(".productTitle");
+  const productPrice = document.querySelector(".productPrice");
+  const thumbnailContainer = document.querySelector(".thumbnailContainer");
+  const mainImageCart = document.getElementById("mainImageCart");
+
+  // JSON'dan ürünleri yükle
+  fetch("product.json")
+    .then((response) => response.json())
+    .then((products) => {
+      // Choose Option'a tıklama işlemini dinle
+      document.addEventListener("click", (event) => {
+        if (event.target.classList.contains("chooseOption")) {
+          event.preventDefault();
+
+          // Tıklanan ürünün ID'sini al
+          const productId = event.target.dataset.productId;
+          const product = products.find((item) => item.id == productId);
+
+          if (product) {
+            // Modal içeriğini dinamik olarak doldur
+            mainImageCart.src = product.image;
+            productTitle.textContent = product.name;
+            productPrice.textContent = `€${product.price.toFixed(2)}`;
+
+            product.images?.forEach((imgSrc) => {
+
+              const img = document.createElement("img");
+              img.src = imgSrc;
+              img.alt = product.name;
+
+
+                mainImageCart.src = imgSrc;
+            });
+
+            modal.style.display = "flex";
+          } else {
+            console.error("Ürün bulunamadı. ID:", productId);
+          }
+        }
+      });
+
+      // Modal kapatma butonu
+      closeBtn.addEventListener("click", () => {
+        modal.style.display = "none";
+      });
+
+      // Modal dışına tıklama ile kapatma
+      window.addEventListener("click", (event) => {
+        if (event.target === modal) {
+          modal.style.display = "none";
+        }
+      });
+    })
+    .catch((error) => console.error("JSON yükleme hatası:", error));
 });
 
 
 
 
 
-// balaca sekillere tiklanma end
 
 
 
-// detail start
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// detail start. picture clicked go to detail, mini picture
 
 let productId = new URLSearchParams(window.location.search).get("id");
 
@@ -333,15 +404,11 @@ fetch("product.json")
           document.querySelector(".mainImage").src = imgSrc;
         });
       });
-    } else {
-      document.querySelector(".mainContainer").innerHTML = "<p>Product not found</p>";
-    }
+    } 
   });
 
+// detail start. picture clicked go to detail, mini picture
 
-
-
-// detail end
 
 
 
@@ -434,16 +501,22 @@ function filterByPrice(minPrice, maxPrice) {
   setupPagination(productsPerPage);
 }
 
-// Fiyat aralığı inputlarını dinle
-document.getElementById("minPrice").addEventListener("input", filterProductsByPrice);
-document.getElementById("maxPrice").addEventListener("input", filterProductsByPrice);
-
 // Fiyat aralığına göre filtreleme
 function filterProductsByPrice() {
   const minPrice = parseFloat(document.getElementById("minPrice").value) || 0;
   const maxPrice = parseFloat(document.getElementById("maxPrice").value) || Infinity;
   filterByPrice(minPrice, maxPrice);
 }
+
+if(pathname.includes("shop")){
+  // Fiyat aralığı inputlarını dinle
+  document.getElementById("minPrice").addEventListener("input", filterProductsByPrice);
+  document.getElementById("maxPrice").addEventListener("input", filterProductsByPrice);
+  document.getElementById("resetPriceBtn").addEventListener("click", resetPriceFilter);
+  
+
+}
+
 
 // Fiyat sıfırlama işlevi
 function resetPriceFilter() {
@@ -454,7 +527,6 @@ function resetPriceFilter() {
 }
 
 // Reset butonuna tıklama olayını ekleyelim
-document.getElementById("resetPriceBtn").addEventListener("click", resetPriceFilter);
 
 // Sıralama işlemi
 function sortProducts(sortOption) {

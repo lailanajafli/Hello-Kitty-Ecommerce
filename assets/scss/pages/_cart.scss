@@ -1,0 +1,119 @@
+.cartContainer {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  
+    .container {
+      max-width: 80%;
+      margin: 0 auto;
+  
+      .cartHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+  
+        h1 {
+          font-size: 24px;
+        }
+  
+        .continueShopping {
+          font-size: 14px;
+          color: #000;
+          text-decoration: underline;
+        }
+      }
+  
+      .cartTable {
+        .cartRow {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 10px 0;
+  
+          &.cartHeaderRow {
+            font-size: 13px;
+            border-bottom: 1px solid #ccc;
+
+            color: #777;
+            text-transform: uppercase;
+          }
+  
+          .productDetails {
+            display: flex;
+            align-items: center;
+            flex: 3;
+  
+            .productImage {
+              width: 130px;
+              height: 130px;
+              margin-right: 20px;
+            }
+  
+            .productInfo {
+              .productName {
+                font-size: 16px;
+                margin: 0;
+                font-weight: 400;
+              }
+  
+              .productPrice {
+                font-size: 14px;
+                color: #777;
+              }
+            }
+          }
+  
+       .quan{
+        display: flex;
+            align-items: center;
+            gap: 20px;
+           @include quantityButton;
+       }
+          
+  
+          .totalPrice {
+            flex: 1;
+            text-align: right;
+            font-size: 16px;
+          }
+        }
+      }
+  
+      // Responsive styles
+      @media (max-width: 768px) {
+        .cartRow {
+          flex-wrap: wrap;
+  
+          .productDetails,
+          .quantityControls,
+          .totalPrice {
+            flex: 100%;
+            text-align: left;
+            margin-bottom: 10px;
+          }
+  
+          .productDetails {
+            flex-direction: column;
+  
+            .productImage {
+              margin-bottom: 10px;
+            }
+          }
+  
+          .quantityControls {
+            justify-content: flex-start;
+  
+            button,
+            .quantityInput {
+              margin-right: 10px;
+            }
+          }
+  
+          .totalPrice {
+            text-align: left;
+          }
+        }
+      }
+    }
+  }
+  
