@@ -18,7 +18,7 @@
         <title>Hello Kitty Shop</title>
     </head>
     <body>
-        <header>
+        <header id="header">
             <div class="container">
               <div class="row">
                 <!-- Burger Menü -->
@@ -106,12 +106,23 @@
       
                   <div class="search"><i class="fa-solid fa-magnifying-glass"
                       style="color: #333;"></i></div>
-                  <div class="addTooCart"><i class="fa-solid fa-cart-shopping"
-                      style="color: #333;"></i></div>
+                  <a href="./cart.html" class="addTooCart">
+                    <i class="fa-solid fa-cart-shopping" style="color: #333;"></i>
+                    <span class="cartCount">0</span>
+                  </a>
+                  <div id="cartModal" class="modal">
+                    <div class="cartModalContent">
+                      <h2><i class="fa-solid fa-check" style="color: #4b4b4b;"></i>Item added to your cart</h2>
+                      <div class="cartProductList"></div>
+                      <button class="closeCartModal"><i class="fa-solid fa-xmark" style="color: #000000;"></i></button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </header>
+      
+      
           <div class="modalOverlay" id="modalOverlay"></div>
           <div class="search-container" id="searchContainer">
             <form action="javascript:void(0);">
@@ -126,7 +137,6 @@
               </div>
             </form>
           </div>
-        <main>
 
             <section class="bestSeller">
                 <div class="container">
@@ -221,33 +231,43 @@
                                 <button class="dropdownToggleFeatur">
                                     <span id="selectedFeatur">Featured</span>
                                     <span class="arrow">
-                                        <i class="fa-solid fa-angle-down" style="color: #515151;"></i>
+                                        <i class="fa-solid fa-angle-down"
+                                            style="color: #515151;"></i>
                                     </span>
                                 </button>
-                                <ul style="margin-top: 10px;" class="dropdownMenuFeatur">
-                                    <li class="dropdownItem" data-sort="alphabeticalAZ">
+                                <ul style="margin-top: 10px;"
+                                    class="dropdownMenuFeatur">
+                                    <li class="dropdownItem"
+                                        data-sort="alphabeticalAZ">
                                         <span>Alphabetically, A-Z</span>
                                     </li>
-                                    <li class="dropdownItem" data-sort="alphabeticalZA">
+                                    <li class="dropdownItem"
+                                        data-sort="alphabeticalZA">
                                         <span>Alphabetically, Z-A</span>
                                     </li>
-                                    <li class="dropdownItem" data-sort="priceLowToHigh">
+                                    <li class="dropdownItem"
+                                        data-sort="priceLowToHigh">
                                         <span>Price, low to high</span>
                                     </li>
-                                    <li class="dropdownItem" data-sort="priceHighToLow">
+                                    <li class="dropdownItem"
+                                        data-sort="priceHighToLow">
                                         <span>Price, high to low</span>
                                     </li>
-                                    <li class="dropdownItem" data-sort="dateOldToNew">
+                                    <li class="dropdownItem"
+                                        data-sort="dateOldToNew">
                                         <span>Date, old to new</span>
                                     </li>
-                                    <li class="dropdownItem" data-sort="dateNewToOld">
+                                    <li class="dropdownItem"
+                                        data-sort="dateNewToOld">
                                         <span>Date, new to old</span>
                                     </li>
                                 </ul>
-                                <p><span id="productsCount" class="productsCount">0 </span> products</p>
+                                <p><span id="productsCount"
+                                        class="productsCount">0 </span>
+                                    products</p>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -267,6 +287,44 @@
                 </div>
             </section>
             <!-- products end -->
+
+            <div id="modal" class="modal">
+                <div class="modalContent">
+                    <span class="closeBtn">&times;</span>
+                    <div class="mainContainer">
+                        <div class="productContainer">
+                            <div class="imageSection">
+                                <img id="mainImageCart" class="productImage" src
+                                    alt="Product Image">
+                            </div>
+                            <div class="infoSection">
+                                <h2 class="productTitle"></h2>
+                                <p class="productPrice"></p>
+                                <p class="taxInfo">Tax included.</p>
+                                <div class="quantitySection">
+                                    <label for="quantity"
+                                        class="taxInfo">Quantity</label>
+                                    <div style="display: flex;">
+                                        <button
+                                            class="quantityIncrease">-</button>
+                                        <input type="number" id="quantity"
+                                            value="1" min="1"
+                                            class="quantityInput">
+                                        <button
+                                            class="quantityDecrease">+</button>
+                                    </div>
+                                </div>
+                                <div class="buttonSection">
+                                    <button class="addToCartButton">Add to
+                                        cart</button>
+                                    <a href="./checkout.html" class="buyNowButton">Buy it
+                                        now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <!-- footer start -->
 

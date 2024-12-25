@@ -1,0 +1,211 @@
+$primaryColor: #ffebf0;
+$secondaryColor: #f9f9f9;
+$textColor: #333;
+$borderColor: #ccc;
+$accentColor: #ff69b4;
+$hoverColor: #ff85c5;
+$errorColor: #ff4d4d;
+$inputPadding: 1rem;
+$borderRadius: 8px;
+$transitionSpeed: 0.3s;
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  background-color: $secondaryColor;
+  color: $textColor;
+  line-height: 1.6;
+}
+
+.checkoutContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  max-width: 1200px;
+  margin: auto;
+  gap: 20px; // Aradaki mesafeyi artırdık
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+// General form styles
+.checkoutForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem; // İhtiyaç duyulursa alan mesafesini artırabiliriz
+
+  input,
+  select {
+    width: 100%;
+    padding: $inputPadding;
+    font-size: 1rem;
+    border: 1px solid $borderColor;
+    border-radius: $borderRadius;
+    outline: none;
+    background-color: transparent;
+    transition: border-color $transitionSpeed, box-shadow $transitionSpeed;
+
+    &:focus {
+      border-color: $accentColor;
+      box-shadow: 0 0 8px rgba($accentColor, 0.6);
+    }
+  }
+
+  .nameWrapper{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  // Error Message Styles
+  .errorMessage {
+    color: rgba(197, 52, 96, 1);
+    font-size: 0.875rem;
+    margin-top: 4px;
+  }
+
+  // Error state for inputs
+  input.error,
+  select.error {
+    border: 2px solid rgba(197, 52, 96, 1);
+  }
+
+  input.error:focus,
+  select.error:focus {
+    border-color: $errorColor;
+    outline: none;
+  }
+}
+
+// Buttons
+.reviewOrderButton {
+  padding: 1rem 1.6rem;
+  font-size: 1.1rem;
+  background-color: $accentColor;
+  color: white;
+  border: none;
+  border-radius: $borderRadius;
+  cursor: pointer;
+  transition: background-color $transitionSpeed, transform 0.2s ease, box-shadow $transitionSpeed;
+  margin-top: 2rem;
+
+  &:hover {
+    background-color: $hoverColor;
+    transform: translateY(-2px);
+  }
+
+  &:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+  }
+}
+
+.applyButton {
+  padding: 0.6rem 1.4rem;
+  background-color: $accentColor;
+  color: white;
+  border: none;
+  border-radius: $borderRadius;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color $transitionSpeed, transform $transitionSpeed;
+
+  &:hover {
+    background-color: $hoverColor;
+    transform: translateY(-1px);
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .checkoutForm {
+    gap: 1.5rem; // Küçük ekranlarda alanları daraltıyoruz
+  }
+
+  .reviewOrderButton {
+    width: 100%;
+  }
+
+  .summarySection {
+    padding: 15px;
+  }
+}
+
+.summarySection {
+  flex: 1;
+  background: #FFEDF4;
+  padding: 25px;
+  position: relative;
+
+  .productSummary {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 25px;
+    align-items: center;
+
+    img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    p {
+      flex: 1;
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    .productPrice {
+      font-weight: bold;
+      color: $accentColor;
+      font-size: 1.1rem;
+    }
+  }
+
+  #discountCode {
+    width: calc(100% - 90px);
+    display: inline-block;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: 1px solid $borderColor;
+    border-radius: $borderRadius;
+    background-color: transparent;
+    margin-right: 10px;
+    transition: border-color $transitionSpeed;
+
+    &:focus {
+      border-color: $accentColor;
+      box-shadow: 0 0 8px rgba($accentColor, 0.3);
+    }
+  }
+
+  .applyButton {
+    width: 80px;
+    padding: 12px;
+    background: #FFE1ED;
+    color: rgba(0,0,0,0.56);
+    border: none;
+    border-radius: $borderRadius;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color $transitionSpeed, transform $transitionSpeed;
+  }
+
+  .pricingSummary {
+    p {
+      display: flex;
+      justify-content: space-between;
+      margin: 8px 0;
+      font-size: 1rem;
+
+      span {
+        font-weight: bold;
+        font-size: 1.1rem;
+      }
+    }
+  }
+}

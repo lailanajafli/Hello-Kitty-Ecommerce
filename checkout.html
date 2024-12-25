@@ -1,0 +1,259 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap"
+      rel="stylesheet">
+    <link rel="icon"
+      href="https://hellokitty-store.com/cdn/shop/files/kisspng-hello-kitty-clip-art-portable-network-graphics-des-5ce599a0155ae9.1294888715585509440875.png?crop=center&height=32&v=1710091983&width=32">
+    <link rel="stylesheet" href="./assets/index.css">
+    <title>Detail Page</title>
+  </head>
+  <body>
+    <header id="header">
+      <div class="container">
+        <div class="row">
+          <!-- Burger Menü -->
+          <div class="burger-menu" id="burger-menu">
+            <span class="open"><i class="fa-solid fa-bars"
+                style="color: #000000;"></i></span>
+            <span class="close"><i class="fa-solid fa-xmark"
+                style="color: #000000;"></i></span>
+          </div>
+
+          <!-- Logo -->
+          <a href="./index.html" class="logoCont">
+            <img
+              src="https://hellokitty-store.com/cdn/shop/files/N-3.jpg?v=1710080220&width=200"
+              alt="Logo">
+          </a>
+
+          <!-- Navbar -->
+          <nav class="navBar">
+            <ul class="userList" id="nav-links">
+              <li class="userItem"><a href="./index.html">Welcome</a></li>
+              <li class="userItem dropdown">
+                <a href="#" class="dropdownToggle">Clothes <span
+                    class="arrow"><i class="fa-solid fa-angle-down"
+                      style="color: #515151;"></i></span></a>
+                <ul class="dropdownMenu">
+                  <li><a href="#">Pyjama</a></li>
+                  <li><a href="#">Hoodies</a></li>
+                </ul>
+              </li>
+              <li class="userItem dropdown">
+                <a href="#" class="dropdownToggle">Accessories <span
+                    class="arrow"><i class="fa-solid fa-angle-down"
+                      style="color: #515151;"></i></span></a>
+                <ul class="dropdownMenu">
+                  <li><a href="#">See everything</a></li>
+                  <li><a href="#">Plush</a></li>
+                  <li><a href="#">Decoration</a></li>
+                  <li><a href="#">Care and beauty</a></li>
+                  <li><a href="#">Sac</a></li>
+                  <li><a href="#">Stationery store</a></li>
+                  <li><a href="#">Phone</a></li>
+                  <li><a href="#">Jewelry</a></li>
+                  <li><a href="#">Kitchen</a></li>
+                </ul>
+              </li>
+              <li class="userItem"><a style="width: 170px;" href="#">Spiderman x
+                  Hello Kitty</a></li>
+              <li class="userItem"><a href="#">Contact</a></li>
+            </ul>
+          </nav>
+
+          <div class="selectOption">
+            <div class="customValyuta">
+              <div class="dropdown">
+                <button class="dropdown-toggle">
+                  <span id="selectedCurrency">AZN</span>
+                  <span class="arrow"><i class="fa-solid fa-angle-down"
+                      style="color: #515151;"></i></span>
+                </button>
+                <ul style="margin-top: 10px;" class="dropdown-menu">
+                  <li class="dropdown-item"
+                    data-currency="AZN"><span>AZN</span></li>
+                  <li class="dropdown-item"
+                    data-currency="TRY"><span>TRY</span></li>
+                  <li class="dropdown-item"
+                    data-currency="USD"><span>USD</span></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="customLang">
+              <div class="dropdown">
+                <button class="dropdown-toggle">
+                  <span id="selectedLanguage">English</span>
+                  <span class="arrow"><i class="fa-solid fa-angle-down"
+                      style="color: #515151;"></i></span>
+                </button>
+                <ul style="margin-top: 10px;" class="dropdown-menu">
+                  <li class="dropdown-item"
+                    data-currency="AZN"><span>Azərbaycan</span></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="search"><i class="fa-solid fa-magnifying-glass"
+                style="color: #333;"></i></div>
+            <a href="./cart.html" class="addTooCart">
+              <i class="fa-solid fa-cart-shopping" style="color: #333;"></i>
+              <span class="cartCount">0</span>
+            </a>
+            <div id="cartModal" class="modal">
+              <div class="cartModalContent">
+                <h2><i class="fa-solid fa-check" style="color: #4b4b4b;"></i>Item added to your cart</h2>
+                <div class="cartProductList"></div>
+                <button class="closeCartModal"><i class="fa-solid fa-xmark" style="color: #000000;"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+
+    <div class="modalOverlay" id="modalOverlay"></div>
+    <div class="search-container" id="searchContainer">
+      <form action="javascript:void(0);">
+        <div
+          style="display: flex; justify-content: center; gap: 30px; margin-top: 20px; margin-left: 40px;">
+          <input type="text" placeholder="Axtarın..." class="search-input"
+            id="searchInput">
+          <button class="close-btn" id="closeBtn">✖</button>
+        </div>
+        <div class="searchResults" id="searchResults">
+          <div class="resultCont" id="resultCont">Empty...</div>
+        </div>
+      </form>
+    </div>
+
+    <main>
+
+      <div class="checkoutContainer">
+        <form class="checkoutForm">
+          <section class="contactSection">
+            <h2>Contact</h2>
+            <input type="email" id="emailOrPhone"
+              placeholder="Email or mobile phone number">
+            <div class="checkboxWrapper">
+              <input type="checkbox" id="newsOffers">
+              <label for="newsOffers">Email me with news and offers</label>
+            </div>
+            <div class="errorMessage" id="emailError"></div>
+            <!-- Hata mesajı buraya gelecek -->
+          </section>
+
+          <section class="deliverySection">
+            <h2>Delivery</h2>
+            <select id="countryRegion">
+              <option value>Country/Region</option>
+            </select>
+            <div class="nameWrapper">
+              <div>
+                <input type="text" id="firstName" placeholder="First name">
+                <div class="errorMessage" id="firstNameError"></div>
+                <!-- Hata mesajı -->
+              </div>
+              <div>
+                <input type="text" id="lastName" placeholder="Last name">
+                <div class="errorMessage" id="lastNameError"></div>
+                <!-- Hata mesajı -->
+              </div>
+            </div>
+
+            <input type="text" id="address" placeholder="Address">
+            <div class="errorMessage" id="addressError"></div>
+            <!-- Hata mesajı -->
+
+            <input type="text" id="postalCode" placeholder="Postal code">
+            <div class="errorMessage" id="postalCodeError"></div>
+            <!-- Hata mesajı -->
+
+            <input type="text" id="city" placeholder="City">
+            <div class="errorMessage" id="cityError"></div> <!-- Hata mesajı -->
+
+            <input type="tel" id="phone" placeholder="Phone">
+            <div class="errorMessage" id="phoneError"></div>
+            <!-- Hata mesajı -->
+
+            <div class="checkboxWrapper">
+              <input type="checkbox" id="saveInformation">
+              <label for="saveInformation">Save this information for next
+                time</label>
+            </div>
+          </section>
+
+          <section class="shippingMethodSection">
+            <h2>Shipping method</h2>
+            <input type="text" id="shippingMethod"
+              placeholder="Enter your shipping address to view available shipping methods"
+              disabled>
+          </section>
+
+          <section class="paymentSection">
+            <h2>Payment</h2>
+            <p>All transactions are secure and encrypted.</p>
+            <select id="paymentMethod">
+              <option value="creditCard">Credit card</option>
+            </select>
+            <input type="text" id="cardNumber" placeholder="Card number">
+            <div class="errorMessage" id="cardNumberError"></div>
+            <!-- Hata mesajı -->
+
+            <input type="text" id="expirationDate"
+              placeholder="Expiration date (MM / YY)">
+            <div class="errorMessage" id="expirationDateError"></div>
+            <!-- Hata mesajı -->
+
+            <input type="text" id="securityCode" placeholder="Security code">
+            <div class="errorMessage" id="securityCodeError"></div>
+            <!-- Hata mesajı -->
+
+            <input type="text" id="nameOnCard" placeholder="Name on card">
+            <div class="errorMessage" id="nameOnCardError"></div>
+            <!-- Hata mesajı -->
+
+            <div class="checkboxWrapper">
+              <input type="checkbox" id="billingAddress">
+              <label for="billingAddress">Use shipping address as billing
+                address</label>
+            </div>
+          </section>
+
+          <button type="submit" class="reviewOrderButton">Review order</button>
+        </form>
+
+        <aside class="summarySection">
+          <div class="productSummary">
+            <img src="product.jpg" alt="Product image">
+            <p>Spiderman x Hello Kitty Pajama</p>
+            <span class="productPrice">$22.00</span>
+          </div>
+          <input type="text" id="discountCode" placeholder="Discount code">
+          <button class="applyButton">Apply</button>
+          <div class="pricingSummary">
+            <p>Subtotal: <span>$22.00</span></p>
+            <p>Shipping: <span>Enter shipping address</span></p>
+            <p>Total: <span>$22.00</span></p>
+          </div>
+        </aside>
+      </div>
+
+    </main>
+
+    <script src="./script.js" defer></script>
+  </body>
+</html>

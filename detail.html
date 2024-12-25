@@ -18,116 +18,126 @@
         <title>Detail Page</title>
     </head>
     <body>
-        <header>
-            <div class="container">
-              <div class="row">
-                <!-- Burger Menü -->
-                <div class="burger-menu" id="burger-menu">
-                  <span class="open"><i class="fa-solid fa-bars"
-                      style="color: #000000;"></i></span>
-                  <span class="close"><i class="fa-solid fa-xmark"
-                      style="color: #000000;"></i></span>
-                </div>
-      
-                <!-- Logo -->
-                <a href="./index.html" class="logoCont">
-                  <img
-                    src="https://hellokitty-store.com/cdn/shop/files/N-3.jpg?v=1710080220&width=200"
-                    alt="Logo">
-                </a>
-      
-                <!-- Navbar -->
-                <nav class="navBar">
-                  <ul class="userList" id="nav-links">
-                    <li class="userItem"><a href="./index.html">Welcome</a></li>
-                    <li class="userItem dropdown">
-                      <a href="#" class="dropdownToggle">Clothes <span
-                          class="arrow"><i class="fa-solid fa-angle-down"
-                            style="color: #515151;"></i></span></a>
-                      <ul class="dropdownMenu">
-                        <li><a href="#">Pyjama</a></li>
-                        <li><a href="#">Hoodies</a></li>
-                      </ul>
-                    </li>
-                    <li class="userItem dropdown">
-                      <a href="#" class="dropdownToggle">Accessories <span
-                          class="arrow"><i class="fa-solid fa-angle-down"
-                            style="color: #515151;"></i></span></a>
-                      <ul class="dropdownMenu">
-                        <li><a href="#">See everything</a></li>
-                        <li><a href="#">Plush</a></li>
-                        <li><a href="#">Decoration</a></li>
-                        <li><a href="#">Care and beauty</a></li>
-                        <li><a href="#">Sac</a></li>
-                        <li><a href="#">Stationery store</a></li>
-                        <li><a href="#">Phone</a></li>
-                        <li><a href="#">Jewelry</a></li>
-                        <li><a href="#">Kitchen</a></li>
-                      </ul>
-                    </li>
-                    <li class="userItem"><a style="width: 170px;" href="#">Spiderman x
-                        Hello Kitty</a></li>
-                    <li class="userItem"><a href="#">Contact</a></li>
+      <header id="header">
+        <div class="container">
+          <div class="row">
+            <!-- Burger Menü -->
+            <div class="burger-menu" id="burger-menu">
+              <span class="open"><i class="fa-solid fa-bars"
+                  style="color: #000000;"></i></span>
+              <span class="close"><i class="fa-solid fa-xmark"
+                  style="color: #000000;"></i></span>
+            </div>
+  
+            <!-- Logo -->
+            <a href="./index.html" class="logoCont">
+              <img
+                src="https://hellokitty-store.com/cdn/shop/files/N-3.jpg?v=1710080220&width=200"
+                alt="Logo">
+            </a>
+  
+            <!-- Navbar -->
+            <nav class="navBar">
+              <ul class="userList" id="nav-links">
+                <li class="userItem"><a href="./index.html">Welcome</a></li>
+                <li class="userItem dropdown">
+                  <a href="#" class="dropdownToggle">Clothes <span
+                      class="arrow"><i class="fa-solid fa-angle-down"
+                        style="color: #515151;"></i></span></a>
+                  <ul class="dropdownMenu">
+                    <li><a href="#">Pyjama</a></li>
+                    <li><a href="#">Hoodies</a></li>
                   </ul>
-                </nav>
-      
-                <div class="selectOption">
-                  <div class="customValyuta">
-                    <div class="dropdown">
-                      <button class="dropdown-toggle">
-                        <span id="selectedCurrency">AZN</span>
-                        <span class="arrow"><i class="fa-solid fa-angle-down"
-                            style="color: #515151;"></i></span>
-                      </button>
-                      <ul style="margin-top: 10px;" class="dropdown-menu">
-                        <li class="dropdown-item"
-                          data-currency="AZN"><span>AZN</span></li>
-                        <li class="dropdown-item"
-                          data-currency="TRY"><span>TRY</span></li>
-                        <li class="dropdown-item"
-                          data-currency="USD"><span>USD</span></li>
-                      </ul>
-                    </div>
-                  </div>
-      
-                  <div class="customLang">
-                    <div class="dropdown">
-                      <button class="dropdown-toggle">
-                        <span id="selectedLanguage">English</span>
-                        <span class="arrow"><i class="fa-solid fa-angle-down"
-                            style="color: #515151;"></i></span>
-                      </button>
-                      <ul style="margin-top: 10px;" class="dropdown-menu">
-                        <li class="dropdown-item"
-                          data-currency="AZN"><span>Azərbaycan</span></li>
-                      </ul>
-                    </div>
-                  </div>
-      
-                  <div class="search"><i class="fa-solid fa-magnifying-glass"
-                      style="color: #333;"></i></div>
-                  <div class="addTooCart"><i class="fa-solid fa-cart-shopping"
-                      style="color: #333;"></i></div>
+                </li>
+                <li class="userItem dropdown">
+                  <a href="#" class="dropdownToggle">Accessories <span
+                      class="arrow"><i class="fa-solid fa-angle-down"
+                        style="color: #515151;"></i></span></a>
+                  <ul class="dropdownMenu">
+                    <li><a href="#">See everything</a></li>
+                    <li><a href="#">Plush</a></li>
+                    <li><a href="#">Decoration</a></li>
+                    <li><a href="#">Care and beauty</a></li>
+                    <li><a href="#">Sac</a></li>
+                    <li><a href="#">Stationery store</a></li>
+                    <li><a href="#">Phone</a></li>
+                    <li><a href="#">Jewelry</a></li>
+                    <li><a href="#">Kitchen</a></li>
+                  </ul>
+                </li>
+                <li class="userItem"><a style="width: 170px;" href="#">Spiderman x
+                    Hello Kitty</a></li>
+                <li class="userItem"><a href="#">Contact</a></li>
+              </ul>
+            </nav>
+  
+            <div class="selectOption">
+              <div class="customValyuta">
+                <div class="dropdown">
+                  <button class="dropdown-toggle">
+                    <span id="selectedCurrency">AZN</span>
+                    <span class="arrow"><i class="fa-solid fa-angle-down"
+                        style="color: #515151;"></i></span>
+                  </button>
+                  <ul style="margin-top: 10px;" class="dropdown-menu">
+                    <li class="dropdown-item"
+                      data-currency="AZN"><span>AZN</span></li>
+                    <li class="dropdown-item"
+                      data-currency="TRY"><span>TRY</span></li>
+                    <li class="dropdown-item"
+                      data-currency="USD"><span>USD</span></li>
+                  </ul>
+                </div>
+              </div>
+  
+              <div class="customLang">
+                <div class="dropdown">
+                  <button class="dropdown-toggle">
+                    <span id="selectedLanguage">English</span>
+                    <span class="arrow"><i class="fa-solid fa-angle-down"
+                        style="color: #515151;"></i></span>
+                  </button>
+                  <ul style="margin-top: 10px;" class="dropdown-menu">
+                    <li class="dropdown-item"
+                      data-currency="AZN"><span>Azərbaycan</span></li>
+                  </ul>
+                </div>
+              </div>
+  
+              <div class="search"><i class="fa-solid fa-magnifying-glass"
+                  style="color: #333;"></i></div>
+              <a href="./cart.html" class="addTooCart">
+                <i class="fa-solid fa-cart-shopping" style="color: #333;"></i>
+                <span class="cartCount">0</span>
+              </a>
+              <div id="cartModal" class="modal">
+                <div class="cartModalContent">
+                  <h2><i class="fa-solid fa-check" style="color: #4b4b4b;"></i>Item added to your cart</h2>
+                  <div class="cartProductList"></div>
+                  <button class="closeCartModal"><i class="fa-solid fa-xmark" style="color: #000000;"></i></button>
                 </div>
               </div>
             </div>
-          </header>
-          <div class="modalOverlay" id="modalOverlay"></div>
-          <div class="search-container" id="searchContainer">
-            <form action="javascript:void(0);">
-              <div
-                style="display: flex; justify-content: center; gap: 30px; margin-top: 20px; margin-left: 40px;">
-                <input type="text" placeholder="Axtarın..." class="search-input"
-                  id="searchInput">
-                <button class="close-btn" id="closeBtn">✖</button>
-              </div>
-              <div class="searchResults" id="searchResults">
-                <div class="resultCont" id="resultCont">Empty...</div>
-              </div>
-            </form>
           </div>
+        </div>
+      </header>
   
-
+  
+      <div class="modalOverlay" id="modalOverlay"></div>
+      <div class="search-container" id="searchContainer">
+        <form action="javascript:void(0);">
+          <div
+            style="display: flex; justify-content: center; gap: 30px; margin-top: 20px; margin-left: 40px;">
+            <input type="text" placeholder="Axtarın..." class="search-input"
+              id="searchInput">
+            <button class="close-btn" id="closeBtn">✖</button>
+          </div>
+          <div class="searchResults" id="searchResults">
+            <div class="resultCont" id="resultCont">Empty...</div>
+          </div>
+        </form>
+      </div>
+<main>
         <div class="mainContainer">
             <div class="productContainer">
                 <div class="imageSection">
@@ -149,7 +159,7 @@
                     </div>
                     <div class="buttonSection">
                         <button class="addToCartButton">Add to cart</button>
-                        <button class="buyNowButton">Buy it now</button>
+                        <a href="./checkout.html" class="buyNowButton">Buy it now</a>
                     </div>
                     <div class="infoCards">
                         <div class="card">
@@ -186,7 +196,7 @@
             </div>
         </div>
 
-
+      </main>
 
             <!-- footer start -->
 
@@ -285,7 +295,7 @@
             </footer>
 
             <!-- footer end -->
-        </main>
+        
         <script src="./script.js" defer></script>
     </body>
 </html>
