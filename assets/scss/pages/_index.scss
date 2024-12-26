@@ -91,11 +91,10 @@
     }
 
     .viewAll {
-    @include blackBtn;
+      @include blackBtn;
     }
   }
 }
-
 
 @media (max-width: 1024px) {
   .productsSection {
@@ -128,11 +127,6 @@
 }
 // products end
 
-
-
-
-
-
 .modal {
   display: none;
   position: fixed;
@@ -160,9 +154,6 @@
   top: 10px;
   right: 10px;
 }
-
-
-
 
 // why Hello start
 .whyHelloSection {
@@ -475,10 +466,6 @@
 }
 // slider end
 
-
-
-
-
 .modal {
   display: none;
   position: fixed;
@@ -500,8 +487,8 @@
     background-color: #f3f3f3;
     width: 70%;
     height: auto;
-    max-height: 90%; 
-    overflow-y: auto; 
+    max-height: 90%;
+    overflow-y: auto;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     position: relative;
     animation: slideUp 0.4s ease;
@@ -546,7 +533,6 @@
 
     img {
       width: 100%;
-      margin-bottom: 1.5rem;
     }
 
     h2 {
@@ -631,8 +617,6 @@
   }
 }
 
-
-
 #cartModal {
   display: none;
   position: fixed;
@@ -640,12 +624,12 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: transparent;/* Sadece karartma */
+  background-color: transparent; /* Sadece karartma */
   z-index: 1000;
   justify-content: center;
   align-items: center;
 }
-.cartModalContentCont{
+.cartModalContentCont {
   width: 1200px;
   margin: 0 auto;
   .cartModalContent {
@@ -654,46 +638,71 @@
     width: 90%;
     position: absolute;
     border: 1px solid #18181825;
-    top: 0px;
-    right: 0px;
+    top: 84px;
+    right: 141px;
     max-width: 400px;
     margin: 50px auto;
-  
-    h2{
-      font-size: 20px;
+    .continueShopping {
+      font-size: 14px;
+      color: #000;
+      text-decoration: underline;
+    }
+    h2 {
+      font-size: 14px;
       font-weight: 400;
       color: #4b4b4b;
+      margin-top: 10px;
+      margin-bottom: 25px;
+      i {
+        margin-right: 17px;
+      }
     }
   }
 }
 
-
+.viewCartBtn {
+  width: 100%;
+  text-align: center;
+  @include whiteBtn;
+}
+.buyNowButton {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  @include blackBtn;
+}
 
 .cartProduct {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 16px;
   margin-bottom: 15px;
+  h3 {
+    font-size: 14px;
+    font-weight: 400;
+    color: #4b4b4b;
+    margin-bottom: 5px;
+  }
 }
 
 .cartImage {
-  width: 50px;
-  height: 50px;
+  width: 65px;
+  height: 65px;
   object-fit: cover;
   border: 1px solid #ddd;
 }
- .closeCartModal {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: transparent;
-    color: #0d0d0d;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
+.closeCartModal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  color: #0d0d0d;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
 
-
-    &:hover {
-      color: #2a2a2a;
-    }
+  &:hover {
+    color: #2a2a2a;
   }
+}

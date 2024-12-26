@@ -297,8 +297,6 @@ function renderProducts(page, perPage, filteredProducts = null) {
 }
 // products start
 
-//choose option clicked model start
-
 document.addEventListener("DOMContentLoaded", () => {
   const modal = document.getElementById("modal");
   const closeBtn = document.querySelector(".closeBtn");
@@ -309,17 +307,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const cartCount = document.querySelector(".cartCount");
   const cartModal = document.getElementById("cartModal");
   const cartModalContent = document.querySelector(".cartProductList");
+  const totalItemsCount = document.querySelector(".totalItemsCount"); // Toplam ürün sayısını gösterecek alan
 
   let count = 0; // Sepet sayacı
   let cartItems = []; // Sepetteki ürünler
+
 
   fetch("product.json")
     .then((response) => response.json())
     .then((products) => {
       document.addEventListener("click", (event) => {
+        // Ürün detay modali
         if (event.target.classList.contains("chooseOption")) {
           event.preventDefault();
-          header.classList.remove("hidden");
           const productId = event.target.dataset.productId;
           const product = products.find((item) => item.id == productId);
 
@@ -328,11 +328,13 @@ document.addEventListener("DOMContentLoaded", () => {
             productTitle.textContent = product.name;
             productPrice.textContent = `€${product.price.toFixed(2)}`;
             modal.style.display = "flex";
+            attachModalEventListeners(modal, product); // Dinamik bağlama
           } else {
             console.error("Mehsul tapilmadi. ID:", productId);
           }
         }
 
+        // Sepete ekleme işlemi
         if (event.target.classList.contains("addToCartButton")) {
           event.preventDefault();
           count++;
@@ -343,26 +345,19 @@ document.addEventListener("DOMContentLoaded", () => {
             id: mainImageCart.src,
             name: productTitle.textContent,
             price: parseFloat(productPrice.textContent.replace("€", "")),
-            quantity: 1,
+            quantity: parseInt(modal.querySelector(".quantityInput").textContent), // Dinamik miktar
           };
 
-          // Eğer ürün zaten varsa, miktarı artır
-          const existingProduct = cartItems.find(
-            (item) => item.id === productInCart.id
-          );
+          const existingProduct = cartItems.find((item) => item.id === productInCart.id);
           if (existingProduct) {
-            existingProduct.quantity++;
+            existingProduct.quantity += productInCart.quantity;
           } else {
             cartItems.push(productInCart);
           }
 
-          // Modalı kapat, sepet modalını aç ve sayfayı yukarı kaydır
           modal.style.display = "none";
           updateCartModal();
           cartModal.style.display = "flex";
-
-          // Sayfayı yukarı kaydır
-          // window.scrollTo({ top: 0, behavior: "smooth" });
         }
       });
 
@@ -387,62 +382,63 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch((error) => console.error("JSON yükleme hatası:", error));
 
-function updateCartModal() {
-  cartModalContent.innerHTML = "";
+  function updateCartModal() {
+    cartModalContent.innerHTML = "";
 
-  cartItems.forEach((item, index) => {
-    const cartItem = document.createElement("div");
-    cartItem.classList.add("cartProduct");
-    cartItem.innerHTML = `
-      <img src="${item.id}" alt="${item.name}" class="cartImage">
-      <div>
-        <h3>${item.name}</h3>
-        <p>€${(item.price * item.quantity).toFixed(2)} (€${item.price.toFixed(
-      2
-    )} x ${item.quantity})</p>
-        <div style="display: flex; align-items: center;">
-          <button class="quantityIncrease" data-index="${index}">+</button>
-          <span class="quantityDisplay">${item.quantity}</span>
-          <button class="quantityDecrease" data-index="${index}">-</button>
+    let totalItems = 0; // Toplam ürün sayacı
+
+    cartItems.forEach((item) => {
+      totalItems += item.quantity; // Toplam ürüne miktarını ekle
+
+      const cartItem = document.createElement("div");
+      cartItem.classList.add("cartProduct");
+      cartItem.innerHTML = `
+        <img src="${item.id}" alt="${item.name}" class="cartImage">
+        <div>
+          <h3>${item.name}</h3>
+          <p>€${(item.price * item.quantity).toFixed(2)} (€${item.price.toFixed(2)} x ${item.quantity})</p>
         </div>
-      </div>
-    `;
-    cartModalContent.appendChild(cartItem);
-  });
-
-  // Artırma/Azaltma butonlarını yeniden bağla
-  cartModalContent.querySelectorAll(".quantityIncrease").forEach((btn) => {
-    btn.addEventListener("click", (event) => {
-      const index = event.target.dataset.index;
-      cartItems[index].quantity++;
-      updateCartModal();
+      `;
+      cartModalContent.appendChild(cartItem);
     });
-  });
 
-  cartModalContent.querySelectorAll(".quantityDecrease").forEach((btn) => {
-    btn.addEventListener("click", (event) => {
-      const index = event.target.dataset.index;
-      if (cartItems[index].quantity > 1) {
-        cartItems[index].quantity--;
-      } else {
-        cartItems.splice(index, 1); // Ürünü sepetten kaldır
-        count--;
-        cartCount.textContent = count;
-        if (count === 0) cartCount.style.display = "none";
+    // Toplam ürün sayısını güncelle
+    totalItemsCount.textContent = `View cart: ${totalItems}`;
+  }
+
+  function attachModalEventListeners(modalElement, product) {
+    const increaseBtn = modalElement.querySelector(".quantityIncrease");
+    const decreaseBtn = modalElement.querySelector(".quantityDecrease");
+    const quantityInput = modalElement.querySelector(".quantityInput");
+
+    if (!increaseBtn || !decreaseBtn || !quantityInput) {
+      console.error("Artırma/Azaltma elementleri bulunamadı.");
+      return;
+    }
+
+    let quantity = 1; // Varsayılan miktar
+    quantityInput.textContent = quantity;
+
+    // Artırma butonu
+    increaseBtn.addEventListener("click", () => {
+      quantity++;
+      quantityInput.textContent = quantity;
+    });
+
+    // Azaltma butonu
+    decreaseBtn.addEventListener("click", () => {
+      if (quantity > 1) {
+        quantity--;
+        quantityInput.textContent = quantity;
       }
-      updateCartModal();
     });
-  });
-}
-
+  }
 });
 
-//choose option clicked model start
-
-// detail start. picture clicked go to detail, mini picture
-
+// URL'den ürün ID'sini al ve detayları yükle
 const urlParams = new URLSearchParams(window.location.search);
 const productId = urlParams.get("id");
+
 fetch("product.json")
   .then((response) => response.json())
   .then((products) => {
@@ -453,9 +449,7 @@ fetch("product.json")
       document.querySelector(".mainImage").src = product.image;
       // Ürün adını ve fiyatını ayarla
       document.querySelector(".productTitle").textContent = product.name;
-      document.querySelector(
-        ".productPrice"
-      ).textContent = `€${product.price} EUR`;
+      document.querySelector(".productPrice").textContent = `€${product.price} EUR`;
 
       // Thumbnail container'ı seç
       const thumbnailContainer = document.querySelector(".thumbnailContainer");
@@ -479,9 +473,9 @@ fetch("product.json")
         });
       });
     }
-  });
+  })
+  .catch((error) => console.error("JSON yükleme hatası:", error));
 
-// detail start. picture clicked go to detail, mini picture
 
 // Ürün sayısını güncelleme fonksiyonu
 function updateProductCount(count) {

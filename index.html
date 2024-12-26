@@ -73,6 +73,7 @@
           </nav>
 
           <div class="selectOption">
+
             <div class="customValyuta">
               <div class="dropdown">
                 <button class="dropdown-toggle">
@@ -111,28 +112,48 @@
               <i class="fa-solid fa-cart-shopping" style="color: #333;"></i>
               <span class="cartCount">0</span>
             </a>
-            
+            <div id="cartModal" class="modal">
+              <div class="cartModalContentCont">
+                <div class="cartModalContent">
+                  <h2><i class="fa-solid fa-check"
+                      style="color: #4b4b4b;"></i>Item added to your cart</h2>
+                  <div class="cartProductList"></div>
+                  <button class="closeCartModal"><i class="fa-solid fa-xmark"
+                      style="color: #000000;"></i></button>
+                  <a href="./cart.html" class="viewCartBtn"><div
+                      class="totalItemsCount"></div></a>
+                  <a href="./checkout.html" class="buyNowButton">Buy it now</a>
+                  <div style="text-align: center;">
+                  <a href="./shop.html" class="continueShopping">Continue shopping</a>
+                </div>
+                </div>
+              </div>
+            </div>
+
           </div>
+
         </div>
+        <!-- <div id="cartModal" class="modal">
+          <div class="cartModalContentCont">
+            <div class="cartModalContent">
+              <h2><i class="fa-solid fa-check"
+                  style="color: #4b4b4b;"></i>Item added to your cart</h2>
+              <div class="cartProductList"></div>
+              <button class="closeCartModal"><i class="fa-solid fa-xmark"
+                  style="color: #000000;"></i></button>
+              <a href="./cart.html" class="viewCartBtn"><div
+                  class="totalItemsCount"></div></a>
+            </div>
+          </div>
+        </div> -->
       </div>
     </header>
-    <div id="cartModal" class="modal">
-      <div class="cartModalContentCont">
-        <div class="cartModalContent">
-          <h2><i class="fa-solid fa-check"
-              style="color: #4b4b4b;"></i>Item added to your cart</h2>
-          <div class="cartProductList"></div>
-          <button class="closeCartModal"><i class="fa-solid fa-xmark"
-              style="color: #000000;"></i></button>
-        </div>
-      </div>
-    </div>
 
     <div class="modalOverlay" id="modalOverlay"></div>
     <div class="search-container" id="searchContainer">
       <form action="javascript:void(0);">
         <div
-          style="display: flex; justify-content: center; gap: 30px; margin-top: 20px; margin-left: 40px;">
+          style="display: flex; justify-content: center; gap: 30px; margin-top: 20px; margin-left: 5px;">
           <input type="text" placeholder="Axtarın..." class="search-input"
             id="searchInput">
           <button class="close-btn" id="closeBtn">✖</button>
@@ -179,10 +200,10 @@
                 <div class="quantitySection">
                   <label for="quantity" class="taxInfo">Quantity</label>
                   <div style="display: flex;">
-                    <button class="quantityIncrease" >-</button>
-                    <input type="number" id="quantity" value="1" min="1"
-                      class="quantityInput">
-                    <button class="quantityDecrease">+</button>
+                    <button class="quantityDecrease">-</button>
+                    <span type="number" id="quantity" value="1" min="1"
+                      class="quantityInput"></span>
+                    <button class="quantityIncrease">+</button>
                   </div>
                 </div>
                 <div class="buttonSection">

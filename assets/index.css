@@ -352,11 +352,11 @@ body.blur {
   outline: none;
 }
 .search-container .searchResults {
-  background: #f9f9f9;
+  background: #f3f3f3;
   border: 1px solid #ccc;
   border-radius: 4px;
   max-height: 300px;
-  width: 63%;
+  width: 65%;
   margin: 0 auto;
   display: none;
   overflow-y: auto;
@@ -858,7 +858,6 @@ body.no-blur {
 }
 .modal .modalContent img {
   width: 100%;
-  margin-bottom: 1.5rem;
 }
 .modal .modalContent h2 {
   font-size: 1.8rem;
@@ -950,27 +949,67 @@ body.no-blur {
   width: 90%;
   position: absolute;
   border: 1px solid rgba(24, 24, 24, 0.1450980392);
-  top: 0px;
-  right: 0px;
+  top: 84px;
+  right: 141px;
   max-width: 400px;
   margin: 50px auto;
 }
+.cartModalContentCont .cartModalContent .continueShopping {
+  font-size: 14px;
+  color: #000;
+  text-decoration: underline;
+}
 .cartModalContentCont .cartModalContent h2 {
-  font-size: 20px;
+  font-size: 14px;
   font-weight: 400;
   color: #4b4b4b;
+  margin-top: 10px;
+  margin-bottom: 25px;
+}
+.cartModalContentCont .cartModalContent h2 i {
+  margin-right: 17px;
+}
+
+.viewCartBtn {
+  width: 100%;
+  text-align: center;
+  display: inline-block;
+  border: 1px solid black;
+  cursor: pointer;
+  padding: 14px 35px;
+  background-color: transparent;
+  color: black;
+}
+
+.buyNowButton {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  display: inline-block;
+  cursor: pointer;
+  padding: 14px 35px;
+  border: none;
+  background-color: black;
+  color: white;
 }
 
 .cartProduct {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 16px;
   margin-bottom: 15px;
+}
+.cartProduct h3 {
+  font-size: 14px;
+  font-weight: 400;
+  color: #4b4b4b;
+  margin-bottom: 5px;
 }
 
 .cartImage {
-  width: 50px;
-  height: 50px;
+  width: 65px;
+  height: 65px;
   -o-object-fit: cover;
      object-fit: cover;
   border: 1px solid #ddd;
@@ -1353,7 +1392,7 @@ body .mainContainer {
 }
 body .mainContainer .productContainer {
   display: flex;
-  gap: 100px;
+  gap: 58px;
   padding: 20px;
 }
 body .mainContainer .productContainer .imageSection {
@@ -1396,10 +1435,10 @@ body .mainContainer .productContainer .infoSection .taxInfo {
 }
 body .mainContainer .productContainer .infoSection .quantitySection {
   display: flex;
-  flex-direction: column;
-  gap: 2px;
+  align-items: center;
+  gap: 30px;
 }
-body .mainContainer .productContainer .infoSection .quantitySection .quantityDecrease {
+body .mainContainer .productContainer .infoSection .quantitySection .quantityIncrease {
   width: 40px;
   height: 40px;
   font-size: 20px;
@@ -1414,7 +1453,7 @@ body .mainContainer .productContainer .infoSection .quantitySection .quantityDec
   justify-content: center;
   transition: background-color 0.3s ease;
 }
-body .mainContainer .productContainer .infoSection .quantitySection .quantityIncrease {
+body .mainContainer .productContainer .infoSection .quantitySection .quantityDecrease {
   width: 40px;
   height: 40px;
   text-align: center;
@@ -1433,7 +1472,7 @@ body .mainContainer .productContainer .infoSection .quantitySection .quantityInc
 body .mainContainer .productContainer .infoSection input[type=number]::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
-body .mainContainer .productContainer .infoSection .quantityInput {
+body .mainContainer .productContainer .infoSection .quantityInput, body .mainContainer .productContainer .infoSection .quantityDisplay {
   font-size: 1.2rem;
   width: 38px;
   opacity: 0.85;
@@ -1560,6 +1599,10 @@ body .mainContainer .productContainer .infoCards .card .spanTwo {
   }
 }
 
+body {
+  background-color: #f3f3f3;
+}
+
 .cartContainer {
   font-family: Arial, sans-serif;
   padding: 20px;
@@ -1620,10 +1663,10 @@ body .mainContainer .productContainer .infoCards .card .spanTwo {
 }
 .cartContainer .container .cartTable .cartRow .quan .quantitySection {
   display: flex;
-  flex-direction: column;
-  gap: 2px;
+  align-items: center;
+  gap: 30px;
 }
-.cartContainer .container .cartTable .cartRow .quan .quantitySection .quantityDecrease {
+.cartContainer .container .cartTable .cartRow .quan .quantitySection .quantityIncrease {
   width: 40px;
   height: 40px;
   font-size: 20px;
@@ -1638,7 +1681,7 @@ body .mainContainer .productContainer .infoCards .card .spanTwo {
   justify-content: center;
   transition: background-color 0.3s ease;
 }
-.cartContainer .container .cartTable .cartRow .quan .quantitySection .quantityIncrease {
+.cartContainer .container .cartTable .cartRow .quan .quantitySection .quantityDecrease {
   width: 40px;
   height: 40px;
   text-align: center;
@@ -1657,7 +1700,7 @@ body .mainContainer .productContainer .infoCards .card .spanTwo {
 .cartContainer .container .cartTable .cartRow .quan input[type=number]::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
-.cartContainer .container .cartTable .cartRow .quan .quantityInput {
+.cartContainer .container .cartTable .cartRow .quan .quantityInput, .cartContainer .container .cartTable .cartRow .quan .quantityDisplay {
   font-size: 1.2rem;
   width: 38px;
   opacity: 0.85;
@@ -1721,7 +1764,7 @@ body .mainContainer .productContainer .infoCards .card .spanTwo {
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
-  background-color: #f9f9f9;
+  background-color: #f3f3f3;
   color: #333;
   line-height: 1.6;
 }
@@ -1729,7 +1772,6 @@ body {
 .checkoutContainer {
   display: flex;
   flex-direction: column;
-  padding: 30px;
   max-width: 1200px;
   margin: auto;
   gap: 20px;
@@ -1745,6 +1787,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1.8rem;
+  flex: 1;
 }
 .checkoutForm input,
 .checkoutForm select {
@@ -1832,6 +1875,7 @@ body {
   flex: 1;
   background: #FFEDF4;
   padding: 25px;
+  border-left: 1px solid rgba(95, 95, 95, 0.3019607843);
   position: relative;
 }
 .summarySection .productSummary {

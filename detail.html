@@ -1,85 +1,281 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-            integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-            crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap"
-            rel="stylesheet">
-        <link rel="icon"
-            href="https://hellokitty-store.com/cdn/shop/files/kisspng-hello-kitty-clip-art-portable-network-graphics-des-5ce599a0155ae9.1294888715585509440875.png?crop=center&height=32&v=1710091983&width=32">
-        <link rel="stylesheet" href="./assets/index.css">
-        <title>Detail Page</title>
-    </head>
-    <body>
-      <header id="header">
-        <div class="container">
-          <div class="row">
-            <!-- Burger Menü -->
-            <div class="burger-menu" id="burger-menu">
-              <span class="open"><i class="fa-solid fa-bars"
-                  style="color: #000000;"></i></span>
-              <span class="close"><i class="fa-solid fa-xmark"
-                  style="color: #000000;"></i></span>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap"
+      rel="stylesheet">
+    <link rel="icon"
+      href="https://hellokitty-store.com/cdn/shop/files/kisspng-hello-kitty-clip-art-portable-network-graphics-des-5ce599a0155ae9.1294888715585509440875.png?crop=center&height=32&v=1710091983&width=32">
+    <link rel="stylesheet" href="./assets/index.css">
+    <title>Detail Page</title>
+  </head>
+  <body>
+    <header id="header">
+      <div class="container">
+        <div class="row">
+          <!-- Burger Menü -->
+          <div class="burger-menu" id="burger-menu">
+            <span class="open"><i class="fa-solid fa-bars"
+                style="color: #000000;"></i></span>
+            <span class="close"><i class="fa-solid fa-xmark"
+                style="color: #000000;"></i></span>
+          </div>
+
+          <!-- Logo -->
+          <a href="./index.html" class="logoCont">
+            <img
+              src="https://hellokitty-store.com/cdn/shop/files/N-3.jpg?v=1710080220&width=200"
+              alt="Logo">
+          </a>
+
+          <!-- Navbar -->
+          <nav class="navBar">
+            <ul class="userList" id="nav-links">
+              <li class="userItem"><a href="./index.html">Welcome</a></li>
+              <li class="userItem dropdown">
+                <a href="#" class="dropdownToggle">Clothes <span
+                    class="arrow"><i class="fa-solid fa-angle-down"
+                      style="color: #515151;"></i></span></a>
+                <ul class="dropdownMenu">
+                  <li><a href="#">Pyjama</a></li>
+                  <li><a href="#">Hoodies</a></li>
+                </ul>
+              </li>
+              <li class="userItem dropdown">
+                <a href="#" class="dropdownToggle">Accessories <span
+                    class="arrow"><i class="fa-solid fa-angle-down"
+                      style="color: #515151;"></i></span></a>
+                <ul class="dropdownMenu">
+                  <li><a href="#">See everything</a></li>
+                  <li><a href="#">Plush</a></li>
+                  <li><a href="#">Decoration</a></li>
+                  <li><a href="#">Care and beauty</a></li>
+                  <li><a href="#">Sac</a></li>
+                  <li><a href="#">Stationery store</a></li>
+                  <li><a href="#">Phone</a></li>
+                  <li><a href="#">Jewelry</a></li>
+                  <li><a href="#">Kitchen</a></li>
+                </ul>
+              </li>
+              <li class="userItem"><a style="width: 170px;" href="#">Spiderman x
+                  Hello Kitty</a></li>
+              <li class="userItem"><a href="#">Contact</a></li>
+            </ul>
+          </nav>
+
+          <div class="selectOption">
+
+            <div class="customValyuta">
+              <div class="dropdown">
+                <button class="dropdown-toggle">
+                  <span id="selectedCurrency">AZN</span>
+                  <span class="arrow"><i class="fa-solid fa-angle-down"
+                      style="color: #515151;"></i></span>
+                </button>
+                <ul style="margin-top: 10px;" class="dropdown-menu">
+                  <li class="dropdown-item"
+                    data-currency="AZN"><span>AZN</span></li>
+                  <li class="dropdown-item"
+                    data-currency="TRY"><span>TRY</span></li>
+                  <li class="dropdown-item"
+                    data-currency="USD"><span>USD</span></li>
+                </ul>
+              </div>
             </div>
-  
-            <!-- Logo -->
-            <a href="./index.html" class="logoCont">
-              <img
-                src="https://hellokitty-store.com/cdn/shop/files/N-3.jpg?v=1710080220&width=200"
-                alt="Logo">
+
+            <div class="customLang">
+              <div class="dropdown">
+                <button class="dropdown-toggle">
+                  <span id="selectedLanguage">English</span>
+                  <span class="arrow"><i class="fa-solid fa-angle-down"
+                      style="color: #515151;"></i></span>
+                </button>
+                <ul style="margin-top: 10px;" class="dropdown-menu">
+                  <li class="dropdown-item"
+                    data-currency="AZN"><span>Azərbaycan</span></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="search"><i class="fa-solid fa-magnifying-glass"
+                style="color: #333;"></i></div>
+            <a href="./cart.html" class="addTooCart">
+              <i class="fa-solid fa-cart-shopping" style="color: #333;"></i>
+              <span class="cartCount">0</span>
             </a>
-  
-            <!-- Navbar -->
-            <nav class="navBar">
-              <ul class="userList" id="nav-links">
-                <li class="userItem"><a href="./index.html">Welcome</a></li>
-                <li class="userItem dropdown">
-                  <a href="#" class="dropdownToggle">Clothes <span
-                      class="arrow"><i class="fa-solid fa-angle-down"
-                        style="color: #515151;"></i></span></a>
-                  <ul class="dropdownMenu">
-                    <li><a href="#">Pyjama</a></li>
-                    <li><a href="#">Hoodies</a></li>
-                  </ul>
-                </li>
-                <li class="userItem dropdown">
-                  <a href="#" class="dropdownToggle">Accessories <span
-                      class="arrow"><i class="fa-solid fa-angle-down"
-                        style="color: #515151;"></i></span></a>
-                  <ul class="dropdownMenu">
-                    <li><a href="#">See everything</a></li>
-                    <li><a href="#">Plush</a></li>
-                    <li><a href="#">Decoration</a></li>
-                    <li><a href="#">Care and beauty</a></li>
-                    <li><a href="#">Sac</a></li>
-                    <li><a href="#">Stationery store</a></li>
-                    <li><a href="#">Phone</a></li>
-                    <li><a href="#">Jewelry</a></li>
-                    <li><a href="#">Kitchen</a></li>
-                  </ul>
-                </li>
-                <li class="userItem"><a style="width: 170px;" href="#">Spiderman x
-                    Hello Kitty</a></li>
-                <li class="userItem"><a href="#">Contact</a></li>
-              </ul>
-            </nav>
-  
-            <div class="selectOption">
+            <div id="cartModal" class="modal">
+              <div class="cartModalContentCont">
+                <div class="cartModalContent">
+                  <h2><i class="fa-solid fa-check"
+                      style="color: #4b4b4b;"></i>Item added to your cart</h2>
+                  <div class="cartProductList"></div>
+                  <button class="closeCartModal"><i class="fa-solid fa-xmark"
+                      style="color: #000000;"></i></button>
+                  <a href="./cart.html" class="viewCartBtn"><div
+                      class="totalItemsCount"></div></a>
+                  <a href="./checkout.html" class="buyNowButton">Buy it now</a>
+                  <a href="./shop.html" class="continueShopping">Continue shopping</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+        <!-- <div id="cartModal" class="modal">
+            <div class="cartModalContentCont">
+              <div class="cartModalContent">
+                <h2><i class="fa-solid fa-check"
+                    style="color: #4b4b4b;"></i>Item added to your cart</h2>
+                <div class="cartProductList"></div>
+                <button class="closeCartModal"><i class="fa-solid fa-xmark"
+                    style="color: #000000;"></i></button>
+                <a href="./cart.html" class="viewCartBtn"><div
+                    class="totalItemsCount"></div></a>
+              </div>
+            </div>
+          </div> -->
+      </div>
+    </header>
+
+    <div class="modalOverlay" id="modalOverlay"></div>
+    <div class="search-container" id="searchContainer">
+      <form action="javascript:void(0);">
+        <div
+          style="display: flex; justify-content: center; gap: 30px; margin-top: 20px; margin-left: 5px;">
+          <input type="text" placeholder="Axtarın..." class="search-input"
+            id="searchInput">
+          <button class="close-btn" id="closeBtn">✖</button>
+        </div>
+        <div class="searchResults" id="searchResults">
+          <div class="resultCont" id="resultCont">Empty...</div>
+        </div>
+      </form>
+    </div>
+    <main>
+      <div class="mainContainer">
+        <div class="productContainer">
+          <div class="imageSection">
+            <img src alt="Hello Kitty Dinosaur Plush" class="mainImage">
+            <div class="thumbnailContainer">
+            </div>
+          </div>
+          <div class="infoSection">
+            <h2 class="productTitle">Hello Kitty Dinosaur Plush</h2>
+            <p class="productPrice">€31,90 EUR</p>
+            <p class="taxInfo">Tax included.</p>
+            <div class="quantitySection">
+              <label for="quantity" class="taxInfo">Quantity</label>
+              <div style="display: flex;">
+                <button class="quantityDecrease">-</button>
+                <span type="number" id="quantity" value="1" min="1"
+                  class="quantityInput"></span>
+                <button class="quantityIncrease">+</button>
+              </div>
+            </div>
+            <div class="buttonSection">
+              <button class="addToCartButton">Add to cart</button>
+              <a href="./checkout.html" class="buyNowButton">Buy it now</a>
+            </div>
+            <div class="infoCards">
+              <div class="card">
+                <div style="width: 30px;">
+                  <img width="100%"
+                    src="https://rivmorkxomnwzdlytbgv.supabase.co/storage/v1/object/public/public/ecom-icons/delivery2.svg"
+                    alt="car">
+                </div>
+                <span class="spanOne">Expédié sous 48-72h</span>
+                <span class="spanTwo">Livraison de 5-10 jours ouvrés.</span>
+              </div>
+              <div class="card">
+                <div style="width: 30px;">
+                  <img width="100%"
+                    src="https://rivmorkxomnwzdlytbgv.supabase.co/storage/v1/object/public/public/ecom-icons/heart.svg"
+                    alt="heart">
+                </div>
+                <span class="spanOne">Support Client</span>
+                <span class="spanTwo">Une équipe disponible 24h/24h.</span>
+              </div>
+              <div class="card">
+                <div style="width: 30px;">
+                  <img width="100%"
+                    src="https://rivmorkxomnwzdlytbgv.supabase.co/storage/v1/object/public/public/ecom-icons/shield.svg"
+                    alt="security">
+                </div>
+                <span class="spanOne">Paiement protégé</span>
+                <span class="spanTwo">Les paiements sont sécurisés à
+                  100%.</span>
+              </div>
+              <div class="card">
+                <div style="width: 30px;">
+                  <img width="100%"
+                    src="https://rivmorkxomnwzdlytbgv.supabase.co/storage/v1/object/public/public/ecom-icons/bell.svg"
+                    alt="bell">
+                </div>
+                <span class="spanOne">J'ai une question ? </span>
+                <span class="spanTwo">Veuillez nous contacter via la page
+                  contact.</span>
+              </div>
+            </div>
+            <p style="color: #404040; padding: 2px;">Sink into comfort with our
+              Hello Kitty pajamas! Soft, cute and perfect for a cozy night's
+              sleep. Hello Kitty's joyful emotion adds a touch of charm to your
+              relaxing moments. Adopt these pajamas for a sweet and cute night
+              <3</p>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- footer start -->
+
+    <footer class="footer">
+      <div class="container">
+        <!-- Newsletter Section -->
+        <div class="newsletter">
+          <div class="newsletter-input">
+            <p>Subscribe to our newsletter &lt;3</p>
+            <div
+              style="position: relative; display: flex; align-items: center;">
+              <input type="email" placeholder="Email">
+              <button class="newsletter-button"><i
+                  class="fa-solid fa-arrow-right"
+                  style="color: #000000;"></i></button>
+            </div>
+          </div>
+          <!-- Social Media Icons -->
+          <div class="social-icons">
+            <a href="#"><i class="fa-brands fa-instagram"
+                style="color: #000000;"></i></a>
+            <a href="#"><i class="fa-brands fa-tiktok"
+                style="color: #000000;"></i></a>
+          </div>
+        </div>
+
+        <!-- Country & Language -->
+        <div class="footer-settings">
+          <div class="selectOption">
+            <div>
+              <label for>Country/region</label>
               <div class="customValyuta">
                 <div class="dropdown">
                   <button class="dropdown-toggle">
-                    <span id="selectedCurrency">AZN</span>
-                    <span class="arrow"><i class="fa-solid fa-angle-down"
+                    <span
+                      id="selectedCurrency">AZN</span>
+                    <span class="arrow"><i
+                        class="fa-solid fa-angle-down"
                         style="color: #515151;"></i></span>
                   </button>
-                  <ul style="margin-top: 10px;" class="dropdown-menu">
+                  <ul class="dropdown-menu">
                     <li class="dropdown-item"
                       data-currency="AZN"><span>AZN</span></li>
                     <li class="dropdown-item"
@@ -89,213 +285,55 @@
                   </ul>
                 </div>
               </div>
-  
+            </div>
+            <div>
+              <label for>
+                Language</label>
               <div class="customLang">
                 <div class="dropdown">
                   <button class="dropdown-toggle">
-                    <span id="selectedLanguage">English</span>
-                    <span class="arrow"><i class="fa-solid fa-angle-down"
+                    <span
+                      id="selectedLanguage">English</span>
+                    <span class="arrow"><i
+                        class="fa-solid fa-angle-down"
                         style="color: #515151;"></i></span>
                   </button>
-                  <ul style="margin-top: 10px;" class="dropdown-menu">
+                  <ul class="dropdown-menu">
                     <li class="dropdown-item"
                       data-currency="AZN"><span>Azərbaycan</span></li>
                   </ul>
                 </div>
               </div>
-  
-              <div class="search"><i class="fa-solid fa-magnifying-glass"
-                  style="color: #333;"></i></div>
-              <a href="./cart.html" class="addTooCart">
-                <i class="fa-solid fa-cart-shopping" style="color: #333;"></i>
-                <span class="cartCount">0</span>
-              </a>
-              <div id="cartModal" class="modal">
-                <div class="cartModalContent">
-                  <h2><i class="fa-solid fa-check" style="color: #4b4b4b;"></i>Item added to your cart</h2>
-                  <div class="cartProductList"></div>
-                  <button class="closeCartModal"><i class="fa-solid fa-xmark" style="color: #000000;"></i></button>
-                </div>
-              </div>
             </div>
+            <!-- Currency and Language Select end -->
+
+          </div>
+          <div class="payment-icons">
+            <img src="./assets/scss/svg/amex.svg" alt="AMEX">
+            <img src="./assets/scss/svg/apple.svg"
+              alt="Apple Pay">
+            <img src="./assets/scss/svg/maestro.svg"
+              alt="Maestro">
+            <img src="./assets/scss/svg/mastercard.svg"
+              alt="MasterCard">
+            <img src="./assets/scss/svg/visa.svg" alt="Visa">
           </div>
         </div>
-      </header>
-  
-  
-      <div class="modalOverlay" id="modalOverlay"></div>
-      <div class="search-container" id="searchContainer">
-        <form action="javascript:void(0);">
-          <div
-            style="display: flex; justify-content: center; gap: 30px; margin-top: 20px; margin-left: 40px;">
-            <input type="text" placeholder="Axtarın..." class="search-input"
-              id="searchInput">
-            <button class="close-btn" id="closeBtn">✖</button>
-          </div>
-          <div class="searchResults" id="searchResults">
-            <div class="resultCont" id="resultCont">Empty...</div>
-          </div>
-        </form>
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+          <p>&copy; 2024, hellokitty-store Powered by Shopify
+            &middot;
+            <a href="#">Refund policy</a> &middot;
+            <a href="#">Privacy policy</a> &middot;
+            <a href="#">Terms of service</a>
+          </p>
+        </div>
       </div>
-<main>
-        <div class="mainContainer">
-            <div class="productContainer">
-                <div class="imageSection">
-                    <img src="" alt="Hello Kitty Dinosaur Plush" class="mainImage">
-                    <div class="thumbnailContainer">
-                    </div>
-                </div>
-                <div class="infoSection">
-                    <h2 class="productTitle">Hello Kitty Dinosaur Plush</h2>
-                    <p class="productPrice">€31,90 EUR</p>
-                    <p class="taxInfo">Tax included.</p>
-                    <div class="quantitySection">
-                        <label for="quantity" class="taxInfo">Quantity</label>
-                        <div style="display: flex;">
-                        <button class="quantityIncrease">-</button>
-                        <input type="number" id="quantity" value="1" min="1" class="quantityInput">
-                        <button class="quantityDecrease">+</button>
-                    </div>
-                    </div>
-                    <div class="buttonSection">
-                        <button class="addToCartButton">Add to cart</button>
-                        <a href="./checkout.html" class="buyNowButton">Buy it now</a>
-                    </div>
-                    <div class="infoCards">
-                        <div class="card">
-                            <div style="width: 30px;">
-                            <img width="100%" src="https://rivmorkxomnwzdlytbgv.supabase.co/storage/v1/object/public/public/ecom-icons/delivery2.svg" alt="car">
-                        </div>
-                        <span class="spanOne">Expédié sous 48-72h</span>    
-                        <span class="spanTwo">Livraison de 5-10 jours ouvrés.</span>  
-                    </div>
-                    <div class="card">
-                            <div style="width: 30px;">
-                            <img width="100%" src="https://rivmorkxomnwzdlytbgv.supabase.co/storage/v1/object/public/public/ecom-icons/heart.svg" alt="heart">
-                          </div>
-                          <span class="spanOne">Support Client</span>    
-                          <span class="spanTwo">Une équipe disponible 24h/24h.</span>  
-                        </div>
-                        <div class="card">
-                            <div style="width: 30px;">
-                            <img width="100%" src="https://rivmorkxomnwzdlytbgv.supabase.co/storage/v1/object/public/public/ecom-icons/shield.svg" alt="security">
-                          </div>
-                          <span class="spanOne">Paiement protégé</span>    
-                              <span class="spanTwo">Les paiements sont sécurisés à 100%.</span>    
-                        </div>
-                        <div class="card">
-                            <div style="width: 30px;">
-                            <img width="100%" src="https://rivmorkxomnwzdlytbgv.supabase.co/storage/v1/object/public/public/ecom-icons/bell.svg" alt="bell">
-                          </div>
-                          <span class="spanOne">J'ai une question ? </span>    
-                              <span class="spanTwo">Veuillez nous contacter via la page contact.</span>    
-                        </div>
-                    </div>
-                    <p style="color: #404040; padding: 2px;">Sink into comfort with our Hello Kitty pajamas! Soft, cute and perfect for a cozy night's sleep. Hello Kitty's joyful emotion adds a touch of charm to your relaxing moments. Adopt these pajamas for a sweet and cute night <3</p>
-                </div>
-            </div>
-        </div>
 
-      </main>
+    </footer>
 
-            <!-- footer start -->
+    <!-- footer end -->
 
-            <footer class="footer">
-                <div class="container">
-                    <!-- Newsletter Section -->
-                    <div class="newsletter">
-                        <div class="newsletter-input">
-                            <p>Subscribe to our newsletter &lt;3</p>
-                            <div
-                                style="position: relative; display: flex; align-items: center;">
-                                <input type="email" placeholder="Email">
-                                <button class="newsletter-button"><i
-                                        class="fa-solid fa-arrow-right"
-                                        style="color: #000000;"></i></button>
-                            </div>
-                        </div>
-                        <!-- Social Media Icons -->
-                        <div class="social-icons">
-                            <a href="#"><i class="fa-brands fa-instagram"
-                                    style="color: #000000;"></i></a>
-                            <a href="#"><i class="fa-brands fa-tiktok"
-                                    style="color: #000000;"></i></a>
-                        </div>
-                    </div>
-
-                    <!-- Country & Language -->
-                    <div class="footer-settings">
-                        <div class="selectOption">
-                            <div>
-                                <label for>Country/region</label>
-                                <div class="customValyuta">
-                                    <div class="dropdown">
-                                        <button class="dropdown-toggle">
-                                            <span
-                                                id="selectedCurrency">AZN</span>
-                                            <span class="arrow"><i
-                                                    class="fa-solid fa-angle-down"
-                                                    style="color: #515151;"></i></span>
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li class="dropdown-item"
-                                                data-currency="AZN"><span>AZN</span></li>
-                                            <li class="dropdown-item"
-                                                data-currency="TRY"><span>TRY</span></li>
-                                            <li class="dropdown-item"
-                                                data-currency="USD"><span>USD</span></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <label for>
-                                    Language</label>
-                                <div class="customLang">
-                                    <div class="dropdown">
-                                        <button class="dropdown-toggle">
-                                            <span
-                                                id="selectedLanguage">English</span>
-                                            <span class="arrow"><i
-                                                    class="fa-solid fa-angle-down"
-                                                    style="color: #515151;"></i></span>
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li class="dropdown-item"
-                                                data-currency="AZN"><span>Azərbaycan</span></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Currency and Language Select end -->
-
-                        </div>
-                        <div class="payment-icons">
-                            <img src="./assets/scss/svg/amex.svg" alt="AMEX">
-                            <img src="./assets/scss/svg/apple.svg"
-                                alt="Apple Pay">
-                            <img src="./assets/scss/svg/maestro.svg"
-                                alt="Maestro">
-                            <img src="./assets/scss/svg/mastercard.svg"
-                                alt="MasterCard">
-                            <img src="./assets/scss/svg/visa.svg" alt="Visa">
-                        </div>
-                    </div>
-                    <!-- Footer Bottom -->
-                    <div class="footer-bottom">
-                        <p>&copy; 2024, hellokitty-store Powered by Shopify
-                            &middot;
-                            <a href="#">Refund policy</a> &middot;
-                            <a href="#">Privacy policy</a> &middot;
-                            <a href="#">Terms of service</a>
-                        </p>
-                    </div>
-                </div>
-
-            </footer>
-
-            <!-- footer end -->
-        
-        <script src="./script.js" defer></script>
-    </body>
+    <script src="./script.js" defer></script>
+  </body>
 </html>
