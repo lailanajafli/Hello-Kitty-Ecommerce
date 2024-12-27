@@ -1829,6 +1829,13 @@ body {
   }
 }
 
+#cartItemsContainer {
+  font-size: 30px;
+  width: 100%;
+  justify-content: space-between;
+  padding: 30px;
+}
+
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;

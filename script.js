@@ -72,19 +72,15 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 // dropdown end
 
-// Dropdown menülerini açma ve kapama işlevi
 document.addEventListener("DOMContentLoaded", function () {
-  // Tüm dropdown menüleri al
   const dropdownToggles = document.querySelectorAll(
     ".dropdownToggleAvaila, .dropdownTogglePrice, .dropdownToggleFeatur"
   );
 
-  // Her dropdown menüsü için işlem yap
   dropdownToggles.forEach(function (toggle) {
     toggle.addEventListener("click", function (event) {
-      const dropdownMenu = this.nextElementSibling; // Açılacak menü
+      const dropdownMenu = this.nextElementSibling; 
 
-      // Tüm menüleri kapat
       const allDropdowns = document.querySelectorAll(
         ".dropdownMenuAvaila, .dropdownMenuPrice, .dropdownMenuFeatur"
       );
@@ -94,7 +90,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
 
-      // Tıklanan menüyü aç/kapat
       if (dropdownMenu.style.display === "block") {
         dropdownMenu.style.display = "none";
       } else {
@@ -103,7 +98,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Dışarıya tıklanırsa, menüyü kapatma
   document.addEventListener("click", function (event) {
     if (
       !event.target.closest(".dropdownAvaila, .dropdownPrice, .dropdownFeatur")
@@ -125,85 +119,70 @@ if (
   pathname.includes("shop") ||
   pathname.includes("cart")
 ) {
-  // Arama butonuna tıklanınca modal'ı göster
   document.querySelector(".search i").addEventListener("click", () => {
     modalOverlay.style.display = "block";
     searchContainer.style.display = "block";
   });
 }
 
-// Modal'ı kapat (Close button ve modalOverlay tıklamasıyla)
 const closeModal = () => {
   modalOverlay.style.display = "none";
   searchContainer.style.display = "none";
-  searchResults.style.display = "none"; // Kapatıldığında arama sonuçlarını da gizle
-  searchInput.value = ""; // Giriş alanını temizle
+  searchResults.style.display = "none"; 
+  searchInput.value = ""; 
 };
 
 if (!pathname.includes("checkout")) {
   closeBtn.addEventListener("click", closeModal);
-  // Kenara tıklama (modalOverlay)
   modalOverlay.addEventListener("click", (event) => {
-    // Eğer kullanıcı `modalOverlay`'e tıklarsa, modal kapatılsın
     if (event.target === modalOverlay) {
       closeModal();
     }
   });
 
-  // Arama yapılırken filtreleme
   searchInput.addEventListener("input", function () {
     const query = searchInput.value.toLowerCase();
 
     if (query.trim() === "") {
-      // Eğer giriş alanı boşsa arama sonuçlarını gizle
       searchResults.style.display = "none";
     } else {
-      // Giriş alanı doluysa arama sonuçlarını göster
       searchResults.style.display = "block";
 
-      // Ürünleri filtrele
       const filteredProducts = productsData.filter((product) => {
         return product.name.toLowerCase().includes(query);
       });
 
-      // Sonuçları görüntüle
       displaySearchResults(filteredProducts);
     }
   });
 
   // header scroll start
 
-  let lastScrollY = 0; // Əvvəlki scroll mövqeyi
+  let lastScrollY = 0; 
   const header = document.getElementById("header");
 
   window.addEventListener("scroll", () => {
     const currentScrollY = window.scrollY;
 
     if (currentScrollY > lastScrollY) {
-      // Aşağıya scroll zamanı header gizlənir
       header.classList.add("hidden");
     } else {
-      // Yuxarıya scroll zamanı header görünür
       header.classList.remove("hidden");
     }
 
-    lastScrollY = currentScrollY; // Mövqeyi yenilə
+    lastScrollY = currentScrollY; 
   });
   // header scroll end
 }
 
-// Arama sonuçlarını görüntüle
 function displaySearchResults(filteredProducts) {
-  searchResults.innerHTML = ""; // Önceki sonuçları temizle
+  searchResults.innerHTML = ""; 
 
-  const query = searchInput.value.toLowerCase(); // Mevcut arama sorgusunu al
+  const query = searchInput.value.toLowerCase(); 
 
   if (filteredProducts.length === 0) {
-    // Eğer sonuç yoksa kullanıcıya arama sorgusunu göster
     searchResults.innerHTML = `<p>No results found for "${query}"</p>`;
   } else {
-    // Sonuçları döngüyle ekle
-    // Sonuçları döngüyle ekle
     filteredProducts.forEach((product) => {
       const resultCont = document.createElement("div");
       resultCont.classList.add("searchResultItem");
@@ -214,13 +193,10 @@ function displaySearchResults(filteredProducts) {
     <p class="searchResultName">${product.name}</p>
   `;
 
-      // Tıklama olayını ekle
       resultCont.addEventListener("click", () => {
-        // Detay sayfasına yönlendirme
         window.location.href = `detail.html?id=${product.id}`;
       });
 
-      // Oluşturulan öğeyi arama sonuçlarına ekle
       searchResults.appendChild(resultCont);
     });
   }
@@ -238,7 +214,6 @@ fetch("product.json")
   .then((products) => {
     productsData = products;
 
-    // Məhsulları `localStorage`-a yazırıq
     localStorage.setItem("productsData", JSON.stringify(products));
 
     const currentPath =
@@ -261,7 +236,6 @@ fetch("product.json")
   }
   
 
-// Ürünleri render etme fonksiyonu
 function renderProducts(page, perPage, filteredProducts = null) {
   const productsContainer = document.getElementById("productsContainer");
   if (!productsContainer) return;
@@ -271,8 +245,7 @@ function renderProducts(page, perPage, filteredProducts = null) {
   const endIndex = page * perPage;
   const productsForPage = productsToDisplay.slice(startIndex, endIndex);
 
-  productsContainer.innerHTML = ""; // Təmizlə
-
+  productsContainer.innerHTML = ""; 
   productsForPage.forEach((product) => {
     const productName = product.name || "Ad yoxdur";
     const productPrice = product.price ? formatPrice(product.price) : "Fiyat geçersiz";
@@ -317,8 +290,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const cartModalContent = document.querySelector(".cartProductList");
   const totalItemsCount = document.querySelector(".totalItemsCount");
 
-  let count = 0; // Sepet sayacı
-  let cartItems = []; // Sepetteki ürünler
+  let count = 0; 
+  let cartItems = []; 
 
   fetch("product.json")
     .then((response) => response.json())
@@ -339,18 +312,17 @@ document.addEventListener("DOMContentLoaded", () => {
               product,
             });
           
-            mainImageCart.src = product.image; // Burada hata oluşuyorsa yukarıdaki log ile eksik elemanı görebilirsiniz.
+            mainImageCart.src = product.image;
             productTitle.textContent = product.name;
             productPrice.textContent = `€${product.price.toFixed(2)}`;
             modal.style.display = "flex";
-            attachModalEventListeners(modal, product); // Dinamik bağlama
+            attachModalEventListeners(modal, product); 
           } else {
             console.error("Mehsul tapilmadi. ID:", productId);
           }
           
         }
 
-        // Sepete ekleme işlemi
         if (event.target.classList.contains("addToCartButton")) {
           event.preventDefault();
           count++;
@@ -363,7 +335,7 @@ document.addEventListener("DOMContentLoaded", () => {
             price: parseFloat(productPrice.textContent.replace("€", "")),
             quantity: parseInt(
               modal.querySelector(".quantityInput").textContent
-            ), // Dinamik miktar
+            ), 
           };
 
           const existingProduct = cartItems.find(
@@ -386,7 +358,6 @@ document.addEventListener("DOMContentLoaded", () => {
         pathname.includes("shop") ||
         pathname === "/"
       ) {
-        // Fiyat aralığı inputlarını dinle
         closeBtn.addEventListener("click", () => {
           modal.style.display = "none";
         });
@@ -450,13 +421,13 @@ document.addEventListener("DOMContentLoaded", () => {
   addToCartButtons.forEach((button) => {
     button.addEventListener("click", function () {
       const product = {
-        id: this.dataset.id, // Ürün ID'si
-        name: this.dataset.name, // Ürün adı
-        price: parseFloat(this.dataset.price), // Ürün fiyatı
-        quantity: 1, // Başlangıç miktarı
+        id: this.dataset.id, 
+        name: this.dataset.name, 
+        price: parseFloat(this.dataset.price), 
+        quantity: 1, 
       };
 
-      // Eğer ürün zaten varsa, miktarı artır
+     
       const existingProduct = cartData.find((item) => item.id === product.id);
       if (existingProduct) {
         existingProduct.quantity += 1;
@@ -464,21 +435,20 @@ document.addEventListener("DOMContentLoaded", () => {
         cartData.push(product);
       }
 
-      // Güncellenmiş sepet verisini LocalStorage'a kaydet
+ 
       localStorage.setItem("cartData", JSON.stringify(cartData));
 
-      // Sepet modalını göster (isteğe bağlı)
+ 
       document.getElementById("cartModal").style.display = "block";
     });
   });
 
   const cartItemsContainer = document.querySelector("#cartItemsContainer");
 
-  // Ürünleri DOM'a ekle
 
   if (pathname.includes("cart")) {
     if (cartData.length === 0) {
-      cartItemsContainer.innerHTML = "<p>Sepetiniz boş!</p>";
+      cartItemsContainer.innerHTML = "<p>Your cart is empty!</p>";
       return;
     }
 
@@ -504,7 +474,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <button class="quantityIncrease">+</button>
         </div>
         <div style="cursor: pointer;" class="deleteItem" data-index="${index}">
-          <i class="fa-regular fa-trash-can" style="color: #000000;"></i>
+          <i class="fa-regular fa-trash-can" style="color: #000000; font-size: 18px;"></i>
         </div>
       </div>
     </div>
@@ -514,18 +484,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Çöp ikonuna tıklama olayı
   document.querySelectorAll(".deleteItem").forEach((deleteButton) => {
     deleteButton.addEventListener("click", (event) => {
-      const itemIndex = event.currentTarget.dataset.index; // Silinecek ürünün index'i
-      cartData.splice(itemIndex, 1); // Ürünü cartData'dan sil
-      localStorage.setItem("cartData", JSON.stringify(cartData)); // Güncellenmiş sepeti localStorage'a kaydet
+      const itemIndex = event.currentTarget.dataset.index; 
+      cartData.splice(itemIndex, 1); 
+      localStorage.setItem("cartData", JSON.stringify(cartData)); 
 
-      // DOM'dan kaldır
       const cartRow = event.currentTarget.closest(".cartRow");
       cartRow.remove();
 
-      // Eğer sepet boş ise, kullanıcıya bilgi göster
       if (cartData.length === 0) {
         cartItemsContainer.innerHTML = "<p>Sepetiniz boş!</p>";
       }
@@ -547,11 +514,10 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const MAX_QUANTITY = 10; // Maksimum ürün miktarı
-    let quantity = parseInt(quantityInput.textContent) || 1; // Varsayılan veya mevcut değer
+    const MAX_QUANTITY = 10; 
+    let quantity = parseInt(quantityInput.textContent) || 1; 
     quantityInput.textContent = quantity;
 
-    // Artırma butonu
     increaseBtn.addEventListener("click", () => {
       if (quantity < MAX_QUANTITY) {
         quantity++;
@@ -572,7 +538,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Miktarı güncelleyen yardımcı fonksiyon
   function updateQuantity(inputElement, newQuantity) {
     inputElement.textContent = newQuantity;
   }
@@ -622,7 +587,6 @@ function fetchProductDetails(productId) {
     .catch((error) => console.error("JSON yükleme hatası:", error));
 }
 
-// Ürün sayısını güncelleme fonksiyonu
 function updateProductCount(count) {
   const productsCountElement = document.getElementById("productsCount");
   if (productsCountElement) {
@@ -630,7 +594,6 @@ function updateProductCount(count) {
   }
 }
 
-// Sayfalama fonksiyonu
 function setupPagination(perPage) {
   const totalPages = Math.ceil(productsData.length / perPage);
   const paginationContainer = document.querySelector(".pagination");
@@ -683,7 +646,6 @@ function setupPagination(perPage) {
   paginationContainer.appendChild(nextButton);
 }
 
-// Sayfa aktiflik durumunu güncelleme fonksiyonu
 function updatePaginationActiveButton() {
   const buttons = document.querySelectorAll(".pageBtn");
   buttons.forEach((btn, index) => {
@@ -691,14 +653,12 @@ function updatePaginationActiveButton() {
   });
 }
 
-// Sayfa gösterme fonksiyonu
 function showPage(pageNumber) {
   currentPage = pageNumber;
   renderProducts(currentPage, productsPerPage);
   updatePaginationActiveButton();
 }
 
-// Fiyat aralığı filtreleme fonksiyonu
 function filterByPrice(minPrice, maxPrice) {
   const filteredProducts = productsData.filter((product) => {
     const price = parseFloat(product.price);
@@ -708,7 +668,6 @@ function filterByPrice(minPrice, maxPrice) {
   setupPagination(productsPerPage);
 }
 
-// Fiyat aralığına göre filtreleme
 function filterProductsByPrice() {
   const minPrice = parseFloat(document.getElementById("minPrice").value) || 0;
   const maxPrice =
@@ -717,7 +676,6 @@ function filterProductsByPrice() {
 }
 
 if (pathname.includes("shop")) {
-  // Fiyat aralığı inputlarını dinle
   document
     .getElementById("minPrice")
     .addEventListener("input", filterProductsByPrice);
@@ -729,21 +687,18 @@ if (pathname.includes("shop")) {
     .addEventListener("click", resetPriceFilter);
 }
 
-// Reset butonuna tıklama olayını düzenleyelim
 function resetPriceFilter() {
   document.getElementById("minPrice").value = "";
   document.getElementById("maxPrice").value = "";
   const sortSelect = document.getElementById("sortSelect");
   if (sortSelect) {
-    sortSelect.value = "default"; // Sıralama seçimini sıfırla
+    sortSelect.value = "default"; 
   }
   renderProducts(1, productsPerPage);
   setupPagination(productsPerPage);
 }
 
-// Reset butonuna tıklama olayını ekleyelim
 
-// Sıralama işlemi
 function sortProducts(sortOption) {
   let sortedProducts;
   switch (sortOption) {
@@ -777,10 +732,9 @@ function sortProducts(sortOption) {
       sortedProducts = productsData;
   }
 
-  renderProducts(1, productsPerPage, sortedProducts); // Sorted products render
+  renderProducts(1, productsPerPage, sortedProducts); 
 }
 
-// Dropdown menü itemlarına tıklama işlevselliği
 const dropdownItems = document.querySelectorAll(".dropdownItemF");
 const selectedFeatureElement = document.getElementById("selectedFeatur");
 
@@ -790,23 +744,17 @@ if (!selectedFeatureElement) {
     item.addEventListener("click", (event) => {
       const clickedItem = event.currentTarget;
 
-      // Sort seçeneği ve metni al
       const sortOption = clickedItem.dataset.sort;
       const sortText = clickedItem.querySelector("span").textContent;
 
-      // Sadece kendisinin metnini göster
       selectedFeatureElement.textContent = sortText;
 
-      // Ürünleri sırala
       sortProducts(sortOption);
     });
   });
 }
 
-// Sayfa yüklendiğinde tüm ürünleri render et
 renderProducts(1, productsPerPage);
-
-
 
 
 
@@ -816,7 +764,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (checkOutBtn) {
     checkOutBtn.addEventListener("click", function (e) {
       e.preventDefault();
-      window.location.href = "./checkout.html"; // Check-out səhifəsinə yönləndirin
+      window.location.href = "./checkout.html"; 
     });
   }
 
@@ -825,54 +773,100 @@ document.addEventListener("DOMContentLoaded", () => {
   // checkout validation start
   if (window.location.pathname.includes("checkout")) {
     const form = document.querySelector(".checkoutForm");
-    const cartItems = JSON.parse(localStorage.getItem("cartItems")) || []; // Səbət məhsullarını yüklə
+    const cartItems = JSON.parse(localStorage.getItem("cartData")) || []; 
     console.log(cartItems);
 
-    // Checkout səhifəsində səbət məhsullarını göstər və ümumi məbləğ hesabla
+    
     const cartContainer = document.querySelector(".cartContainer");
     const totalAmountElement = document.querySelector(".totalAmount");
     const discountElement = document.querySelector(".discount");
+    const applyCouponButton = document.querySelector(".applyButton");
+    const couponInput = document.querySelector(".couponInput");
+    
     let totalAmount = 0;
-    const discountRate = 0.1; // 10% endirim
+    const discountRate = 0.1; 
+    const validCoupon = "leyla30"; 
+    
+    function updateCart(amount) {
+      totalAmount += amount;
+      totalAmountElement.textContent = `Cəmi: ${totalAmount.toFixed(2)} AZN`;
+      discountElement.textContent = "Endirim: 0.00 AZN";
+    }
+    
+    applyCouponButton.addEventListener("click", () => {
+      const enteredCoupon = couponInput.value.trim();
+    
+      if (enteredCoupon === validCoupon) {
+        const discountAmount = totalAmount * discountRate;
+        const newTotal = totalAmount - discountAmount;
+    
+        discountElement.textContent = `Endirim: ${discountAmount.toFixed(2)} AZN`;
+        totalAmountElement.textContent = `Cəmi: ${newTotal.toFixed(2)} AZN`;
+    
+        alert("Kupon tətbiq olundu!");
+      } else {
+        alert("Yanlış kupon kodu daxil etdiniz. Zəhmət olmasa yenidən yoxlayın.");
+      }
+    });
+    
+
+    updateCart(50); 
+    
 
     if (cartContainer) {
       cartItems.forEach((item) => {
         const itemElement = document.createElement("div");
-        itemElement.classList.add("cartItem");
+        itemElement.classList.add("productSummary");
         itemElement.innerHTML = `
-          <img src="${item.image}" alt="${item.name}">
-          <p>${item.name}</p>
-          <p>${item.price.toFixed(2)} EUR</p>
+          <div class="product-image">
+            <img src="${item.image}" alt="${item.name}">
+          </div>
+          <div class="product-info">
+            <p>${item.name}</p>
+            <p>${item.price.toFixed(2)} EUR</p>
+          </div>
         `;
         cartContainer.appendChild(itemElement);
         totalAmount += item.price;
       });
-
-      // Endirimi tətbiq et və məbləği göstər
-      const discount = totalAmount * discountRate;
-      const finalAmount = totalAmount - discount;
-
-      if (totalAmountElement && discountElement) {
-        discountElement.textContent = `Discount: ${discount.toFixed(2)} EUR`;
-        totalAmountElement.textContent = `Total: ${finalAmount.toFixed(2)} EUR`;
-      }
     }
+const productSummary = document.querySelector('.productSummary');
 
+
+if(pathname.includes("checkout")){
+
+  if (cartItems) {
+    cartItems.forEach((item) => {      
+      productSummary.innerHTML=''
+      productSummary.innerHTML += `
+        <div class="product-image">
+          <img src="${item.image}" alt="${item.name}">
+        </div>
+        <div class="product-info">
+          <p>${item.name}</p>
+          <p>${item.price.toFixed(2)} EUR</p>
+        </div>
+      `;
+    });
+  }
+}
+
+
+
+    
     if (form) {
       form.addEventListener("submit", function (e) {
-        e.preventDefault(); // Formun göndərilməsini engelle
+        e.preventDefault(); 
 
-        // Önceki hata mesajlarını temizle
+  
         const errorMessages = document.querySelectorAll(".errorMessage");
         errorMessages.forEach((message) => (message.textContent = ""));
 
-        // Önceki hata sınıflarını temizle
         const errorInputs = document.querySelectorAll(".error");
         errorInputs.forEach((input) => input.classList.remove("error"));
 
         let isValid = true;
 
-        // Contact Section doğrulaması
         const emailOrPhone = document.getElementById("emailOrPhone");
         const emailError = document.getElementById("emailError");
         if (!emailOrPhone.value) {
@@ -885,7 +879,6 @@ document.addEventListener("DOMContentLoaded", () => {
           isValid = false;
         }
 
-        // Delivery Section doğrulaması
         const firstName = document.getElementById("firstName");
         const lastName = document.getElementById("lastName");
         const address = document.getElementById("address");
@@ -929,7 +922,7 @@ document.addEventListener("DOMContentLoaded", () => {
           isValid = false;
         }
 
-        // Payment Section doğrulaması
+        // Payment Section
         const cardNumber = document.getElementById("cardNumber");
         const expirationDate = document.getElementById("expirationDate");
         const securityCode = document.getElementById("securityCode");
@@ -975,7 +968,6 @@ document.addEventListener("DOMContentLoaded", () => {
           isValid = false;
         }
 
-        // Eğer tüm alanlar geçerliyse formu gönder
         if (isValid) {
           alert("Form submitted successfully!");
         }
