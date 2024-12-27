@@ -20,7 +20,8 @@
     <title>Detail Page</title>
   </head>
   <body>
-    <header style="border-bottom: 1px solid #5f5f5f4d;" id="header">
+    <header style="border-bottom: 1px solid #5f5f5f4d; position: relative;"
+      id="header">
       <div class="container">
         <div class="row">
           <!-- Burger Menü -->
@@ -38,7 +39,6 @@
               alt="Logo">
           </a>
 
-
           <div class="selectOption">
             <a href="./cart.html" class="addTooCart">
               <i class="fa-solid fa-cart-shopping" style="color: #F0BFD3;"></i>
@@ -46,16 +46,17 @@
             </a>
             <div id="cartModal" class="modal">
               <div class="cartModalContent">
-                <h2><i class="fa-solid fa-check" style="color: #4b4b4b;"></i>Item added to your cart</h2>
+                <h2><i class="fa-solid fa-check"
+                    style="color: #4b4b4b;"></i>Item added to your cart</h2>
                 <div class="cartProductList"></div>
-                <button class="closeCartModal"><i class="fa-solid fa-xmark" style="color: #000000;"></i></button>
+                <button class="closeCartModal"><i class="fa-solid fa-xmark"
+                    style="color: #000000;"></i></button>
               </div>
             </div>
           </div>
         </div>
       </div>
     </header>
-
 
     <div class="modalOverlay" id="modalOverlay"></div>
     <div class="search-container" id="searchContainer">
@@ -77,11 +78,11 @@
       <div class="checkoutContainer">
         <form class="checkoutForm">
           <section class="contactSection">
-            <h2>Contact</h2>
+            <h2 style="margin-top: 40px; margin-bottom: 5px;">Contact</h2>
             <input type="email" id="emailOrPhone"
               placeholder="Email or mobile phone number">
             <div class="checkboxWrapper">
-              <input type="checkbox" id="newsOffers">
+              <input style="width: auto;" type="checkbox" id="newsOffers">
               <label for="newsOffers">Email me with news and offers</label>
             </div>
             <div class="errorMessage" id="emailError"></div>
@@ -90,6 +91,7 @@
 
           <section class="deliverySection">
             <h2>Delivery</h2>
+
             <select id="countryRegion">
               <option value>Country/Region</option>
             </select>
@@ -122,7 +124,7 @@
             <!-- Hata mesajı -->
 
             <div class="checkboxWrapper">
-              <input type="checkbox" id="saveInformation">
+              <input style="width: auto;" type="checkbox" id="saveInformation">
               <label for="saveInformation">Save this information for next
                 time</label>
             </div>
@@ -130,7 +132,7 @@
 
           <section class="shippingMethodSection">
             <h2>Shipping method</h2>
-            <input type="text" id="shippingMethod"
+            <input style="background-color: #EAEAEA;" type="text" id="shippingMethod"
               placeholder="Enter your shipping address to view available shipping methods"
               disabled>
           </section>
@@ -138,30 +140,39 @@
           <section class="paymentSection">
             <h2>Payment</h2>
             <p>All transactions are secure and encrypted.</p>
-            <select id="paymentMethod">
-              <option value="creditCard">Credit card</option>
-            </select>
-            <input type="text" id="cardNumber" placeholder="Card number">
-            <div class="errorMessage" id="cardNumberError"></div>
-            <!-- Hata mesajı -->
+            <div class="payCont">
+              <div class="creditCont">
+                <p>Credit cart</p>
+                <div class="payment-icons">
+                  <img src="./assets/scss/svg/amex.svg" alt="AMEX">
+                  <img src="./assets/scss/svg/apple.svg" alt="Apple Pay">
+                  <img src="./assets/scss/svg/maestro.svg" alt="Maestro">
+                  <img src="./assets/scss/svg/mastercard.svg" alt="MasterCard">
+                  <img src="./assets/scss/svg/visa.svg" alt="Visa">
+                </div>
+              </div>
+              <input type="text" id="cardNumber" placeholder="Card number">
+              <div class="errorMessage" id="cardNumberError"></div>
+              <!-- Hata mesajı -->
 
-            <input type="text" id="expirationDate"
-              placeholder="Expiration date (MM / YY)">
-            <div class="errorMessage" id="expirationDateError"></div>
-            <!-- Hata mesajı -->
+              <input type="text" id="expirationDate"
+                placeholder="Expiration date (MM / YY)">
+              <div class="errorMessage" id="expirationDateError"></div>
+              <!-- Hata mesajı -->
 
-            <input type="text" id="securityCode" placeholder="Security code">
-            <div class="errorMessage" id="securityCodeError"></div>
-            <!-- Hata mesajı -->
+              <input type="text" id="securityCode" placeholder="Security code">
+              <div class="errorMessage" id="securityCodeError"></div>
+              <!-- Hata mesajı -->
 
-            <input type="text" id="nameOnCard" placeholder="Name on card">
-            <div class="errorMessage" id="nameOnCardError"></div>
-            <!-- Hata mesajı -->
+              <input type="text" id="nameOnCard" placeholder="Name on card">
+              <div class="errorMessage" id="nameOnCardError"></div>
+              <!-- Hata mesajı -->
 
-            <div class="checkboxWrapper">
-              <input type="checkbox" id="billingAddress">
-              <label for="billingAddress">Use shipping address as billing
-                address</label>
+              <div class="checkboxWrapper">
+                <input style="width: auto;" type="checkbox" id="billingAddress">
+                <label for="billingAddress">Use shipping address as billing
+                  address</label>
+              </div>
             </div>
           </section>
 
@@ -170,16 +181,18 @@
 
         <aside class="summarySection">
           <div class="productSummary">
-            <img src="product.jpg" alt="Product image">
+            <img src alt="Product image">
             <p>Spiderman x Hello Kitty Pajama</p>
             <span class="productPrice">$22.00</span>
           </div>
+          <div style="display: flex; justify-content: space-between;">
           <input type="text" id="discountCode" placeholder="Discount code">
           <button class="applyButton">Apply</button>
+        </div>
           <div class="pricingSummary">
             <p>Subtotal: <span>$22.00</span></p>
-            <p>Shipping: <span>Enter shipping address</span></p>
-            <p>Total: <span>$22.00</span></p>
+            <p >Shipping: <span >Enter shipping address</span></p>
+            <p style="font-size: 18px; color: black; font-weight: 600;">Total: <span style="font-size: 18px; color: black; font-weight: 600;">$22.00</span></p>
           </div>
         </aside>
       </div>

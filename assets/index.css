@@ -1300,11 +1300,11 @@ body.no-blur {
   border: none;
   transition: all 0.3s ease;
 }
-.filter-container .container .filterOption .featured .dropdownFeatur .dropdownToggleFeatur .selectedFeatur {
+.filter-container .container .filterOption .featured .dropdownFeatur .dropdownToggleFeatur #selectedFeatur {
   border-bottom: 1px solid transparent;
   display: inline-block;
 }
-.filter-container .container .filterOption .featured .dropdownFeatur .dropdownToggleFeatur .selectedFeatur:hover {
+.filter-container .container .filterOption .featured .dropdownFeatur .dropdownToggleFeatur #selectedFeatur:hover {
   border-bottom: 1px solid black;
 }
 .filter-container .container .filterOption .featured .dropdownFeatur .dropdownMenuFeatur {
@@ -1446,6 +1446,7 @@ body .mainContainer .productContainer .infoSection .quantitySection .quantityInc
   border-bottom: 1px solid black;
   border-right: 1px solid black;
   border-left: none;
+  background-color: #f3f3f3;
   color: black;
   cursor: pointer;
   display: flex;
@@ -1463,6 +1464,7 @@ body .mainContainer .productContainer .infoSection .quantitySection .quantityDec
   border-top: 1px solid black;
   border-bottom: 1px solid black;
   border-left: 1px solid black;
+  background-color: #f3f3f3;
   border-right: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -1481,7 +1483,7 @@ body .mainContainer .productContainer .infoSection .quantityInput, body .mainCon
   border-left: none;
   border-right: none;
   text-align: center;
-  background-color: transparent;
+  background-color: #f3f3f3;
   padding: 0 0.5rem;
 }
 body .mainContainer .productContainer .infoSection .quantityButton {
@@ -1674,6 +1676,7 @@ body {
   border-bottom: 1px solid black;
   border-right: 1px solid black;
   border-left: none;
+  background-color: #f3f3f3;
   color: black;
   cursor: pointer;
   display: flex;
@@ -1691,6 +1694,7 @@ body {
   border-top: 1px solid black;
   border-bottom: 1px solid black;
   border-left: 1px solid black;
+  background-color: #f3f3f3;
   border-right: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -1709,7 +1713,7 @@ body {
   border-left: none;
   border-right: none;
   text-align: center;
-  background-color: transparent;
+  background-color: #f3f3f3;
   padding: 0 0.5rem;
 }
 .cartContainer .container .cartTable .cartRow .quan .quantityButton {
@@ -1755,9 +1759,73 @@ body {
   .cartContainer .container .cartRow .quantityControls button,
   .cartContainer .container .cartRow .quantityControls .quantityInput {
     margin-right: 10px;
+    background-color: #f3f3f3;
   }
   .cartContainer .container .cartRow .totalPrice {
     text-align: left;
+  }
+}
+
+.footer .textareaCont {
+  display: flex;
+  justify-content: space-between;
+}
+.footer .textareaCont .textAreaLeft {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.footer .textareaCont .textAreaLeft p,
+.footer .textareaCont .textAreaLeft .estimated {
+  font-size: 1rem;
+  color: #4d4d4d;
+}
+.footer .textareaCont .textAreaLeft textarea {
+  resize: none;
+  background-color: #ffedf4;
+  height: 6rem;
+  cursor: pointer;
+  width: 270px;
+  margin-bottom: 3rem;
+  border: 1px solid black;
+  padding: 1rem;
+  max-width: 100%;
+}
+.footer .textareaCont .textAreaLeft textarea:hover {
+  border: 2px solid black;
+}
+.footer .textareaCont .textAreaRight {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.footer .textareaCont .textAreaRight .taxInclud {
+  font-size: 12px;
+  color: #4d4d4d;
+}
+.footer .textareaCont .textAreaRight .checkOutBtn {
+  background-color: #fcf4f7;
+  color: black;
+  border: none;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+.footer .textareaCont .textAreaRight .checkOutBtn:hover {
+  border: 1px solid black;
+}
+@media screen and (max-width: 768px) {
+  .footer .textareaCont {
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer .textareaCont .textAreaLeft,
+  .footer .textareaCont .textAreaRight {
+    text-align: center;
+    width: 100%;
   }
 }
 
@@ -1806,7 +1874,8 @@ body {
   box-shadow: 0 0 8px rgba(255, 105, 180, 0.6);
 }
 .checkoutForm .nameWrapper {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
   gap: 0.5rem;
 }
@@ -1827,17 +1896,19 @@ body {
 
 .reviewOrderButton {
   padding: 1rem 1.6rem;
-  font-size: 1.1rem;
-  background-color: #ff69b4;
-  color: white;
+  font-size: 1.2rem;
+  background-color: rgb(246, 205, 220);
+  color: #181818;
   border: none;
   border-radius: 8px;
+  margin-bottom: 50px;
+  font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s ease, box-shadow 0.3s;
   margin-top: 2rem;
 }
 .reviewOrderButton:hover {
-  background-color: #ff85c5;
+  background-color: #f0a7c4;
   transform: translateY(-2px);
 }
 .reviewOrderButton:disabled {
@@ -1873,7 +1944,7 @@ body {
 }
 .summarySection {
   flex: 1;
-  background: #FFEDF4;
+  background: #ffedf4;
   padding: 25px;
   border-left: 1px solid rgba(95, 95, 95, 0.3019607843);
   position: relative;
@@ -1919,7 +1990,7 @@ body {
 .summarySection .applyButton {
   width: 80px;
   padding: 12px;
-  background: #FFE1ED;
+  background: #ffe1ed;
   color: rgba(0, 0, 0, 0.56);
   border: none;
   border-radius: 8px;
@@ -1934,8 +2005,45 @@ body {
   font-size: 1rem;
 }
 .summarySection .pricingSummary p span {
-  font-weight: bold;
-  font-size: 1.1rem;
+  color: 4b4b4b;
+  font-size: 14px;
+}
+
+.paymentSection .payCont {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 0px 10px 10px 10px;
+  background-color: #e9e9e9;
+}
+.paymentSection .payCont .creditCont {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 13px;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 1rem;
+  border: 1px solid #ECD7DF;
+  border-radius: 8px;
+  outline: none;
+  background-color: #f3f3f3;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.paymentSection .payCont .creditCont:focus {
+  border-color: #ff69b4;
+  box-shadow: 0 0 8px rgba(255, 105, 180, 0.6);
+}
+
+.checkboxWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.deliverySection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .footer {

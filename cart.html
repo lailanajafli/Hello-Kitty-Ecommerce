@@ -122,7 +122,7 @@
           <div class="cartProductList"></div>
           <button class="closeCartModal"><i class="fa-solid fa-xmark"
               style="color: #000000;"></i></button>
-          <a href="./cart.html" class="viewCartBtn"><div
+          <a href="./cart.html" class="viewCartBtn addToCartBtn"><div
               class="totalItemsCount"></div></a>
           <a href="./shop.html" class="continueShopping">Continue shopping</a>
         </div>
@@ -156,41 +156,31 @@
             <span style="flex: 1;" class="quantityTitle">Quantity</span>
             <span class="totalTitle">Total</span>
           </div>
-          <div class="cartRow">
-            <div class="productDetails">
-              <img id="mainImage" src alt="Product Image"
-                class="productImage" />
-              <div class="productInfo">
-                <h2 class="productName">Lego Figure</h2>
-                <p class="productPrice">€9,90</p>
-              </div>
-            </div>
-            <div class="quan">
-              <div class="quantitySection">
-                <div style="display: flex;">
-                  <button class="quantityDecrease">-</button>
-                  <span type="number" id="quantity" value="1" min="1"
-                    class="quantityInput"></span>
-                  <button class="quantityIncrease">+</button>
-                </div>
-                <div style="cursor: pointer;">
-                  <i class="fa-regular fa-trash-can"
-                    style="color: #000000;"></i>
-                </div>
-              </div>
-
-            </div>
-            <div class="totalPrice">€9,90</div>
-          </div>
+          <!-- Ürünlerin ekleneceği boş bir konteyner -->
+          <div id="cartItemsContainer"></div>
         </div>
       </div>
+    </div>
+    
 
       <!-- footer start -->
 
       <footer class="footer">
         <div class="container">
+          <div class="textareaCont">
+            <div class="textAreaLeft">
+              <p>Order special instructions</p>
+              <form action="">
+              <textarea name="" id=""></textarea>
+            </div>
+            <div class="textAreaRight">
+              <p class="estimated">Estimated total <span></span></p>
+              <p class="taxInclud">Tax included and shipping and discounts calculated at checkout</p>
+              <button class="checkOutBtn">Check out</button>
+            </div>
+          </div>
           <!-- Newsletter Section -->
-          <div class="newsletter">
+          <div style="padding: 20px 20px 20px 0px;" class="newsletter">
             <div class="newsletter-input">
               <p>Subscribe to our newsletter &lt;3</p>
               <div

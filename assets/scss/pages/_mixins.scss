@@ -126,6 +126,7 @@
       border-bottom: 1px solid black;
       border-right: 1px solid black;
       border-left: none;
+      background-color: #f3f3f3;
       color: black;
       cursor: pointer;
       display: flex;
@@ -144,6 +145,7 @@
       border-top: 1px solid black;
       border-bottom: 1px solid black;
       border-left: 1px solid black;
+      background-color: #f3f3f3;
       border-right: none;
       -webkit-appearance: none;
       -moz-appearance: none;
@@ -165,7 +167,7 @@
     border-left: none;
     border-right: none;
     text-align: center;
-    background-color: transparent;
+    background-color: #f3f3f3;
     padding: 0 0.5rem;
   }
 

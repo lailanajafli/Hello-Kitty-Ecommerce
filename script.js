@@ -120,11 +120,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // SEARCH START
 
-// Arama butonuna tıklanınca modal'ı göster
-document.querySelector(".search i").addEventListener("click", () => {
-  modalOverlay.style.display = "block";
-  searchContainer.style.display = "block";
-});
+if (
+  pathname.includes("index") ||
+  pathname.includes("shop") ||
+  pathname.includes("cart")
+) {
+  // Arama butonuna tıklanınca modal'ı göster
+  document.querySelector(".search i").addEventListener("click", () => {
+    modalOverlay.style.display = "block";
+    searchContainer.style.display = "block";
+  });
+}
 
 // Modal'ı kapat (Close button ve modalOverlay tıklamasıyla)
 const closeModal = () => {
@@ -197,27 +203,26 @@ function displaySearchResults(filteredProducts) {
     searchResults.innerHTML = `<p>No results found for "${query}"</p>`;
   } else {
     // Sonuçları döngüyle ekle
-// Sonuçları döngüyle ekle
-filteredProducts.forEach((product) => {
-  const resultCont = document.createElement("div");
-  resultCont.classList.add("searchResultItem");
-  resultCont.innerHTML = `
+    // Sonuçları döngüyle ekle
+    filteredProducts.forEach((product) => {
+      const resultCont = document.createElement("div");
+      resultCont.classList.add("searchResultItem");
+      resultCont.innerHTML = `
     <div class="searchResultImage">
       <img src="${product.image}" alt="${product.name}">
     </div>
     <p class="searchResultName">${product.name}</p>
   `;
 
-  // Tıklama olayını ekle
-  resultCont.addEventListener("click", () => {
-    // Detay sayfasına yönlendirme
-    window.location.href = `details.html?id=${product.id}`;
-  });
+      // Tıklama olayını ekle
+      resultCont.addEventListener("click", () => {
+        // Detay sayfasına yönlendirme
+        window.location.href = `detail.html?id=${product.id}`;
+      });
 
-  // Oluşturulan öğeyi arama sonuçlarına ekle
-  searchResults.appendChild(resultCont);
-});
-
+      // Oluşturulan öğeyi arama sonuçlarına ekle
+      searchResults.appendChild(resultCont);
+    });
   }
 }
 
@@ -233,6 +238,9 @@ fetch("product.json")
   .then((products) => {
     productsData = products;
 
+    // Məhsulları `localStorage`-a yazırıq
+    localStorage.setItem("productsData", JSON.stringify(products));
+
     const currentPath =
       window.location.pathname.split("/").pop() || "index.html";
     if (currentPath === "index.html") {
@@ -244,57 +252,57 @@ fetch("product.json")
   })
   .catch((error) => console.error("Error loading products:", error));
 
-// Fiyat formatlama fonksiyonu
-function formatPrice(price) {
-  const numericPrice = parseFloat(price); // Fiyatı sayıya dönüştür
-  if (isNaN(numericPrice) || numericPrice <= 0) {
-    return "Fiyat geçersiz"; // Geçerli fiyat değilse, 'Fiyat geçersiz' döndür
+
+  function formatPrice(price) {
+    const numericPrice = parseFloat(price);
+    return isNaN(numericPrice) || numericPrice <= 0
+      ? "Fiyat geçersiz"
+      : `€${numericPrice.toFixed(2)} EUR`;
   }
-  return `€${numericPrice.toFixed(2)} EUR`; // Fiyatı düzgün bir şekilde göster
-}
+  
 
 // Ürünleri render etme fonksiyonu
 function renderProducts(page, perPage, filteredProducts = null) {
   const productsContainer = document.getElementById("productsContainer");
-  if (!productsContainer) {
-    return;
-  }
+  if (!productsContainer) return;
 
   const productsToDisplay = filteredProducts || productsData;
-
   const startIndex = (page - 1) * perPage;
   const endIndex = page * perPage;
   const productsForPage = productsToDisplay.slice(startIndex, endIndex);
 
-  productsContainer.innerHTML = "";
+  productsContainer.innerHTML = ""; // Təmizlə
 
   productsForPage.forEach((product) => {
-    const productHTML = `
-      <div class="productsCont">
-          <div class="imgCont">
-            <a href="detail.html?id=${product.id}">
-              <img src="${product.image}" alt="${product.name}">
-              <img src="${product.imageHover}" alt="${
-      product.name
-    } Hover" class="hover-img">
-            </a>
-          </div>
-          <p class="productName">${product.name}</p>
-          <p class="productPrice">${formatPrice(product.price)}</p>
-          <div>
-            <a class="chooseOption" data-product-id="${
-              product.id
-            }">Choose Options</a>
-          </div>
-        </div>
+    const productName = product.name || "Ad yoxdur";
+    const productPrice = product.price ? formatPrice(product.price) : "Fiyat geçersiz";
+    const productImage = product.image || "placeholder-image.jpg";
+    const productHoverImage = product.imageHover || productImage;
+
+    const productElement = document.createElement("div");
+    productElement.className = "productsCont";
+
+    productElement.innerHTML = `
+      <div class="imgCont">
+        <a href="detail.html?id=${product.id}">
+          <img src="${productImage}" alt="${productName}">
+          <img src="${productHoverImage}" alt="${productName} Hover" class="hover-img">
+        </a>
+      </div>
+      <p class="productName">${productName}</p>
+      <p class="productPrice">${productPrice}</p>
+      <div>
+        <a class="chooseOption" data-product-id="${product.id}">Choose Options</a>
+      </div>
     `;
-    productsContainer.innerHTML += productHTML;
+
+    productsContainer.appendChild(productElement);
   });
-  function formatPrice(price) {
-    return `€${price.toFixed(2)} EUR`;
-  }
+
   updateProductCount(productsToDisplay.length);
 }
+
+
 // products start
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -307,11 +315,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const cartCount = document.querySelector(".cartCount");
   const cartModal = document.getElementById("cartModal");
   const cartModalContent = document.querySelector(".cartProductList");
-  const totalItemsCount = document.querySelector(".totalItemsCount"); // Toplam ürün sayısını gösterecek alan
+  const totalItemsCount = document.querySelector(".totalItemsCount");
 
   let count = 0; // Sepet sayacı
   let cartItems = []; // Sepetteki ürünler
-
 
   fetch("product.json")
     .then((response) => response.json())
@@ -324,7 +331,15 @@ document.addEventListener("DOMContentLoaded", () => {
           const product = products.find((item) => item.id == productId);
 
           if (product) {
-            mainImageCart.src = product.image;
+            console.log({
+              mainImageCart,
+              productTitle,
+              productPrice,
+              modal,
+              product,
+            });
+          
+            mainImageCart.src = product.image; // Burada hata oluşuyorsa yukarıdaki log ile eksik elemanı görebilirsiniz.
             productTitle.textContent = product.name;
             productPrice.textContent = `€${product.price.toFixed(2)}`;
             modal.style.display = "flex";
@@ -332,6 +347,7 @@ document.addEventListener("DOMContentLoaded", () => {
           } else {
             console.error("Mehsul tapilmadi. ID:", productId);
           }
+          
         }
 
         // Sepete ekleme işlemi
@@ -345,10 +361,14 @@ document.addEventListener("DOMContentLoaded", () => {
             id: mainImageCart.src,
             name: productTitle.textContent,
             price: parseFloat(productPrice.textContent.replace("€", "")),
-            quantity: parseInt(modal.querySelector(".quantityInput").textContent), // Dinamik miktar
+            quantity: parseInt(
+              modal.querySelector(".quantityInput").textContent
+            ), // Dinamik miktar
           };
 
-          const existingProduct = cartItems.find((item) => item.id === productInCart.id);
+          const existingProduct = cartItems.find(
+            (item) => item.id === productInCart.id
+          );
           if (existingProduct) {
             existingProduct.quantity += productInCart.quantity;
           } else {
@@ -361,9 +381,16 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
 
-      closeBtn.addEventListener("click", () => {
-        modal.style.display = "none";
-      });
+      if (
+        pathname.includes("index") ||
+        pathname.includes("shop") ||
+        pathname === "/"
+      ) {
+        // Fiyat aralığı inputlarını dinle
+        closeBtn.addEventListener("click", () => {
+          modal.style.display = "none";
+        });
+      }
 
       if (closeCartBtn) {
         closeCartBtn.addEventListener("click", () => {
@@ -379,33 +406,137 @@ document.addEventListener("DOMContentLoaded", () => {
           cartModal.style.display = "none";
         }
       });
-    })
-    .catch((error) => console.error("JSON yükleme hatası:", error));
+    });
 
   function updateCartModal() {
     cartModalContent.innerHTML = "";
 
-    let totalItems = 0; // Toplam ürün sayacı
+    let totalItems = 0;
+    const cartData = [];
 
     cartItems.forEach((item) => {
-      totalItems += item.quantity; // Toplam ürüne miktarını ekle
+      totalItems += item.quantity;
 
       const cartItem = document.createElement("div");
       cartItem.classList.add("cartProduct");
       cartItem.innerHTML = `
-        <img src="${item.id}" alt="${item.name}" class="cartImage">
-        <div>
-          <h3>${item.name}</h3>
-          <p>€${(item.price * item.quantity).toFixed(2)} (€${item.price.toFixed(2)} x ${item.quantity})</p>
-        </div>
-      `;
+          <img src="${item.id}" alt="${item.name}" class="cartImage">
+          <div>
+            <h3>${item.name}</h3>
+            <p>€${(item.price * item.quantity).toFixed(
+              2
+            )} (€${item.price.toFixed(2)} x ${item.quantity})</p>
+          </div>
+        `;
+
+      cartData.push({
+        id: item.id,
+        name: item.name,
+        price: item.price,
+        quantity: item.quantity,
+      });
+
       cartModalContent.appendChild(cartItem);
     });
 
-    // Toplam ürün sayısını güncelle
+    localStorage.setItem("cartData", JSON.stringify(cartData));
+
     totalItemsCount.textContent = `View cart: ${totalItems}`;
   }
 
+  const addToCartButtons = document.querySelectorAll(".addToCartBtn");
+  let cartData = JSON.parse(localStorage.getItem("cartData")) || [];
+
+  addToCartButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      const product = {
+        id: this.dataset.id, // Ürün ID'si
+        name: this.dataset.name, // Ürün adı
+        price: parseFloat(this.dataset.price), // Ürün fiyatı
+        quantity: 1, // Başlangıç miktarı
+      };
+
+      // Eğer ürün zaten varsa, miktarı artır
+      const existingProduct = cartData.find((item) => item.id === product.id);
+      if (existingProduct) {
+        existingProduct.quantity += 1;
+      } else {
+        cartData.push(product);
+      }
+
+      // Güncellenmiş sepet verisini LocalStorage'a kaydet
+      localStorage.setItem("cartData", JSON.stringify(cartData));
+
+      // Sepet modalını göster (isteğe bağlı)
+      document.getElementById("cartModal").style.display = "block";
+    });
+  });
+
+  const cartItemsContainer = document.querySelector("#cartItemsContainer");
+
+  // Ürünleri DOM'a ekle
+
+  if (pathname.includes("cart")) {
+    if (cartData.length === 0) {
+      cartItemsContainer.innerHTML = "<p>Sepetiniz boş!</p>";
+      return;
+    }
+
+    cartData.forEach((item, index) => {
+      const cartRow = document.createElement("div");
+      cartRow.classList.add("cartRow");
+      console.log(item.name);
+      cartRow.innerHTML += `
+    <div class="productDetails">
+      <img src="${item.id}" alt="${item.name}" class="productImage">
+      <div class="productInfo">
+        <h2 class="productName">${item.name}</h2>
+        <p class="productPrice">€${item.price.toFixed(2)}</p>
+      </div>
+    </div>
+    <div class="quan">
+      <div class="quantitySection">
+        <div style="display: flex;">
+          <button class="quantityDecrease">-</button>
+          <span type="number" id="quantity" value="1" min="1" class="quantityInput">${
+            item.quantity
+          }</span>
+          <button class="quantityIncrease">+</button>
+        </div>
+        <div style="cursor: pointer;" class="deleteItem" data-index="${index}">
+          <i class="fa-regular fa-trash-can" style="color: #000000;"></i>
+        </div>
+      </div>
+    </div>
+    <div class="totalPrice">€${(item.price * item.quantity).toFixed(2)}</div>
+    `;
+      cartItemsContainer.appendChild(cartRow);
+    });
+  }
+
+  // Çöp ikonuna tıklama olayı
+  document.querySelectorAll(".deleteItem").forEach((deleteButton) => {
+    deleteButton.addEventListener("click", (event) => {
+      const itemIndex = event.currentTarget.dataset.index; // Silinecek ürünün index'i
+      cartData.splice(itemIndex, 1); // Ürünü cartData'dan sil
+      localStorage.setItem("cartData", JSON.stringify(cartData)); // Güncellenmiş sepeti localStorage'a kaydet
+
+      // DOM'dan kaldır
+      const cartRow = event.currentTarget.closest(".cartRow");
+      cartRow.remove();
+
+      // Eğer sepet boş ise, kullanıcıya bilgi göster
+      if (cartData.length === 0) {
+        cartItemsContainer.innerHTML = "<p>Sepetiniz boş!</p>";
+      }
+    });
+  });
+
+
+
+
+
+  
   function attachModalEventListeners(modalElement, product) {
     const increaseBtn = modalElement.querySelector(".quantityIncrease");
     const decreaseBtn = modalElement.querySelector(".quantityDecrease");
@@ -416,66 +547,80 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    let quantity = 1; // Varsayılan miktar
+    const MAX_QUANTITY = 10; // Maksimum ürün miktarı
+    let quantity = parseInt(quantityInput.textContent) || 1; // Varsayılan veya mevcut değer
     quantityInput.textContent = quantity;
 
     // Artırma butonu
     increaseBtn.addEventListener("click", () => {
-      quantity++;
-      quantityInput.textContent = quantity;
+      if (quantity < MAX_QUANTITY) {
+        quantity++;
+        updateQuantity(quantityInput, quantity);
+      } else {
+        alert(`En fazla ${MAX_QUANTITY} adet seçebilirsiniz.`);
+      }
     });
 
     // Azaltma butonu
     decreaseBtn.addEventListener("click", () => {
       if (quantity > 1) {
         quantity--;
-        quantityInput.textContent = quantity;
+        updateQuantity(quantityInput, quantity);
+      } else {
+        alert("Miktar 1'den az olamaz.");
       }
     });
   }
+
+  // Miktarı güncelleyen yardımcı fonksiyon
+  function updateQuantity(inputElement, newQuantity) {
+    inputElement.textContent = newQuantity;
+  }
 });
 
-// URL'den ürün ID'sini al ve detayları yükle
-const urlParams = new URLSearchParams(window.location.search);
-const productId = urlParams.get("id");
+document.addEventListener("DOMContentLoaded", () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const productId = urlParams.get("id");
+  fetchProductDetails(productId);
+});
 
-fetch("product.json")
-  .then((response) => response.json())
-  .then((products) => {
-    const product = products.find((item) => item.id == productId);
+function fetchProductDetails(productId) {
+  fetch("product.json")
+    .then((response) => response.json())
+    .then((products) => {
+      const product = products.find((item) => item.id == productId);
 
-    if (product) {
-      // Ana görüntüyü ayarla
-      document.querySelector(".mainImage").src = product.image;
-      // Ürün adını ve fiyatını ayarla
-      document.querySelector(".productTitle").textContent = product.name;
-      document.querySelector(".productPrice").textContent = `€${product.price} EUR`;
+      if (product) {
+        document.querySelector(".mainImage").src = product.image;
+        document.querySelector(".productTitle").textContent = product.name;
+        document.querySelector(
+          ".productPrice"
+        ).textContent = `€${product.price} EUR`;
 
-      // Thumbnail container'ı seç
-      const thumbnailContainer = document.querySelector(".thumbnailContainer");
+        const thumbnailContainer = document.querySelector(
+          ".thumbnailContainer"
+        );
 
-      // Thumbnails eklemek için images dizisini döngüyle oluştur
-      product.images.forEach((imgSrc) => {
-        const thumbCont = document.createElement("div");
-        thumbCont.className = "thumbCont";
+        product.images.forEach((imgSrc) => {
+          const thumbCont = document.createElement("div");
+          thumbCont.className = "thumbCont";
 
-        const img = document.createElement("img");
-        img.className = "thumbnail";
-        img.src = imgSrc;
-        img.alt = product.name;
+          const img = document.createElement("img");
+          img.className = "thumbnail";
+          img.src = imgSrc;
+          img.alt = product.name;
 
-        thumbCont.appendChild(img);
-        thumbnailContainer.appendChild(thumbCont);
+          thumbCont.appendChild(img);
+          thumbnailContainer.appendChild(thumbCont);
 
-        // Tıklanan küçük resmi ana görüntüye yansıt
-        thumbCont.addEventListener("click", () => {
-          document.querySelector(".mainImage").src = imgSrc;
+          thumbCont.addEventListener("click", () => {
+            document.querySelector(".mainImage").src = imgSrc;
+          });
         });
-      });
-    }
-  })
-  .catch((error) => console.error("JSON yükleme hatası:", error));
-
+      }
+    })
+    .catch((error) => console.error("JSON yükleme hatası:", error));
+}
 
 // Ürün sayısını güncelleme fonksiyonu
 function updateProductCount(count) {
@@ -584,10 +729,14 @@ if (pathname.includes("shop")) {
     .addEventListener("click", resetPriceFilter);
 }
 
-// Fiyat sıfırlama işlevi
+// Reset butonuna tıklama olayını düzenleyelim
 function resetPriceFilter() {
   document.getElementById("minPrice").value = "";
   document.getElementById("maxPrice").value = "";
+  const sortSelect = document.getElementById("sortSelect");
+  if (sortSelect) {
+    sortSelect.value = "default"; // Sıralama seçimini sıfırla
+  }
   renderProducts(1, productsPerPage);
   setupPagination(productsPerPage);
 }
@@ -632,15 +781,27 @@ function sortProducts(sortOption) {
 }
 
 // Dropdown menü itemlarına tıklama işlevselliği
-const dropdownItems = document.querySelectorAll(".dropdownItem");
-dropdownItems.forEach((item) => {
-  item.addEventListener("click", (event) => {
-    const sortOption = event.target.closest("li").dataset.sort;
-    document.getElementById("selectedFeatur").textContent =
-      event.target.textContent;
-    sortProducts(sortOption);
+const dropdownItems = document.querySelectorAll(".dropdownItemF");
+const selectedFeatureElement = document.getElementById("selectedFeatur");
+
+if (!selectedFeatureElement) {
+} else {
+  dropdownItems.forEach((item) => {
+    item.addEventListener("click", (event) => {
+      const clickedItem = event.currentTarget;
+
+      // Sort seçeneği ve metni al
+      const sortOption = clickedItem.dataset.sort;
+      const sortText = clickedItem.querySelector("span").textContent;
+
+      // Sadece kendisinin metnini göster
+      selectedFeatureElement.textContent = sortText;
+
+      // Ürünleri sırala
+      sortProducts(sortOption);
+    });
   });
-});
+}
 
 // Sayfa yüklendiğinde tüm ürünleri render et
 renderProducts(1, productsPerPage);
@@ -650,119 +811,176 @@ renderProducts(1, productsPerPage);
 
 
 
-// checkout validation start
-if (window.location.pathname.includes("checkout")) {
-  const form = document.querySelector(".checkoutForm");
-  if (form) {
-    form.addEventListener("submit", function (e) {
-      e.preventDefault(); // Formun gönderilmesini engelle
-
-      // Önceki hata mesajlarını temizle
-      const errorMessages = document.querySelectorAll(".errorMessage");
-      errorMessages.forEach((message) => (message.textContent = ""));
-
-      // Önceki hata sınıflarını temizle
-      const errorInputs = document.querySelectorAll(".error");
-      errorInputs.forEach((input) => input.classList.remove("error"));
-
-      let isValid = true;
-
-      // Contact Section doğrulaması
-      const emailOrPhone = document.getElementById("emailOrPhone");
-      const emailError = document.getElementById("emailError");
-      if (!emailOrPhone.value) {
-        emailError.textContent = "This field is required";
-        emailOrPhone.classList.add("error");
-        isValid = false;
-      } else if (!validateEmailOrPhone(emailOrPhone.value)) {
-        emailError.textContent = "Please enter a valid email or phone number";
-        emailOrPhone.classList.add("error");
-        isValid = false;
-      }
-
-      // Delivery Section doğrulaması
-      const firstName = document.getElementById("firstName");
-      const lastName = document.getElementById("lastName");
-      const address = document.getElementById("address");
-      const postalCode = document.getElementById("postalCode");
-      const city = document.getElementById("city");
-      const phone = document.getElementById("phone");
-      if (!firstName.value) {
-        document.getElementById("firstNameError").textContent = "This field is required";
-        firstName.classList.add("error");
-        isValid = false;
-      }
-      if (!lastName.value) {
-        document.getElementById("lastNameError").textContent = "This field is required";
-        lastName.classList.add("error");
-        isValid = false;
-      }
-      if (!address.value) {
-        document.getElementById("addressError").textContent = "This field is required";
-        address.classList.add("error");
-        isValid = false;
-      }
-      if (!postalCode.value) {
-        document.getElementById("postalCodeError").textContent = "This field is required";
-        postalCode.classList.add("error");
-        isValid = false;
-      }
-      if (!city.value) {
-        document.getElementById("cityError").textContent = "This field is required";
-        city.classList.add("error");
-        isValid = false;
-      }
-      if (!phone.value || !validatePhone(phone.value)) {
-        document.getElementById("phoneError").textContent = "Please enter a valid phone number";
-        phone.classList.add("error");
-        isValid = false;
-      }
-
-      // Payment Section doğrulaması
-      const cardNumber = document.getElementById("cardNumber");
-      const expirationDate = document.getElementById("expirationDate");
-      const securityCode = document.getElementById("securityCode");
-      const nameOnCard = document.getElementById("nameOnCard");
-
-      if (!cardNumber.value) {
-        document.getElementById("cardNumberError").textContent = "This field is required";
-        cardNumber.classList.add("error");
-        isValid = false;
-      } else if (!validateCardNumber(cardNumber.value)) {
-        document.getElementById("cardNumberError").textContent = "Please enter a valid card number";
-        cardNumber.classList.add("error");
-        isValid = false;
-      }
-      if (!expirationDate.value) {
-        document.getElementById("expirationDateError").textContent = "This field is required";
-        expirationDate.classList.add("error");
-        isValid = false;
-      } else if (!validateExpirationDate(expirationDate.value)) {
-        document.getElementById("expirationDateError").textContent = "Please enter a valid expiration date";
-        expirationDate.classList.add("error");
-        isValid = false;
-      }
-      if (!securityCode.value) {
-        document.getElementById("securityCodeError").textContent = "This field is required";
-        securityCode.classList.add("error");
-        isValid = false;
-      } else if (!validateSecurityCode(securityCode.value)) {
-        document.getElementById("securityCodeError").textContent = "Please enter a valid security code";
-        securityCode.classList.add("error");
-        isValid = false;
-      }
-      if (!nameOnCard.value) {
-        document.getElementById("nameOnCardError").textContent = "This field is required";
-        nameOnCard.classList.add("error");
-        isValid = false;
-      }
-
-      // Eğer tüm alanlar geçerliyse formu gönder
-      if (isValid) {
-        // Formu buradan gönderebilirsiniz
-        alert("Form submitted successfully!");
-      }
+document.addEventListener("DOMContentLoaded", () => {
+  const checkOutBtn = document.querySelector(".checkOutBtn");
+  if (checkOutBtn) {
+    checkOutBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      window.location.href = "./checkout.html"; // Check-out səhifəsinə yönləndirin
     });
   }
-}
-// checkout validation end
+
+  
+
+  // checkout validation start
+  if (window.location.pathname.includes("checkout")) {
+    const form = document.querySelector(".checkoutForm");
+    const cartItems = JSON.parse(localStorage.getItem("cartItems")) || []; // Səbət məhsullarını yüklə
+    console.log(cartItems);
+
+    // Checkout səhifəsində səbət məhsullarını göstər və ümumi məbləğ hesabla
+    const cartContainer = document.querySelector(".cartContainer");
+    const totalAmountElement = document.querySelector(".totalAmount");
+    const discountElement = document.querySelector(".discount");
+    let totalAmount = 0;
+    const discountRate = 0.1; // 10% endirim
+
+    if (cartContainer) {
+      cartItems.forEach((item) => {
+        const itemElement = document.createElement("div");
+        itemElement.classList.add("cartItem");
+        itemElement.innerHTML = `
+          <img src="${item.image}" alt="${item.name}">
+          <p>${item.name}</p>
+          <p>${item.price.toFixed(2)} EUR</p>
+        `;
+        cartContainer.appendChild(itemElement);
+        totalAmount += item.price;
+      });
+
+      // Endirimi tətbiq et və məbləği göstər
+      const discount = totalAmount * discountRate;
+      const finalAmount = totalAmount - discount;
+
+      if (totalAmountElement && discountElement) {
+        discountElement.textContent = `Discount: ${discount.toFixed(2)} EUR`;
+        totalAmountElement.textContent = `Total: ${finalAmount.toFixed(2)} EUR`;
+      }
+    }
+
+    if (form) {
+      form.addEventListener("submit", function (e) {
+        e.preventDefault(); // Formun göndərilməsini engelle
+
+        // Önceki hata mesajlarını temizle
+        const errorMessages = document.querySelectorAll(".errorMessage");
+        errorMessages.forEach((message) => (message.textContent = ""));
+
+        // Önceki hata sınıflarını temizle
+        const errorInputs = document.querySelectorAll(".error");
+        errorInputs.forEach((input) => input.classList.remove("error"));
+
+        let isValid = true;
+
+        // Contact Section doğrulaması
+        const emailOrPhone = document.getElementById("emailOrPhone");
+        const emailError = document.getElementById("emailError");
+        if (!emailOrPhone.value) {
+          emailError.textContent = "Enter an email or phone number";
+          emailOrPhone.classList.add("error");
+          isValid = false;
+        } else if (!validateEmailOrPhone(emailOrPhone.value)) {
+          emailError.textContent = "Please enter a valid email or phone number";
+          emailOrPhone.classList.add("error");
+          isValid = false;
+        }
+
+        // Delivery Section doğrulaması
+        const firstName = document.getElementById("firstName");
+        const lastName = document.getElementById("lastName");
+        const address = document.getElementById("address");
+        const postalCode = document.getElementById("postalCode");
+        const city = document.getElementById("city");
+        const phone = document.getElementById("phone");
+        if (!firstName.value) {
+          document.getElementById("firstNameError").textContent =
+            "Enter a first name";
+          firstName.classList.add("error");
+          isValid = false;
+        }
+        if (!lastName.value) {
+          document.getElementById("lastNameError").textContent =
+            "Enter a last name";
+          lastName.classList.add("error");
+          isValid = false;
+        }
+        if (!address.value) {
+          document.getElementById("addressError").textContent =
+            "Enter an address";
+          address.classList.add("error");
+          isValid = false;
+        }
+        if (!postalCode.value) {
+          document.getElementById("postalCodeError").textContent =
+            "Enter a postal code";
+          postalCode.classList.add("error");
+          isValid = false;
+        }
+        if (!city.value) {
+          document.getElementById("cityError").textContent =
+            "Enter a city";
+          city.classList.add("error");
+          isValid = false;
+        }
+        if (!phone.value || !validatePhone(phone.value)) {
+          document.getElementById("phoneError").textContent =
+            "Enter a phone number";
+          phone.classList.add("error");
+          isValid = false;
+        }
+
+        // Payment Section doğrulaması
+        const cardNumber = document.getElementById("cardNumber");
+        const expirationDate = document.getElementById("expirationDate");
+        const securityCode = document.getElementById("securityCode");
+        const nameOnCard = document.getElementById("nameOnCard");
+
+        if (!cardNumber.value) {
+          document.getElementById("cardNumberError").textContent =
+            "Enter a card number";
+          cardNumber.classList.add("error");
+          isValid = false;
+        } else if (!validateCardNumber(cardNumber.value)) {
+          document.getElementById("cardNumberError").textContent =
+            "Please enter a valid card number";
+          cardNumber.classList.add("error");
+          isValid = false;
+        }
+        if (!expirationDate.value) {
+          document.getElementById("expirationDateError").textContent =
+            "Enter a valid expiration date";
+          expirationDate.classList.add("error");
+          isValid = false;
+        } else if (!validateExpirationDate(expirationDate.value)) {
+          document.getElementById("expirationDateError").textContent =
+            "Please enter a valid expiration date";
+          expirationDate.classList.add("error");
+          isValid = false;
+        }
+        if (!securityCode.value) {
+          document.getElementById("securityCodeError").textContent =
+            "This field is required";
+          securityCode.classList.add("error");
+          isValid = false;
+        } else if (!validateSecurityCode(securityCode.value)) {
+          document.getElementById("securityCodeError").textContent =
+            "Enter the CVV or security code on your card";
+          securityCode.classList.add("error");
+          isValid = false;
+        }
+        if (!nameOnCard.value) {
+          document.getElementById("nameOnCardError").textContent =
+            "Enter your name exactly as it’s written on your card";
+          nameOnCard.classList.add("error");
+          isValid = false;
+        }
+
+        // Eğer tüm alanlar geçerliyse formu gönder
+        if (isValid) {
+          alert("Form submitted successfully!");
+        }
+      });
+    }
+  }
+  // checkout validation end
+});
