@@ -55,6 +55,10 @@ body, main {
   transform: rotate(180deg);
 }
 
+#modeBtn {
+  background-color: red;
+}
+
 .navBar .userList {
   display: flex;
   align-items: center;

@@ -72,14 +72,18 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 // dropdown end
 
+
 document.addEventListener("DOMContentLoaded", function () {
+
   const dropdownToggles = document.querySelectorAll(
     ".dropdownToggleAvaila, .dropdownTogglePrice, .dropdownToggleFeatur"
   );
 
+ 
   dropdownToggles.forEach(function (toggle) {
     toggle.addEventListener("click", function (event) {
       const dropdownMenu = this.nextElementSibling; 
+
 
       const allDropdowns = document.querySelectorAll(
         ".dropdownMenuAvaila, .dropdownMenuPrice, .dropdownMenuFeatur"
@@ -90,6 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
 
+
       if (dropdownMenu.style.display === "block") {
         dropdownMenu.style.display = "none";
       } else {
@@ -97,6 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
+
 
   document.addEventListener("click", function (event) {
     if (
@@ -119,11 +125,13 @@ if (
   pathname.includes("shop") ||
   pathname.includes("cart")
 ) {
+
   document.querySelector(".search i").addEventListener("click", () => {
     modalOverlay.style.display = "block";
     searchContainer.style.display = "block";
   });
 }
+
 
 const closeModal = () => {
   modalOverlay.style.display = "none";
@@ -134,20 +142,26 @@ const closeModal = () => {
 
 if (!pathname.includes("checkout")) {
   closeBtn.addEventListener("click", closeModal);
+  
   modalOverlay.addEventListener("click", (event) => {
+ 
     if (event.target === modalOverlay) {
       closeModal();
     }
   });
 
+
   searchInput.addEventListener("input", function () {
     const query = searchInput.value.toLowerCase();
 
     if (query.trim() === "") {
+
       searchResults.style.display = "none";
     } else {
+
       searchResults.style.display = "block";
 
+      //Filtrele
       const filteredProducts = productsData.filter((product) => {
         return product.name.toLowerCase().includes(query);
       });
@@ -165,8 +179,10 @@ if (!pathname.includes("checkout")) {
     const currentScrollY = window.scrollY;
 
     if (currentScrollY > lastScrollY) {
+  
       header.classList.add("hidden");
     } else {
+    
       header.classList.remove("hidden");
     }
 
@@ -176,13 +192,14 @@ if (!pathname.includes("checkout")) {
 }
 
 function displaySearchResults(filteredProducts) {
-  searchResults.innerHTML = ""; 
+  searchResults.innerHTML = "";
 
   const query = searchInput.value.toLowerCase(); 
 
   if (filteredProducts.length === 0) {
     searchResults.innerHTML = `<p>No results found for "${query}"</p>`;
   } else {
+
     filteredProducts.forEach((product) => {
       const resultCont = document.createElement("div");
       resultCont.classList.add("searchResultItem");
@@ -192,6 +209,7 @@ function displaySearchResults(filteredProducts) {
     </div>
     <p class="searchResultName">${product.name}</p>
   `;
+
 
       resultCont.addEventListener("click", () => {
         window.location.href = `detail.html?id=${product.id}`;
@@ -213,6 +231,7 @@ fetch("product.json")
   .then((response) => response.json())
   .then((products) => {
     productsData = products;
+
 
     localStorage.setItem("productsData", JSON.stringify(products));
 
@@ -246,6 +265,7 @@ function renderProducts(page, perPage, filteredProducts = null) {
   const productsForPage = productsToDisplay.slice(startIndex, endIndex);
 
   productsContainer.innerHTML = ""; 
+
   productsForPage.forEach((product) => {
     const productName = product.name || "Ad yoxdur";
     const productPrice = product.price ? formatPrice(product.price) : "Fiyat geçersiz";
@@ -290,14 +310,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const cartModalContent = document.querySelector(".cartProductList");
   const totalItemsCount = document.querySelector(".totalItemsCount");
 
-  let count = 0; 
+  let count = 0;
   let cartItems = []; 
 
   fetch("product.json")
     .then((response) => response.json())
     .then((products) => {
       document.addEventListener("click", (event) => {
-        // Ürün detay modali
         if (event.target.classList.contains("chooseOption")) {
           event.preventDefault();
           const productId = event.target.dataset.productId;
@@ -312,7 +331,7 @@ document.addEventListener("DOMContentLoaded", () => {
               product,
             });
           
-            mainImageCart.src = product.image;
+            mainImageCart.src = product.image; 
             productTitle.textContent = product.name;
             productPrice.textContent = `€${product.price.toFixed(2)}`;
             modal.style.display = "flex";
@@ -421,13 +440,12 @@ document.addEventListener("DOMContentLoaded", () => {
   addToCartButtons.forEach((button) => {
     button.addEventListener("click", function () {
       const product = {
-        id: this.dataset.id, 
+        id: this.dataset.id,
         name: this.dataset.name, 
-        price: parseFloat(this.dataset.price), 
-        quantity: 1, 
+        price: parseFloat(this.dataset.price),
+        quantity: 1,
       };
 
-     
       const existingProduct = cartData.find((item) => item.id === product.id);
       if (existingProduct) {
         existingProduct.quantity += 1;
@@ -435,10 +453,8 @@ document.addEventListener("DOMContentLoaded", () => {
         cartData.push(product);
       }
 
- 
       localStorage.setItem("cartData", JSON.stringify(cartData));
 
- 
       document.getElementById("cartModal").style.display = "block";
     });
   });
@@ -487,7 +503,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".deleteItem").forEach((deleteButton) => {
     deleteButton.addEventListener("click", (event) => {
       const itemIndex = event.currentTarget.dataset.index; 
-      cartData.splice(itemIndex, 1); 
+      cartData.splice(itemIndex, 1);
       localStorage.setItem("cartData", JSON.stringify(cartData)); 
 
       const cartRow = event.currentTarget.closest(".cartRow");
@@ -514,10 +530,11 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const MAX_QUANTITY = 10; 
+    const MAX_QUANTITY = 10;
     let quantity = parseInt(quantityInput.textContent) || 1; 
     quantityInput.textContent = quantity;
 
+    // Artırma butonu
     increaseBtn.addEventListener("click", () => {
       if (quantity < MAX_QUANTITY) {
         quantity++;
@@ -537,6 +554,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
 
   function updateQuantity(inputElement, newQuantity) {
     inputElement.textContent = newQuantity;
@@ -653,11 +671,13 @@ function updatePaginationActiveButton() {
   });
 }
 
+
 function showPage(pageNumber) {
   currentPage = pageNumber;
   renderProducts(currentPage, productsPerPage);
   updatePaginationActiveButton();
 }
+
 
 function filterByPrice(minPrice, maxPrice) {
   const filteredProducts = productsData.filter((product) => {
@@ -699,6 +719,7 @@ function resetPriceFilter() {
 }
 
 
+// Sıralama işlemi
 function sortProducts(sortOption) {
   let sortedProducts;
   switch (sortOption) {
@@ -749,12 +770,16 @@ if (!selectedFeatureElement) {
 
       selectedFeatureElement.textContent = sortText;
 
+
       sortProducts(sortOption);
     });
   });
 }
 
+
 renderProducts(1, productsPerPage);
+
+
 
 
 
@@ -780,38 +805,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const cartContainer = document.querySelector(".cartContainer");
     const totalAmountElement = document.querySelector(".totalAmount");
     const discountElement = document.querySelector(".discount");
-    const applyCouponButton = document.querySelector(".applyButton");
-    const couponInput = document.querySelector(".couponInput");
-    
     let totalAmount = 0;
-    const discountRate = 0.1; 
-    const validCoupon = "leyla30"; 
-    
-    function updateCart(amount) {
-      totalAmount += amount;
-      totalAmountElement.textContent = `Cəmi: ${totalAmount.toFixed(2)} AZN`;
-      discountElement.textContent = "Endirim: 0.00 AZN";
-    }
-    
-    applyCouponButton.addEventListener("click", () => {
-      const enteredCoupon = couponInput.value.trim();
-    
-      if (enteredCoupon === validCoupon) {
-        const discountAmount = totalAmount * discountRate;
-        const newTotal = totalAmount - discountAmount;
-    
-        discountElement.textContent = `Endirim: ${discountAmount.toFixed(2)} AZN`;
-        totalAmountElement.textContent = `Cəmi: ${newTotal.toFixed(2)} AZN`;
-    
-        alert("Kupon tətbiq olundu!");
-      } else {
-        alert("Yanlış kupon kodu daxil etdiniz. Zəhmət olmasa yenidən yoxlayın.");
-      }
-    });
-    
-
-    updateCart(50); 
-    
+    const discountRate = 0.1; // 10% endirim
 
     if (cartContainer) {
       cartItems.forEach((item) => {
@@ -833,23 +828,22 @@ document.addEventListener("DOMContentLoaded", () => {
 const productSummary = document.querySelector('.productSummary');
 
 
-if(pathname.includes("checkout")){
-
-  if (cartItems) {
-    cartItems.forEach((item) => {      
-      productSummary.innerHTML=''
-      productSummary.innerHTML += `
-        <div class="product-image">
-          <img src="${item.image}" alt="${item.name}">
-        </div>
-        <div class="product-info">
-          <p>${item.name}</p>
-          <p>${item.price.toFixed(2)} EUR</p>
-        </div>
-      `;
-    });
-  }
-}
+    if (cartItems) {
+      cartItems.forEach((item) => {
+        console.log(item.image);
+        
+        productSummary.innerHTML=''
+        productSummary.innerHTML += `
+          <div class="product-image">
+            <img src="${item.image}" alt="${item.name}">
+          </div>
+          <div class="product-info">
+            <p>${item.name}</p>
+            <p>${item.price.toFixed(2)} EUR</p>
+          </div>
+        `;
+      });
+    }
 
 
 
@@ -858,7 +852,6 @@ if(pathname.includes("checkout")){
       form.addEventListener("submit", function (e) {
         e.preventDefault(); 
 
-  
         const errorMessages = document.querySelectorAll(".errorMessage");
         errorMessages.forEach((message) => (message.textContent = ""));
 
@@ -879,6 +872,7 @@ if(pathname.includes("checkout")){
           isValid = false;
         }
 
+        // Delivery Section doğrulaması
         const firstName = document.getElementById("firstName");
         const lastName = document.getElementById("lastName");
         const address = document.getElementById("address");
@@ -922,7 +916,7 @@ if(pathname.includes("checkout")){
           isValid = false;
         }
 
-        // Payment Section
+        // Payment Section doğrulaması
         const cardNumber = document.getElementById("cardNumber");
         const expirationDate = document.getElementById("expirationDate");
         const securityCode = document.getElementById("securityCode");
@@ -968,6 +962,7 @@ if(pathname.includes("checkout")){
           isValid = false;
         }
 
+        // Eğer tüm alanlar geçerliyse formu gönder
         if (isValid) {
           alert("Form submitted successfully!");
         }
